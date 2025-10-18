@@ -41,7 +41,7 @@ export function Step3SelectChannel() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div className="grid gap-4 md:grid-cols-3">
         {CHANNELS.map((channel) => {
           const Icon = channel.icon;
@@ -53,7 +53,7 @@ export function Step3SelectChannel() {
               type="button"
               onClick={() => setExecutionChannel(channel.value)}
               className={cn(
-                "card relative p-6 text-left transition-all hover:shadow-lg",
+                "card hover-tilt relative p-6 text-left transition-all hover:shadow-lg",
                 isSelected && "ring-2 ring-brand-primary ring-offset-2"
               )}
             >
@@ -95,7 +95,7 @@ export function Step3SelectChannel() {
         })}
       </div>
 
-      <div className="flex justify-between border-t border-border pt-6">
+      <div className="flex justify-between border-t border-border/80 pt-6">
         <Button variant="secondary" onClick={() => setStep(2)}>Back</Button>
         <Button onClick={handleNext} size="lg">Next: Confirm Cost</Button>
       </div>

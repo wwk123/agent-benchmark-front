@@ -30,14 +30,14 @@ export function Step4ConfirmCost() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       {isLoading ? (
-        <div className="card p-6 space-y-4">
+        <div className="card hover-tilt p-6 space-y-4">
           <Skeleton variant="text" height="24px" width="50%" />
           <Skeleton variant="rectangular" height="120px" />
         </div>
       ) : error ? (
-        <div className="card p-6">
+        <div className="card hover-tilt p-6">
           <div className="flex items-center gap-3 text-rose-600">
             <AlertCircle className="size-5" />
             <p className="text-sm">Failed to fetch cost estimate. Please try again.</p>
@@ -45,7 +45,7 @@ export function Step4ConfirmCost() {
         </div>
       ) : costEstimate ? (
         <>
-          <div className="card p-6 space-y-4">
+          <div className="card hover-tilt p-6 space-y-4">
             <h3 className="text-lg font-semibold text-text-primary">Cost Breakdown</h3>
 
             <div className="space-y-3">
@@ -71,7 +71,7 @@ export function Step4ConfirmCost() {
             </div>
           </div>
 
-          <div className="card p-6 space-y-4">
+          <div className="card hover-tilt p-6 space-y-4">
             <h3 className="text-lg font-semibold text-text-primary">Important Notice</h3>
             <ul className="space-y-2 text-sm text-text-secondary">
               <li className="flex gap-2">
@@ -103,7 +103,7 @@ export function Step4ConfirmCost() {
         </>
       ) : null}
 
-      <div className="flex justify-between border-t border-border pt-6">
+      <div className="flex justify-between border-t border-border/80 pt-6">
         <Button variant="secondary" onClick={() => setStep(3)}>Back</Button>
         <Button onClick={handleNext} disabled={!agreed || !costEstimate} size="lg">
           Proceed to Payment

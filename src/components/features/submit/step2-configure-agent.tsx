@@ -63,7 +63,7 @@ export function Step2ConfigureAgent() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <Tabs defaultValue={configType} onValueChange={(v) => setConfigType(v as AgentConfigType)}>
         <TabsList>
           <TabsTrigger value="docker">Docker</TabsTrigger>
@@ -72,7 +72,7 @@ export function Step2ConfigureAgent() {
         </TabsList>
 
         <TabsContent value="docker">
-          <div className="card p-6 space-y-4">
+          <div className="card hover-tilt p-6 space-y-4">
             <div>
               <label htmlFor="docker-image" className="block text-sm font-medium mb-2">Docker Image *</label>
               <input
@@ -98,7 +98,7 @@ export function Step2ConfigureAgent() {
         </TabsContent>
 
         <TabsContent value="http">
-          <div className="card p-6 space-y-4">
+          <div className="card hover-tilt p-6 space-y-4">
             <div>
               <label htmlFor="http-endpoint" className="block text-sm font-medium mb-2">API Endpoint *</label>
               <input
@@ -124,7 +124,7 @@ export function Step2ConfigureAgent() {
         </TabsContent>
 
         <TabsContent value="github">
-          <div className="card p-6 space-y-4">
+          <div className="card hover-tilt p-6 space-y-4">
             <div>
               <label htmlFor="github-repo" className="block text-sm font-medium mb-2">Repository *</label>
               <input
@@ -150,7 +150,7 @@ export function Step2ConfigureAgent() {
         </TabsContent>
       </Tabs>
 
-      <div className="flex justify-between border-t border-border pt-6">
+      <div className="flex justify-between border-t border-border/80 pt-6">
         <Button variant="secondary" onClick={() => setStep(1)}>Back</Button>
         <Button onClick={handleNext} disabled={!isValid()} size="lg">Next: Select Channel</Button>
       </div>

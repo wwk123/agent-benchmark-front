@@ -38,14 +38,14 @@ export function Step1SelectBenchmark() {
             placeholder="Search benchmarks..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="h-10 w-full rounded-lg border border-border bg-surface pl-10 pr-4 text-sm focus:border-brand-primary focus:outline-none"
+            className="h-10 w-full rounded-lg border border-border bg-surface pl-10 pr-4 text-sm transition focus:border-brand-accent focus:outline-none focus:shadow-cta-focus"
           />
         </div>
 
         <select
           value={difficultyFilter}
           onChange={(e) => setDifficultyFilter(e.target.value as Difficulty | "all")}
-          className="h-10 rounded-lg border border-border bg-surface px-4 text-sm focus:border-brand-primary focus:outline-none"
+          className="h-10 rounded-lg border border-border bg-surface px-4 text-sm transition focus:border-brand-accent focus:outline-none focus:shadow-brand-glow"
         >
           <option value="all">All Difficulties</option>
           <option value="easy">Easy</option>
@@ -77,7 +77,7 @@ export function Step1SelectBenchmark() {
             <div
               key={benchmark.id}
               className={cn(
-                "cursor-pointer rounded-lg transition-all",
+                "cursor-pointer rounded-xl bg-surface-contrast/90 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-strong",
                 selectedBenchmarkId === benchmark.id && "ring-2 ring-brand-primary ring-offset-2"
               )}
               role="button"
@@ -96,7 +96,7 @@ export function Step1SelectBenchmark() {
         </div>
       )}
 
-      <div className="flex justify-end gap-3 border-t border-border pt-6">
+      <div className="flex justify-end gap-3 border-t border-border/80 pt-6">
         <Button onClick={handleNext} disabled={!selectedBenchmarkId} size="lg">
           Next: Configure Agent
         </Button>

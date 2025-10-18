@@ -13,7 +13,9 @@
     "test:e2e:ui": "playwright test --ui",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "test:visual": "storybook test --coverage"
+    "test:visual": "loki test",
+    "test:chromatic": "npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN",
+    "test:visual:update": "loki update"
   },
   "dependencies": {
     "@ant-design/pro-components": "^2.8.10",
@@ -51,6 +53,9 @@
     "postcss": "^8",
     "storybook": "^8.6.14",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "chromatic": "^9.0.5",
+    "@chromatic-com/storybook": "^4.1.1",
+    "loki": "^0.35.1"
   }
 }

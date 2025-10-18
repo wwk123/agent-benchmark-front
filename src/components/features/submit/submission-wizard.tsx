@@ -11,7 +11,7 @@ export function SubmissionWizard() {
   const currentStep = useSubmissionStore((state) => state.currentStep);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       {currentStep === 1 && <Step1SelectBenchmark />}
       {currentStep === 2 && <Step2ConfigureAgent />}
       {currentStep === 3 && <Step3SelectChannel />}

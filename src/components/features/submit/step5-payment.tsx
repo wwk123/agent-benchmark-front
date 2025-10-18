@@ -112,7 +112,7 @@ export function Step5Payment() {
       </div>
 
       {state === "idle" && (
-        <div className="flex justify-start border-t border-border pt-6">
+        <div className="flex justify-start border-t border-border/80 pt-6">
           <Button variant="secondary" onClick={() => reset()}>Cancel</Button>
         </div>
       )}
