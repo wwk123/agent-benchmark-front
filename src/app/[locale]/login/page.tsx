@@ -6,6 +6,7 @@ import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useWalletLogin } from "@/hooks/use-auth";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { getIllustration } from "@/lib/illustrations";
@@ -57,10 +58,13 @@ export default function LoginPage() {
 
       <GradientCard className="w-full max-w-md space-y-6 p-8">
         <div className="flex flex-col items-center gap-4 text-center">
-          <img
-            src={getIllustration("loginBackdrop")}
+          <Image
+            src={getIllustration("loginBackdrop", "light")}
             alt=""
-            className="h-20 w-20 animate-float-slow"
+            width={80}
+            height={80}
+            className="size-20 animate-float-slow"
+            priority
           />
           <div className="space-y-2">
             <h1 className="text-2xl font-semibold">Welcome Back</h1>

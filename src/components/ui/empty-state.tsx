@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { FileQuestion, Search, AlertTriangle, Inbox } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { getIllustration, type IllustrationKey } from "@/lib/illustrations";
 
 export type EmptyStateVariant = "default" | "search" | "error" | "inbox";
 
@@ -14,6 +16,7 @@ export type EmptyStateProps = {
     label: string;
     onClick: () => void;
   };
+  illustrationKey?: IllustrationKey;
   className?: string;
 };
 
@@ -61,27 +64,33 @@ export function EmptyState({
   description,
   icon,
   action,
+  illustrationKey,
   className,
 }: EmptyStateProps) {
   const config = VARIANT_CONFIG[variant];
   const IconComponent = icon ? null : config.icon;
+  const illustration = illustrationKey ? getIllustration(illustrationKey) : undefined;
 
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center rounded-lg border border-dashed border-border bg-surface-muted p-12 text-center",
+        "flex flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-border bg-surface-muted/70 p-12 text-center backdrop-blur",
         className
       )}
     >
-      {/* Icon */}
-      <div
-        className={cn(
-          "mb-4 flex size-16 items-center justify-center rounded-full bg-surface",
-          config.iconColor
-        )}
-      >
-        {icon || (IconComponent && <IconComponent className="size-8" aria-hidden="true" />)}
-      </div>
+      {/* Illustration or Icon */}
+      {illustration ? (
+        <Image src={illustration} alt="" width={96} height={96} className="size-24 animate-float-slow" />
+      ) : (
+        <div
+          className={cn(
+            "flex size-16 items-center justify-center rounded-full bg-surface",
+            config.iconColor
+          )}
+        >
+          {icon || (IconComponent && <IconComponent className="size-8" aria-hidden="true" />)}
+        </div>
+      )}
 
       {/* Title */}
       <h3 className="mb-2 text-lg font-semibold text-text-primary">{title}</h3>

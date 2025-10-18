@@ -60,7 +60,7 @@ export const Dark: Story = {
   },
   decorators: [
     (StoryComponent) => (
-      <div className="dark bg-surface-inverted p-6">
+      <div className="bg-surface-inverted p-6 text-surface-contrast">
         <StoryComponent />
       </div>
     ),

@@ -42,7 +42,7 @@ export function BenchmarkCard({ benchmark, className, illustration }: BenchmarkC
       )}
     >
       {illustration && (
-        <div className="pointer-events-none absolute -right-6 -top-10 hidden h-32 w-32 animate-float-slow opacity-70 blur-sm sm:block">
+        <div className="pointer-events-none absolute -right-6 -top-10 hidden size-32 animate-float-slow opacity-70 blur-sm sm:block">
           {illustration}
         </div>
       )}

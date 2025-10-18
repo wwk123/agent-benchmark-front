@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import Image from "next/image";
 import { SubmissionSteps } from "./submission-steps";
 
 const meta: Meta<typeof SubmissionSteps> = {
@@ -45,9 +46,11 @@ export const Default: Story = {};
 export const WithIllustration: Story = {
   args: {
     illustration: (
-      <img
+      <Image
         src="/illustrations/submission-flow.svg"
         alt=""
+        width={320}
+        height={144}
         className="mx-auto h-36 w-full max-w-xs animate-float-slow object-contain"
       />
     ),
@@ -62,7 +65,7 @@ export const Dark: Story = {
   },
   decorators: [
     (StoryComponent) => (
-      <div className="dark bg-surface-inverted p-6">
+      <div className="bg-surface-inverted p-6 text-surface-contrast">
         <StoryComponent />
       </div>
     ),

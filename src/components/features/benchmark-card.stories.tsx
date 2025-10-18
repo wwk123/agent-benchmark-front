@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import Image from "next/image";
 import { BenchmarkCard, type BenchmarkCardProps } from "./benchmark-card";
 
 const sampleBenchmark: BenchmarkCardProps["benchmark"] = {
@@ -33,19 +34,25 @@ export const Light: Story = {};
 
 export const WithIllustration: Story = {
   args: {
-    illustration: <img src="/illustrations/benchmark-hero.svg" alt="" className="h-32 w-32 opacity-80" />,
+    illustration: <Image
+        src="/illustrations/benchmark-hero.light.svg"
+        alt=""
+        width={128}
+        height={128}
+        className="size-32 opacity-80"
+      />,
   },
 };
 
 export const Dark: Story = {
   args: {
     illustration: (
-      <div className="h-32 w-32 rounded-full bg-brand-gradient-mid/40 blur-lg" aria-hidden />
+      <div className="size-32 rounded-full bg-brand-gradient-mid/40 blur-lg" aria-hidden />
     ),
   },
   decorators: [
     (StoryComponent) => (
-      <div className="dark bg-surface-inverted p-6">
+      <div className="bg-surface-inverted p-6">
         <StoryComponent />
       </div>
     ),
