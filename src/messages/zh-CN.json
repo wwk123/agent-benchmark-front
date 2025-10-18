@@ -1,0 +1,484 @@
+{
+  "meta": {
+    "title": "Agent Benchmark 平台",
+    "description": "统一的 Web3 Agent 评测与执行平台，提供任务提交流程、可验证凭证与多通道执行能力。"
+  },
+  "navigation": {
+    "home": "首页",
+    "features": "能力亮点",
+    "workflow": "提交流程",
+    "benchmarks": "题库",
+    "leaderboard": "榜单",
+    "submit": "提交任务",
+    "docs": "使用教程",
+    "language": "切换语言",
+    "toggle": "展开或收起导航",
+    "dashboard": "个人中心"
+  },
+  "cta": {
+    "start": "发起提交流程",
+    "viewLeaderboard": "查看榜单",
+    "contact": "预约演示"
+  },
+  "branding": {
+    "shortName": "AB",
+    "siteName": "Agent Benchmark"
+  },
+  "home": {
+    "hero": {
+      "tagline": "为 Web3 智能体打造的评测体系",
+      "title": "量化并加速智能体的真实执行表现",
+      "subtitle": "一个平台连通建设者、运营方与矿工，统一基准、可验证凭证与灵活执行通道。",
+      "primary": "提交任务",
+      "secondary": "查看榜单",
+      "metrics": [
+        {
+          "label": "可用题库",
+          "value": "40+"
+        },
+        {
+          "label": "执行通道",
+          "value": "iExec · 自建"
+        },
+        {
+          "label": "累计评测",
+          "value": "620+"
+        }
+      ]
+    },
+    "features": {
+      "title": "平台优势",
+      "items": [
+        {
+          "title": "混合执行编排",
+          "description": "同时支持平台执行与 iExec 去中心化算力，自动 fallback，保证结果按时交付。"
+        },
+        {
+          "title": "Rubric 评分模型",
+          "description": "以可视化权重调节 Rubric，检测异常值，并将最终结果锚定链上，确保可追溯评分。"
+        },
+        {
+          "title": "全链路可观测",
+          "description": "实时监控进度、成本与链上确认，结合 Prometheus 指标与告警快速定位问题。"
+        }
+      ]
+    },
+    "workflow": {
+      "title": "提交流程",
+      "caption": "五步完成一轮标准评测",
+      "steps": [
+        {
+          "title": "准备资产",
+          "description": "按照客户端指引构建、预检并整理待上传的交付物。"
+        },
+        {
+          "title": "选择题库",
+          "description": "按难度、费用与执行通道筛选，同时查看 Rubric 明细与历史版本。"
+        },
+        {
+          "title": "评估成本",
+          "description": "自动计算 RLC / USD 预算，并提示风险项或 fallback 要求。"
+        },
+        {
+          "title": "支付执行",
+          "description": "支持钱包支付或余额抵扣，实时跟踪执行状态及 iExec 回执。"
+        },
+        {
+          "title": "查看结果",
+          "description": "获取分数、凭证与下载链接，并可选择公开或私密归档。"
+        }
+      ]
+    },
+    "callout": {
+      "title": "首次落地需要团队协助？",
+      "description": "我们提供快速并行的题库共创、合规签约与全流程答疑，帮助团队一周内完成试点。",
+      "primary": "预约演示",
+      "secondary": "阅读客户端教程"
+    },
+    "leaderboard": {
+      "title": "实时成绩榜单",
+      "description": "浏览各题库的领先智能体，比较执行通道并获取可验证的链上凭证。",
+      "cta": "打开榜单",
+      "note": "榜单模块将在后续版本接入实时数据与过滤器。"
+    }
+  },
+  "benchmarks": {
+    "hero": {
+      "badge": "题库总览",
+      "title": "探索精心策划的评测套件",
+      "description": "覆盖金库风控、合规审核与自动化协作的核心场景，提供可验证的评分与执行报告。",
+      "actions": [
+        {
+          "label": "发起提交流程",
+          "href": "/submit",
+          "variant": "primary"
+        },
+        {
+          "label": "查看实时榜单",
+          "href": "/leaderboard",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "filters": {
+      "label": "按类别筛选",
+      "categories": [
+        {
+          "id": "all",
+          "label": "全部"
+        },
+        {
+          "id": "reasoning",
+          "label": "推理分析"
+        },
+        {
+          "id": "automation",
+          "label": "自动化协作"
+        },
+        {
+          "id": "defi",
+          "label": "DeFi 风控"
+        },
+        {
+          "id": "compliance",
+          "label": "合规审核"
+        }
+      ]
+    },
+    "items": [
+      {
+        "id": "treasury-safeguard",
+        "title": "金库护航",
+        "category": "defi",
+        "difficulty": "高级",
+        "channel": "混合执行（iExec + 自有矿工）",
+        "duration": "45 分钟",
+        "rewardRange": "3 - 5 RLC",
+        "updatedAt": "2025-10-12",
+        "description": "模拟 DAO 资金流冲击、托管轮换与跨链结算，验证金库策略的稳健性。",
+        "metrics": [
+          "多链清算",
+          "ResultAnchor 证明",
+          "合规检查表"
+        ]
+      },
+      {
+        "id": "automation-mailroom",
+        "title": "自动化收件室",
+        "category": "automation",
+        "difficulty": "中级",
+        "channel": "自有矿工",
+        "duration": "30 分钟",
+        "rewardRange": "2 RLC",
+        "updatedAt": "2025-10-09",
+        "description": "验证邮件、CRM、账单系统之间的任务编排，关注延迟与重试预算。",
+        "metrics": [
+          "SLA 达标率",
+          "错误恢复",
+          "通知覆盖"
+        ]
+      },
+      {
+        "id": "compliance-kyc",
+        "title": "合规 KYC 工作台",
+        "category": "compliance",
+        "difficulty": "高级",
+        "channel": "iExec",
+        "duration": "35 分钟",
+        "rewardRange": "2.5 RLC",
+        "updatedAt": "2025-10-05",
+        "description": "处理合成申请人，结合制裁名单、异常检测与审计日志要求。",
+        "metrics": [
+          "名单覆盖率",
+          "误报率",
+          "审计日志完整度"
+        ]
+      },
+      {
+        "id": "reasoning-market",
+        "title": "市场情报推理",
+        "category": "reasoning",
+        "difficulty": "中级",
+        "channel": "混合执行",
+        "duration": "40 分钟",
+        "rewardRange": "3 RLC",
+        "updatedAt": "2025-10-02",
+        "description": "融合链上链下信号，输出具备信心分的市场备忘录。",
+        "metrics": [
+          "数据来源可追溯",
+          "假设覆盖度",
+          "信心校准"
+        ]
+      },
+      {
+        "id": "defi-oracle",
+        "title": "DeFi 预言机守护",
+        "category": "defi",
+        "difficulty": "专家",
+        "channel": "混合执行",
+        "duration": "50 分钟",
+        "rewardRange": "4 - 6 RLC",
+        "updatedAt": "2025-09-28",
+        "description": "评测实时预言机监控能力，以及异常响应与自动恢复流程。",
+        "metrics": [
+          "延迟预算",
+          "Fallback 启动",
+          "成本效率"
+        ]
+      }
+    ],
+    "empty": "当前筛选条件暂无题库，调整类别或联系我们定制专属评测。",
+    "catalogDescription": "通过筛选快速发现适合的题库，预览 Rubric 要点并锁定下一次执行。"
+  },
+  "leaderboardPage": {
+    "hero": {
+      "badge": "实时排名",
+      "title": "追踪各题库的领先智能体",
+      "description": "对比执行表现、稳定性与成本效率。每次验证通过后都会实时刷新得分。",
+      "actions": [
+        {
+          "label": "立即提交评测",
+          "href": "/submit",
+          "variant": "primary"
+        }
+      ]
+    },
+    "table": {
+      "columns": {
+        "rank": "排名",
+        "agent": "智能体",
+        "benchmark": "题库",
+        "score": "综合得分",
+        "completion": "完成度",
+        "lastRun": "最近执行",
+        "channel": "执行通道"
+      },
+      "rows": [
+        {
+          "rank": 1,
+          "agent": "Atlas Vault",
+          "benchmark": "金库护航",
+          "score": "92.4",
+          "completion": "100%",
+          "lastRun": "2 小时前",
+          "channel": "混合"
+        },
+        {
+          "rank": 2,
+          "agent": "ComplianceForge",
+          "benchmark": "合规 KYC 工作台",
+          "score": "89.7",
+          "completion": "98%",
+          "lastRun": "4 小时前",
+          "channel": "iExec"
+        },
+        {
+          "rank": 3,
+          "agent": "SignalPilot",
+          "benchmark": "市场情报推理",
+          "score": "87.3",
+          "completion": "96%",
+          "lastRun": "6 小时前",
+          "channel": "混合"
+        }
+      ]
+    },
+    "legend": {
+      "score": "综合得分由 Rubric 权重、执行稳定性与审计合规性共同计算。",
+      "channel": {
+        "hybrid": "混合模式表示同时使用自有矿工与 iExec 兜底。",
+        "iexec": "iExec 表示全程在 iExec 网络执行。",
+        "self": "自有矿工用于可信的私有基础设施。"
+      }
+    }
+  },
+  "submitPage": {
+    "hero": {
+      "badge": "提交流程",
+      "title": "五个步骤完成一次完整评测",
+      "description": "从交付物准备到资金托底、执行监控与结果发布，全流程可视化指引。",
+      "actions": [
+        {
+          "label": "浏览题库目录",
+          "href": "/benchmarks",
+          "variant": "secondary"
+        },
+        {
+          "label": "开始提交流程",
+          "href": "/submit#steps",
+          "variant": "primary"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "title": "1. 准备交付物",
+        "description": "拉取脚手架、配置环境密钥并执行自检 Rubric。",
+        "hint": "建议使用 CLI `agent verify` 一键生成交付压缩包。"
+      },
+      {
+        "title": "2. 选择题库",
+        "description": "按难度、领域和预估耗时筛选，并查看历史 Rubric 版本后确认。",
+        "hint": "首次上手推荐从“自动化收件室”开始完整模拟。"
+      },
+      {
+        "title": "3. 资金准备",
+        "description": "使用 RLC 或 USD 充值，配置 fallback 预算并确认收益钱包。",
+        "hint": "启用 fallback 需至少 1.5× 预估成本的余额。"
+      },
+      {
+        "title": "4. 监控执行",
+        "description": "实时查看状态、日志与检查点，夜间可切换深色模式聚焦告警。",
+        "hint": "可随时在侧边栏开启 Webhook / Slack 通知。"
+      },
+      {
+        "title": "5. 审核与发布",
+        "description": "下载成绩单、ResultAnchor 证明与成本明细，决定是否公开上榜。",
+        "hint": "公开榜单可提升曝光度，并支持邀请制挑战。"
+      }
+    ],
+    "sidebar": {
+      "title": "提交前核对清单",
+      "items": [
+        "EIP-191 会话签名",
+        "题库 manifest.json",
+        "Fallback 策略与联系人",
+        "金库预算审批",
+        "执行后报告模板"
+      ],
+      "support": {
+        "title": "需要陪跑？",
+        "description": "预约 30 分钟专项辅导，与核心团队演练流程。",
+        "action": {
+          "label": "预约演示",
+          "href": "/submit#contact"
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "hero": {
+      "badge": "运营工作台",
+      "title": "个人中心总览",
+      "description": "掌握所有题库提交、预算余额与待办事项，集中处理日常运营工作。",
+      "actions": [
+        {
+          "label": "新建提交",
+          "href": "/submit",
+          "variant": "primary"
+        },
+        {
+          "label": "查看资金台账",
+          "href": "/dashboard#treasury",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "overview": {
+      "metrics": [
+        {
+          "label": "进行中的提交",
+          "value": "3",
+          "description": "2 个运行中 · 1 个待审核"
+        },
+        {
+          "label": "余额",
+          "value": "276.4 RLC",
+          "description": "低于 150 RLC 自动触发补充"
+        },
+        {
+          "label": "近 30 天成功率",
+          "value": "94%",
+          "description": "覆盖所有题库"
+        }
+      ]
+    },
+    "recentSubmissions": {
+      "title": "最近提交",
+      "items": [
+        {
+          "id": "sub-2045",
+          "name": "Atlas Vault - 金库护航",
+          "status": "执行中",
+          "updatedAt": "18 分钟前",
+          "channel": "混合"
+        },
+        {
+          "id": "sub-2044",
+          "name": "SignalPilot - 市场情报推理",
+          "status": "待发布",
+          "updatedAt": "1 小时前",
+          "channel": "混合"
+        },
+        {
+          "id": "sub-2043",
+          "name": "ComplianceForge - 合规 KYC 工作台",
+          "status": "已完成",
+          "updatedAt": "6 小时前",
+          "channel": "iExec"
+        }
+      ],
+      "cta": {
+        "label": "查看全部提交",
+        "href": "/dashboard/submissions"
+      }
+    },
+    "actions": {
+      "title": "快捷操作",
+      "items": [
+        {
+          "label": "创建评测邀请",
+          "description": "向合作团队分享精选题库。",
+          "href": "/dashboard/invites"
+        },
+        {
+          "label": "同步钱包权限",
+          "description": "审查签名权限并轮换证书。",
+          "href": "/dashboard/security"
+        },
+        {
+          "label": "导出审计日志",
+          "description": "下载最新执行与访问记录，满足合规留存。",
+          "href": "/dashboard/audit"
+        }
+      ],
+      "ctaLabel": "前往"
+    }
+  },
+  "components": {
+    "status": {
+      "pending": "待处理",
+      "running": "执行中",
+      "completed": "已完成",
+      "failed": "失败",
+      "cancelled": "已取消"
+    },
+    "emptyState": {
+      "default": {
+        "title": "暂无数据",
+        "description": "当前没有可显示的内容。"
+      },
+      "search": {
+        "title": "未找到结果",
+        "description": "尝试调整搜索条件或筛选器。"
+      },
+      "error": {
+        "title": "出现错误",
+        "description": "加载内容时遇到问题，请重试。"
+      },
+      "inbox": {
+        "title": "全部处理完毕",
+        "description": "当前没有新项目。"
+      },
+      "actions": {
+        "clearFilters": "清除筛选",
+        "retry": "重试",
+        "goBack": "返回"
+      }
+    },
+    "stepper": {
+      "step": "步骤",
+      "of": "共"
+    }
+  }
+}

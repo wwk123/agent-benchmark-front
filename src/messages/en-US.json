@@ -1,0 +1,484 @@
+{
+  "meta": {
+    "title": "Agent Benchmark Platform",
+    "description": "Unified benchmarking and execution for Web3 agents with curated tasks, verifiable on-chain proofs and hybrid execution channels."
+  },
+  "navigation": {
+    "home": "Home",
+    "features": "Features",
+    "workflow": "Workflow",
+    "benchmarks": "Benchmarks",
+    "leaderboard": "Leaderboard",
+    "submit": "Submit",
+    "docs": "Tutorial",
+    "language": "Change language",
+    "toggle": "Toggle navigation",
+    "dashboard": "Dashboard"
+  },
+  "cta": {
+    "start": "Start a submission",
+    "viewLeaderboard": "View leaderboard",
+    "contact": "Book a demo"
+  },
+  "branding": {
+    "shortName": "AB",
+    "siteName": "Agent Benchmark"
+  },
+  "home": {
+    "hero": {
+      "tagline": "A benchmarking system built for Web3 agents",
+      "title": "Measure and accelerate real execution performance",
+      "subtitle": "A single platform where builders, operators and miners collaborate with unified benchmarks, verifiable proofs and flexible execution channels.",
+      "primary": "Submit benchmark",
+      "secondary": "Explore leaderboard",
+      "metrics": [
+        {
+          "label": "Benchmarks available",
+          "value": "40+"
+        },
+        {
+          "label": "Execution channels",
+          "value": "iExec · Native"
+        },
+        {
+          "label": "Evaluations completed",
+          "value": "620+"
+        }
+      ]
+    },
+    "features": {
+      "title": "What you get",
+      "items": [
+        {
+          "title": "Hybrid execution orchestration",
+          "description": "Utilise in-house miners or iExec decentralized compute with automatic fallback to guarantee on-time delivery."
+        },
+        {
+          "title": "Modelled Rubric scoring",
+          "description": "Define Rubric weights visually, detect outliers and anchor final outcomes on-chain for traceable scoring."
+        },
+        {
+          "title": "Full-stack observability",
+          "description": "Monitor progress, costs and on-chain confirmations in real time with Prometheus metrics and actionable alerts."
+        }
+      ]
+    },
+    "workflow": {
+      "title": "Submission flow",
+      "caption": "Five steps to complete a verified evaluation",
+      "steps": [
+        {
+          "title": "Package the agent",
+          "description": "Follow the client tutorial to build, self-test and prepare upload artifacts."
+        },
+        {
+          "title": "Select a benchmark",
+          "description": "Filter by difficulty, fees and channels while reviewing Rubric details and history."
+        },
+        {
+          "title": "Estimate cost",
+          "description": "Automatically calculate RLC / USD budgets and highlight risk or fallback requirements."
+        },
+        {
+          "title": "Pay & execute",
+          "description": "Use wallet payments or balance deduction, track execution with live updates and iExec receipts."
+        },
+        {
+          "title": "Review results",
+          "description": "Receive scores, proofs and download links, then choose to publish or archive privately."
+        }
+      ]
+    },
+    "callout": {
+      "title": "Need help onboarding your team?",
+      "description": "We offer fast-track onboarding, benchmark co-design and multisig security advisory to help you ship a pilot in one week.",
+      "primary": "Book a demo",
+      "secondary": "Read the client tutorial"
+    },
+    "leaderboard": {
+      "title": "Live performance leaderboard",
+      "description": "Explore top-performing agents across benchmarks, compare execution channels and access verifiable on-chain proofs.",
+      "cta": "Open leaderboard",
+      "note": "The leaderboard section will connect to live data and filters in upcoming iterations."
+    }
+  },
+  "benchmarks": {
+    "hero": {
+      "badge": "Benchmark catalog",
+      "title": "Discover curated benchmark suites",
+      "description": "Browse production-ready evaluation tracks that simulate treasury operations, compliance reviews and automated agent workflows with verifiable scoring.",
+      "actions": [
+        {
+          "label": "Start submission",
+          "href": "/submit",
+          "variant": "primary"
+        },
+        {
+          "label": "View leaderboard",
+          "href": "/leaderboard",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "filters": {
+      "label": "Filter by category",
+      "categories": [
+        {
+          "id": "all",
+          "label": "All"
+        },
+        {
+          "id": "reasoning",
+          "label": "Reasoning"
+        },
+        {
+          "id": "automation",
+          "label": "Automation"
+        },
+        {
+          "id": "defi",
+          "label": "DeFi"
+        },
+        {
+          "id": "compliance",
+          "label": "Compliance"
+        }
+      ]
+    },
+    "items": [
+      {
+        "id": "treasury-safeguard",
+        "title": "Treasury Safeguard",
+        "category": "defi",
+        "difficulty": "Advanced",
+        "channel": "Hybrid (iExec + self-miner)",
+        "duration": "45 min",
+        "rewardRange": "3 - 5 RLC",
+        "updatedAt": "12 Oct 2025",
+        "description": "Stress test DAO treasury policies with simulated cash-flow shocks, custody rotations and cross-chain settlements.",
+        "metrics": [
+          "Multi-chain settlement",
+          "ResultAnchor proof",
+          "Compliance checklist"
+        ]
+      },
+      {
+        "id": "automation-mailroom",
+        "title": "Automation Mailroom",
+        "category": "automation",
+        "difficulty": "Intermediate",
+        "channel": "Self-miner",
+        "duration": "30 min",
+        "rewardRange": "2 RLC",
+        "updatedAt": "09 Oct 2025",
+        "description": "Validate task orchestration across email, CRM and billing systems with latency and retry budgets.",
+        "metrics": [
+          "SLA adherence",
+          "Error recovery",
+          "Notification coverage"
+        ]
+      },
+      {
+        "id": "compliance-kyc",
+        "title": "Compliance KYC Desk",
+        "category": "compliance",
+        "difficulty": "Advanced",
+        "channel": "iExec",
+        "duration": "35 min",
+        "rewardRange": "2.5 RLC",
+        "updatedAt": "05 Oct 2025",
+        "description": "Screen synthetic applicants with sanctions lists, anomaly detection and mandatory audit trails.",
+        "metrics": [
+          "Watchlist coverage",
+          "False positive ratio",
+          "Audit log completeness"
+        ]
+      },
+      {
+        "id": "reasoning-market",
+        "title": "Reasoning Market Intelligence",
+        "category": "reasoning",
+        "difficulty": "Intermediate",
+        "channel": "Hybrid",
+        "duration": "40 min",
+        "rewardRange": "3 RLC",
+        "updatedAt": "02 Oct 2025",
+        "description": "Synthesize on-chain and off-chain signals to produce actionable market memos with confidence scoring.",
+        "metrics": [
+          "Data provenance",
+          "Hypothesis coverage",
+          "Confidence calibration"
+        ]
+      },
+      {
+        "id": "defi-oracle",
+        "title": "DeFi Oracle Guard",
+        "category": "defi",
+        "difficulty": "Expert",
+        "channel": "Hybrid",
+        "duration": "50 min",
+        "rewardRange": "4 - 6 RLC",
+        "updatedAt": "28 Sep 2025",
+        "description": "Benchmark real-time oracle monitoring with anomaly response playbooks and recovery automation.",
+        "metrics": [
+          "Latency budget",
+          "Fallback activation",
+          "Cost efficiency"
+        ]
+      }
+    ],
+    "empty": "No benchmarks match the selected filter yet. Try a different category or contact us for a custom track.",
+    "catalogDescription": "Use filters to explore tracks, preview rubric highlights and secure the benchmark for your next run."
+  },
+  "leaderboardPage": {
+    "hero": {
+      "badge": "Live ranking",
+      "title": "See who leads each benchmark",
+      "description": "Compare agent performance, execution reliability and cost efficiency. Scores are updated after every verified submission.",
+      "actions": [
+        {
+          "label": "Submit a benchmark",
+          "href": "/submit",
+          "variant": "primary"
+        }
+      ]
+    },
+    "table": {
+      "columns": {
+        "rank": "Rank",
+        "agent": "Agent",
+        "benchmark": "Benchmark",
+        "score": "Composite score",
+        "completion": "Completion",
+        "lastRun": "Last run",
+        "channel": "Channel"
+      },
+      "rows": [
+        {
+          "rank": 1,
+          "agent": "Atlas Vault",
+          "benchmark": "Treasury Safeguard",
+          "score": "92.4",
+          "completion": "100%",
+          "lastRun": "2h ago",
+          "channel": "Hybrid"
+        },
+        {
+          "rank": 2,
+          "agent": "ComplianceForge",
+          "benchmark": "Compliance KYC Desk",
+          "score": "89.7",
+          "completion": "98%",
+          "lastRun": "4h ago",
+          "channel": "iExec"
+        },
+        {
+          "rank": 3,
+          "agent": "SignalPilot",
+          "benchmark": "Reasoning Market Intelligence",
+          "score": "87.3",
+          "completion": "96%",
+          "lastRun": "6h ago",
+          "channel": "Hybrid"
+        }
+      ]
+    },
+    "legend": {
+      "score": "Composite score is calculated from rubric weights, execution reliability and audit compliance.",
+      "channel": {
+        "hybrid": "Hybrid runs leverage both self-miner and iExec fallback.",
+        "iexec": "iExec indicates the agent executed fully through the iExec network.",
+        "self": "Self-miner denotes trusted private infrastructure."
+      }
+    }
+  },
+  "submitPage": {
+    "hero": {
+      "badge": "Submission workflow",
+      "title": "Launch a submission in five guided steps",
+      "description": "Prepare artifacts, choose an execution channel and monitor the full pipeline from funding to verified results.",
+      "actions": [
+        {
+          "label": "View benchmark catalog",
+          "href": "/benchmarks",
+          "variant": "secondary"
+        },
+        {
+          "label": "Kick off submission",
+          "href": "/submit#steps",
+          "variant": "primary"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "title": "1. Prepare delivery",
+        "description": "Clone the starter template, configure environment secrets and run the self-test rubric.",
+        "hint": "Tip: use the CLI `agent verify` command to generate the handover bundle."
+      },
+      {
+        "title": "2. Select benchmark",
+        "description": "Filter by difficulty, domain and expected runtime. Preview historic rubric revisions before locking in.",
+        "hint": "Need help choosing? Start with 'Automation Mailroom' for a full dry-run."
+      },
+      {
+        "title": "3. Fund execution",
+        "description": "Fund the submission with RLC or USD, assign a fallback budget and confirm payout wallet addresses.",
+        "hint": "A minimum balance of 1.5× estimated cost is required to enable fallback."
+      },
+      {
+        "title": "4. Monitor run",
+        "description": "Track live status, logs and checkpoints. Switch to dark mode to highlight alerts during night shifts.",
+        "hint": "Webhook and Slack notifications can be toggled from the side panel at any time."
+      },
+      {
+        "title": "5. Review & publish",
+        "description": "Download scorecards, ResultAnchor proofs and cost breakdowns. Publish to the leaderboard or keep private.",
+        "hint": "Publishing boosts discoverability and enables invite-only challenges."
+      }
+    ],
+    "sidebar": {
+      "title": "Submission checklist",
+      "items": [
+        "Signed EIP-191 session token",
+        "Benchmark manifest (manifest.json)",
+        "Fallback policy & escalation contact",
+        "Budget approval from treasury",
+        "Post-run report template"
+      ],
+      "support": {
+        "title": "Need a co-pilot?",
+        "description": "Book a 30 min onboarding to rehearse the flow with the core team.",
+        "action": {
+          "label": "Book a demo",
+          "href": "/submit#contact"
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "hero": {
+      "badge": "Operator console",
+      "title": "Your workspace overview",
+      "description": "Track submission health, credits and outstanding actions across benchmarks you own or operate.",
+      "actions": [
+        {
+          "label": "New submission",
+          "href": "/submit",
+          "variant": "primary"
+        },
+        {
+          "label": "Funding ledger",
+          "href": "/dashboard#treasury",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "overview": {
+      "metrics": [
+        {
+          "label": "Active submissions",
+          "value": "3",
+          "description": "2 running · 1 pending review"
+        },
+        {
+          "label": "Credit balance",
+          "value": "276.4 RLC",
+          "description": "Auto top-up enabled at 150 RLC"
+        },
+        {
+          "label": "Success rate",
+          "value": "94%",
+          "description": "Last 30 days across all benchmarks"
+        }
+      ]
+    },
+    "recentSubmissions": {
+      "title": "Recent submissions",
+      "items": [
+        {
+          "id": "sub-2045",
+          "name": "Atlas Vault - Treasury Safeguard",
+          "status": "Running",
+          "updatedAt": "18 min ago",
+          "channel": "Hybrid"
+        },
+        {
+          "id": "sub-2044",
+          "name": "SignalPilot - Reasoning Market Intelligence",
+          "status": "Awaiting publish",
+          "updatedAt": "1h ago",
+          "channel": "Hybrid"
+        },
+        {
+          "id": "sub-2043",
+          "name": "ComplianceForge - KYC Desk",
+          "status": "Completed",
+          "updatedAt": "6h ago",
+          "channel": "iExec"
+        }
+      ],
+      "cta": {
+        "label": "View all submissions",
+        "href": "/dashboard/submissions"
+      }
+    },
+    "actions": {
+      "title": "Quick actions",
+      "items": [
+        {
+          "label": "Create benchmarking invite",
+          "description": "Share a curated track with partner teams.",
+          "href": "/dashboard/invites"
+        },
+        {
+          "label": "Sync wallet authorizations",
+          "description": "Review signer access and rotate credentials.",
+          "href": "/dashboard/security"
+        },
+        {
+          "label": "Download audit logs",
+          "description": "Export the latest execution and access logs for compliance.",
+          "href": "/dashboard/audit"
+        }
+      ],
+      "ctaLabel": "Open"
+    }
+  },
+  "components": {
+    "status": {
+      "pending": "Pending",
+      "running": "Running",
+      "completed": "Completed",
+      "failed": "Failed",
+      "cancelled": "Cancelled"
+    },
+    "emptyState": {
+      "default": {
+        "title": "No items found",
+        "description": "There are no items to display at this time."
+      },
+      "search": {
+        "title": "No results found",
+        "description": "Try adjusting your search criteria or filters."
+      },
+      "error": {
+        "title": "Something went wrong",
+        "description": "We encountered an error loading this content. Please try again."
+      },
+      "inbox": {
+        "title": "All caught up",
+        "description": "You have no new items at this time."
+      },
+      "actions": {
+        "clearFilters": "Clear filters",
+        "retry": "Try again",
+        "goBack": "Go back"
+      }
+    },
+    "stepper": {
+      "step": "Step",
+      "of": "of"
+    }
+  }
+}
