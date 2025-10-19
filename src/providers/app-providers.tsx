@@ -1,11 +1,16 @@
 "use client";
 
 import { QueryClient, QueryClientProvider, QueryCache, MutationCache } from "@tanstack/react-query";
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import dynamic from "next/dynamic";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { WagmiProvider } from "wagmi";
 import { wagmiConfig } from "../web3/config";
+
+const RainbowKitProvider = dynamic(async () => {
+  const mod = await import("@rainbow-me/rainbowkit");
+  return mod.RainbowKitProvider;
+}, { ssr: false });
 
 type AppProvidersProps = {
   children: ReactNode;
@@ -47,10 +52,12 @@ export function AppProviders({ children }: AppProvidersProps) {
       }),
   );
 
+  const isClient = typeof window !== "undefined";
+
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{children}</RainbowKitProvider>
+        {isClient ? <RainbowKitProvider>{children}</RainbowKitProvider> : children}
       </QueryClientProvider>
     </WagmiProvider>
   );

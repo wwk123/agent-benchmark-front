@@ -1,5 +1,5 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { http } from "wagmi";
+import { createConfig, http } from "wagmi";
 import { mainnet, sepolia } from "wagmi/chains";
 import { defineChain } from "viem";
 
@@ -26,14 +26,28 @@ export const bellecour = defineChain({
   testnet: true,
 });
 
-export const wagmiConfig = getDefaultConfig({
-  appName: "Agent Benchmark",
-  projectId: walletConnectId,
-  chains: [mainnet, sepolia, bellecour],
-  transports: {
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
-    [bellecour.id]: http(),
-  },
-  ssr: true,
-});
+const baseChains = [mainnet, sepolia, bellecour] as const;
+const baseTransports = {
+  [mainnet.id]: http(),
+  [sepolia.id]: http(),
+  [bellecour.id]: http(),
+} as const;
+
+const createClientConfig = () =>
+  getDefaultConfig({
+    appName: "Agent Benchmark",
+    projectId: walletConnectId,
+    chains: baseChains,
+    transports: baseTransports,
+    ssr: true,
+  });
+
+export const wagmiConfig =
+  typeof window === "undefined"
+    ? createConfig({
+        chains: baseChains,
+        transports: baseTransports,
+        connectors: [],
+        ssr: true,
+      })
+    : createClientConfig();

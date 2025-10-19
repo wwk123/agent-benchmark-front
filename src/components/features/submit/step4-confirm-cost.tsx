@@ -32,12 +32,12 @@ export function Step4ConfirmCost() {
   return (
     <div className="space-y-10">
       {isLoading ? (
-        <div className="card hover-tilt p-6 space-y-4">
+        <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
           <Skeleton variant="text" height="24px" width="50%" />
           <Skeleton variant="rectangular" height="120px" />
         </div>
       ) : error ? (
-        <div className="card hover-tilt p-6">
+        <div className="card p-6 transition-transform hover:-translate-y-1">
           <div className="flex items-center gap-3 text-rose-600">
             <AlertCircle className="size-5" />
             <p className="text-sm">Failed to fetch cost estimate. Please try again.</p>
@@ -45,7 +45,7 @@ export function Step4ConfirmCost() {
         </div>
       ) : costEstimate ? (
         <>
-          <div className="card hover-tilt p-6 space-y-4">
+          <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
             <h3 className="text-lg font-semibold text-text-primary">Cost Breakdown</h3>
 
             <div className="space-y-3">
@@ -71,7 +71,7 @@ export function Step4ConfirmCost() {
             </div>
           </div>
 
-          <div className="card hover-tilt p-6 space-y-4">
+          <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
             <h3 className="text-lg font-semibold text-text-primary">Important Notice</h3>
             <ul className="space-y-2 text-sm text-text-secondary">
               <li className="flex gap-2">

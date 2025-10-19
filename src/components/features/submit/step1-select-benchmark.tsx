@@ -45,7 +45,7 @@ export function Step1SelectBenchmark() {
         <select
           value={difficultyFilter}
           onChange={(e) => setDifficultyFilter(e.target.value as Difficulty | "all")}
-          className="h-10 rounded-lg border border-border bg-surface px-4 text-sm transition focus:border-brand-accent focus:outline-none focus:shadow-brand-glow"
+          className="h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary transition focus:border-brand-accent focus:outline-none focus:shadow-brand-glow"
         >
           <option value="all">All Difficulties</option>
           <option value="easy">Easy</option>

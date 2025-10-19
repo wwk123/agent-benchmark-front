@@ -2,7 +2,6 @@
 
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import type { Route } from "next";
-import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -11,6 +10,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { getIllustration } from "@/lib/illustrations";
+import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "@/navigation";
+import { defaultLocale, locales, type Locale } from "@/i18n/settings";
 
 export const dynamic = "force-dynamic";
 
@@ -18,14 +20,34 @@ type LoginState = "idle" | "signing" | "success" | "error";
 
 function LoginContent() {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const redirect = useMemo<Route>(() => {
-    const candidate = searchParams.get("redirect");
-    if (candidate && candidate.startsWith("/") && !candidate.startsWith("//")) {
-      return candidate as Route;
+  const currentLocale = useMemo<Locale>(() => {
+    const segments = pathname.split("/").filter(Boolean);
+    const maybeLocale = segments[0];
+    if (maybeLocale && locales.includes(maybeLocale as Locale)) {
+      return maybeLocale as Locale;
     }
-    return "/" as Route;
-  }, [searchParams]);
+    return defaultLocale;
+  }, [pathname]);
+
+  const rawRedirect = searchParams?.get("redirect");
+
+  const redirect = useMemo<Route>(() => {
+    const candidate = rawRedirect;
+    if (candidate && candidate.startsWith("/") && !candidate.startsWith("//")) {
+      if (candidate === "/") {
+        return (`/${currentLocale}`) as Route;
+      }
+      const candidateSegments = candidate.split("/").filter(Boolean);
+      const candidateLocale = candidateSegments[0];
+      if (candidateLocale && locales.includes(candidateLocale as Locale)) {
+        return candidate as Route;
+      }
+      return (`/${currentLocale}${candidate}`) as Route;
+    }
+    return (`/${currentLocale}`) as Route;
+  }, [currentLocale, rawRedirect]);
   const loginIllustration =
     getIllustration("loginBackdrop", "light") ?? "/illustrations/login-backdrop.light.svg";
 
@@ -78,7 +100,7 @@ function LoginContent() {
             priority
           />
           <div className="space-y-2">
-            <h1 className="text-2xl font-semibold">Welcome Back</h1>
+            <h1 className="text-2xl font-semibold text-surface-contrast/80">Welcome Back</h1>
             <p className="text-sm text-surface-contrast/80">
               Connect your wallet to continue to Agent Benchmark
             </p>

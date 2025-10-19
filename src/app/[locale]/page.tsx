@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/navigation";
 import { Button } from "@/components/ui/button";
 import { MetricCard } from "@/components/ui/metric-card";
 import { Section } from "@/components/layout/section";
@@ -36,35 +36,45 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-surface">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-20 bg-hero-gradient from-brand-gradient-start via-brand-gradient-mid to-brand-gradient-end" />
+        <div className="absolute inset-0 -z-10 bg-grid-overlay bg-[length:140px_140px] opacity-20" />
         <div className="layout-container flex flex-col gap-12 py-20 lg:flex-row lg:items-center lg:py-28">
-          <div className="flex-1 space-y-6">
-            <span className="inline-flex items-center rounded-full bg-brand-accent/10 px-4 py-2 text-sm font-medium text-brand-accent">
+          <div className="flex-1 space-y-6 text-surface-contrast">
+            <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-medium uppercase tracking-wide text-surface-contrast/80">
               {tHome("hero.tagline")}
             </span>
             <div className="space-y-4">
-              <h1>{tHome("hero.title")}</h1>
-              <p className="max-w-2xl text-lg text-text-secondary">{tHome("hero.subtitle")}</p>
+              <h1 className="text-4xl font-semibold text-surface-contrast lg:text-5xl">
+                {tHome("hero.title")}
+              </h1>
+              <p className="max-w-2xl text-lg text-surface-contrast/80">
+                {tHome("hero.subtitle")}
+              </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href="#submit">{tHome("hero.primary")}</Link>
+              <Button asChild size="lg" className="shadow-cta-focus hover:shadow-brand-glow">
+                <Link href="/submit">{tHome("hero.primary")}</Link>
               </Button>
-              <Button variant="secondary" asChild size="lg">
-                <Link href="#leaderboard">{tHome("hero.secondary")}</Link>
+              <Button
+                variant="secondary"
+                asChild
+                size="lg"
+                className="bg-surface-contrast/90 text-brand-primary shadow-cta-focus hover:bg-surface-contrast"
+              >
+                <Link href="/leaderboard">{tHome("hero.secondary")}</Link>
               </Button>
             </div>
           </div>
           <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
             {heroMetrics.map((metric) => (
-              <MetricCard key={metric.label} label={metric.label} value={metric.value} />
+              <MetricCard key={metric.label} label={metric.label} value={metric.value} tone="inverted" />
             ))}
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-brand-accent/5 via-transparent to-brand-primary/5" />
       </section>
 
-      <Section id="features" title={tHome("features.title")}>
+      <Section id="features" title={tHome("features.title")} className="bg-surface">
         <div className="grid gap-6 md:grid-cols-3">
           {featureItems.map((item) => (
             <article key={item.title} className="card h-full space-y-3 p-6">
@@ -101,30 +111,28 @@ export default async function HomePage({ params }: HomePageProps) {
             <p className="max-w-2xl text-sm text-text-secondary">{leaderboard.note}</p>
           </div>
           <Button variant="secondary" asChild>
-            <Link href="#leaderboard">{leaderboard.cta}</Link>
+            <Link href="/leaderboard">{leaderboard.cta}</Link>
           </Button>
         </div>
       </Section>
 
       <Section id="submit" padding="lg">
-        <div className="card grid lg:grid-cols-[2fr,1fr] lg:items-center gap-8 p-8 bg-brand-primary text-surface-contrast">
+        <div className="grid gap-8 rounded-2xl border border-brand-gradient-mid/30 bg-brand-primary p-8 text-surface-contrast shadow-brand-glow lg:grid-cols-[2fr,1fr] lg:items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold lg:text-4xl">{callout.title}</h2>
+            <h2 className="text-3xl font-semibold text-surface-contrast lg:text-4xl">{callout.title}</h2>
             <p className="max-w-3xl text-base text-surface-contrast/80">{callout.description}</p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href="#submit">{callout.primary}</Link>
+              <Button asChild size="lg" className="shadow-cta-focus hover:shadow-brand-glow">
+                <Link href="/submit">{callout.primary}</Link>
               </Button>
-              <Button variant="tertiary" asChild size="lg">
-                <Link href="#workflow">{callout.secondary}</Link>
+              <Button variant="tertiary" asChild size="lg" className="bg-white/15 text-surface-contrast hover:bg-white/25">
+                <Link href="/workflow">{callout.secondary}</Link>
               </Button>
             </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/10 p-6 text-sm text-surface-contrast/90">
             <h3 className="mb-3 text-lg font-semibold text-white">{tCta("contact")}</h3>
-            <p className="text-sm leading-relaxed text-surface-contrast/75">
-              {tHome("hero.subtitle")}
-            </p>
+            <p className="text-sm leading-relaxed text-surface-contrast/75">{tHome("hero.subtitle")}</p>
           </div>
         </div>
       </Section>

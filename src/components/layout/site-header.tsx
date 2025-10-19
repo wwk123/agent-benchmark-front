@@ -9,6 +9,7 @@ import { Link } from "@/navigation";
 
 const NAV_ITEMS = [
   { href: "/", key: "navigation.home" },
+  { href: "/workflow", key: "navigation.workflow" },
   { href: "/benchmarks", key: "navigation.benchmarks" },
   { href: "/leaderboard", key: "navigation.leaderboard" },
   { href: "/submit", key: "navigation.submit" },

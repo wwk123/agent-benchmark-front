@@ -53,7 +53,7 @@ export function Step3SelectChannel() {
               type="button"
               onClick={() => setExecutionChannel(channel.value)}
               className={cn(
-                "card hover-tilt relative p-6 text-left transition-all hover:shadow-lg",
+                "card relative p-6 text-left transition-transform hover:-translate-y-1 focus-visible:-translate-y-1",
                 isSelected && "ring-2 ring-brand-primary ring-offset-2"
               )}
             >

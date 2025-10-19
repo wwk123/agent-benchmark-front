@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
 
+type MetricCardTone = "default" | "inverted";
+
 export type MetricCardProps = {
   label: string;
   value: string;
@@ -12,6 +14,7 @@ export type MetricCardProps = {
     value: string;
   };
   lastUpdated?: string;
+  tone?: MetricCardTone;
 };
 
 export function MetricCard({
@@ -22,26 +25,56 @@ export function MetricCard({
   className,
   trend,
   lastUpdated,
+  tone = "default",
 }: MetricCardProps) {
+  const isInverted = tone === "inverted";
+
   return (
     <article
       className={clsx(
-        "card flex gap-4 px-6 py-5",
+        "flex gap-4 px-6 py-5 transition-shadow duration-200 ease-out",
+        isInverted
+          ? "rounded-xl border border-white/15 bg-white/10 shadow-brand-glow backdrop-blur-md hover:shadow-brand-glow"
+          : "card",
         orientation === "vertical" ? "flex-col" : "items-center",
         className,
       )}
       aria-label={`${label}: ${value}`}
     >
-      {icon && <span className="text-brand-highlight">{icon}</span>}
+      {icon && (
+        <span className={clsx(isInverted ? "text-surface-contrast" : "text-brand-highlight")}>
+          {icon}
+        </span>
+      )}
       <div className="space-y-1">
-        <p className="text-sm uppercase tracking-wide text-text-muted">{label}</p>
+        <p
+          className={clsx(
+            "text-sm uppercase tracking-wide",
+            isInverted ? "text-surface-contrast/70" : "text-text-muted",
+          )}
+        >
+          {label}
+        </p>
         <div className="flex items-baseline gap-2">
-          <p className="text-2xl font-semibold text-brand-primary lg:text-3xl">{value}</p>
+          <p
+            className={clsx(
+              "text-2xl font-semibold lg:text-3xl",
+              isInverted ? "text-surface-contrast" : "text-brand-primary",
+            )}
+          >
+            {value}
+          </p>
           {trend && (
             <span
               className={clsx(
                 "text-sm font-medium",
-                trend.direction === "up" ? "text-status-success" : "text-status-danger"
+                trend.direction === "up"
+                  ? isInverted
+                    ? "text-emerald-200"
+                    : "text-status-success"
+                  : isInverted
+                    ? "text-rose-200"
+                    : "text-status-danger",
               )}
             >
               {trend.direction === "up" ? "↑" : "↓"} {trend.value}
@@ -49,7 +82,9 @@ export function MetricCard({
           )}
         </div>
         {lastUpdated && (
-          <p className="text-xs text-text-muted">{lastUpdated}</p>
+          <p className={clsx("text-xs", isInverted ? "text-surface-contrast/60" : "text-text-muted")}>
+            {lastUpdated}
+          </p>
         )}
       </div>
     </article>

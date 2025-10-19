@@ -3,6 +3,8 @@
  * Based on approved Stage 6 plan
  */
 
+import { defaultLocale, locales } from "@/i18n/settings";
+
 type FetchOptions = RequestInit & {
   params?: Record<string, unknown>;
 };
@@ -69,8 +71,14 @@ export async function apiFetch<T>(
     if (response.status === 401) {
       if (typeof window !== "undefined") {
         const currentPath = window.location.pathname;
-        const encodedPath = encodeURIComponent(currentPath);
-        window.location.href = `/login?redirect=${encodedPath}`;
+        const segments = currentPath.split("/").filter(Boolean);
+        const candidateLocale = segments[0];
+        const targetLocale = candidateLocale && locales.includes(candidateLocale as (typeof locales)[number])
+          ? candidateLocale
+          : defaultLocale;
+        const loginPath = `/${targetLocale}/login`;
+        const encodedPath = encodeURIComponent(currentPath || `/${targetLocale}`);
+        window.location.href = `${loginPath}?redirect=${encodedPath}`;
       }
       throw new APIError("Unauthorized", 401);
     }

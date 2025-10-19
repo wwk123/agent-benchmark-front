@@ -93,7 +93,7 @@
       "title": "首次落地需要团队协助？",
       "description": "我们提供快速并行的题库共创、合规签约与全流程答疑，帮助团队一周内完成试点。",
       "primary": "预约演示",
-      "secondary": "阅读客户端教程"
+      "secondary": "查阅提交流程"
     },
     "leaderboard": {
       "title": "实时成绩榜单",
@@ -443,6 +443,59 @@
         }
       ],
       "ctaLabel": "前往"
+    },
+    "treasury": {
+      "title": "资金台账概览",
+      "description": "实时掌握余额、自动充值阈值与待处理账单状态。",
+      "entries": [
+        {
+          "label": "可用余额",
+          "value": "276.4 RLC"
+        },
+        {
+          "label": "自动充值阈值",
+          "value": "150 RLC"
+        },
+        {
+          "label": "待处理账单",
+          "value": "2 条待确认"
+        }
+      ],
+      "note": "所有数据每 5 分钟由计费服务刷新一次。"
+    },
+    "pages": {
+      "submissions": {
+        "title": "提交归档",
+        "description": "回顾历史执行、下载评分明细并比较不同执行通道的表现。",
+        "emptyTitle": "暂未记录提交",
+        "emptyDescription": "发起新的基准运行即可在此处生成归档数据。",
+        "ctaLabel": "打开提交流程",
+        "backLabel": "返回仪表盘"
+      },
+      "invites": {
+        "title": "基准邀请",
+        "description": "向合作伙伴发送基准邀请并跟踪接受情况。",
+        "emptyTitle": "暂无邀请",
+        "emptyDescription": "创建首个邀请以协助合作团队共同验证代理能力。",
+        "ctaLabel": "创建邀请（即将上线）",
+        "backLabel": "返回仪表盘"
+      },
+      "security": {
+        "title": "钱包授权",
+        "description": "审计已连接的钱包、轮换记录及签名者权限。",
+        "emptyTitle": "尚未连接钱包",
+        "emptyDescription": "关联执行钱包后即可在此追踪授权变更。",
+        "ctaLabel": "同步钱包（即将上线）",
+        "backLabel": "返回仪表盘"
+      },
+      "audit": {
+        "title": "审计导出",
+        "description": "下载提交、结算与角色变更的不可篡改日志。",
+        "emptyTitle": "暂未生成导出",
+        "emptyDescription": "完成一次提交或同步计费数据后即可生成审计包。",
+        "ctaLabel": "生成导出（即将上线）",
+        "backLabel": "返回仪表盘"
+      }
     }
   },
   "components": {
@@ -479,6 +532,139 @@
     "stepper": {
       "step": "步骤",
       "of": "共"
+    }
+  },
+  "profile": {
+    "title": "个人与工作区设置",
+    "description": "管理账号偏好、通知渠道以及计费可见性。",
+    "tabs": [
+      {
+        "id": "overview",
+        "label": "总览",
+        "heading": "账号概览",
+        "body": "更新显示名称、界面语言以及已绑定的钱包地址。"
+      },
+      {
+        "id": "submissions",
+        "label": "提交",
+        "heading": "提交活动",
+        "body": "继续未完成的提交向导草稿并查看最新完成的运行。"
+      },
+      {
+        "id": "billing",
+        "label": "计费",
+        "heading": "计费与余额",
+        "body": "检查信用余额、自动充值规则并下载账单。"
+      }
+    ]
+  },
+  "workflowPage": {
+    "hero": {
+      "badge": "提交流程",
+      "title": "在提交前掌握每个关键步骤",
+      "description": "逐步了解五个必要阶段、所需材料与审核环节，确保首轮提交通关。",
+      "actions": [
+        {
+          "label": "开始提交",
+          "href": "/submit",
+          "variant": "primary"
+        },
+        {
+          "label": "浏览基准集",
+          "href": "/benchmarks",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "overview": {
+      "title": "遵循流程的价值",
+      "items": [
+        {
+          "title": "协调相关角色",
+          "description": "在提交前明确研发、运营与资金审核各自的职责界面。"
+        },
+        {
+          "title": "保障执行预算",
+          "description": "提前确认回退策略、计算通道及必要的抵扣额度，避免执行中断。"
+        },
+        {
+          "title": "加速审批通过",
+          "description": "一次性打包审阅所需的全部材料，发布前即可完成审计留痕。"
+        }
+      ]
+    },
+    "steps": {
+      "title": "五步全流程拆解",
+      "description": "按部就班完成可验证的评测，避免返工与等待。",
+      "list": [
+        {
+          "title": "准备 Agent 包",
+          "description": "使用客户端 CLI 打包代码、提示词与环境变量，并留存一次本地演练日志。",
+          "hint": "建议设置确定性随机种子，方便复现评分。"
+        },
+        {
+          "title": "选择基准任务",
+          "description": "按照难度或执行通道挑选赛道，确认数据属地与自动化约束。",
+          "hint": "带有 Hybrid 标记的基准会在自有矿工排满时自动切换至 iExec。"
+        },
+        {
+          "title": "估算预算",
+          "description": "填写预期的 RLC 配置、算力上限与异常重试阈值。",
+          "hint": "估算器会在资金低于阈值时发出提醒。"
+        },
+        {
+          "title": "授权并执行",
+          "description": "签名会话凭证、上传材料，并在控制台中监控执行遥测。",
+          "hint": "执行告警会同步到绑定的通知渠道。"
+        },
+        {
+          "title": "复核并发布",
+          "description": "检查评分卡、ResultAnchor 证明与成本明细，再决定是否进入排行榜。",
+          "hint": "若选择不发布，仍会保留完整审计轨迹。"
+        }
+      ],
+      "checklist": {
+        "title": "动手前先确认",
+        "items": [
+          "包含兼容信息的 Agent manifest",
+          "描述人工兜底路径的回退策略",
+          "已签名的会话密钥或多签授权",
+          "覆盖预估支出的 RLC 额度",
+          "负责响应的运营联系人"
+        ],
+        "support": {
+          "title": "需要陪跑？",
+          "description": "预约 30 分钟导入会，和核心团队演练整套流程。",
+          "action": {
+            "label": "预约演示",
+            "href": "/submit"
+          }
+        }
+      }
+    },
+    "resources": {
+      "title": "延伸资源",
+      "caption": "将这些材料同步给团队，确保上线当天信息一致。",
+      "items": [
+        {
+          "title": "基准任务一览",
+          "description": "对比不同执行通道、奖励区间与验证要求。",
+          "href": "/benchmarks"
+        },
+        {
+          "title": "实时排行榜",
+          "description": "查看近期成功案例，了解评分与证明形态。",
+          "href": "/leaderboard"
+        },
+        {
+          "title": "运营控制台导览",
+          "description": "熟悉执行过程中的告警、资金与遥测视图。",
+          "href": "/dashboard"
+        }
+      ]
+    },
+    "cta": {
+      "viewResource": "查看详情"
     }
   }
 }

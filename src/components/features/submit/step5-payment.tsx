@@ -58,7 +58,7 @@ export function Step5Payment() {
 
   return (
     <div className="space-y-6">
-      <div className="card p-6 space-y-4">
+      <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
         <h3 className="text-lg font-semibold">Payment Summary</h3>
 
         <div className="space-y-2 rounded-lg bg-surface-muted p-4">

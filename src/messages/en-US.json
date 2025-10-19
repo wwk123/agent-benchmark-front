@@ -93,7 +93,7 @@
       "title": "Need help onboarding your team?",
       "description": "We offer fast-track onboarding, benchmark co-design and multisig security advisory to help you ship a pilot in one week.",
       "primary": "Book a demo",
-      "secondary": "Read the client tutorial"
+      "secondary": "Review the submission workflow"
     },
     "leaderboard": {
       "title": "Live performance leaderboard",
@@ -443,7 +443,84 @@
         }
       ],
       "ctaLabel": "Open"
+    },
+    "treasury": {
+      "title": "Funding ledger snapshot",
+      "description": "Stay on top of balances, automation thresholds and outstanding invoices.",
+      "entries": [
+        {
+          "label": "Available credits",
+          "value": "276.4 RLC"
+        },
+        {
+          "label": "Auto top-up threshold",
+          "value": "150 RLC"
+        },
+        {
+          "label": "Outstanding invoices",
+          "value": "2 pending"
+        }
+      ],
+      "note": "All amounts refresh every 5 minutes from the billing service."
+    },
+    "pages": {
+      "submissions": {
+        "title": "Submission archive",
+        "description": "Review historical runs, download scorecards and compare execution channels.",
+        "emptyTitle": "No submissions recorded",
+        "emptyDescription": "Launch a new benchmark run to populate this archive.",
+        "ctaLabel": "Open submission wizard",
+        "backLabel": "Back to dashboard"
+      },
+      "invites": {
+        "title": "Benchmark invitations",
+        "description": "Share curated tracks with partners and monitor acceptance status.",
+        "emptyTitle": "No invitations yet",
+        "emptyDescription": "Create your first invite to onboard collaborators to a shared benchmark.",
+        "ctaLabel": "Create invite (coming soon)",
+        "backLabel": "Back to dashboard"
+      },
+      "security": {
+        "title": "Wallet authorizations",
+        "description": "Audit connected wallets, rotation history and signer privileges.",
+        "emptyTitle": "No linked wallets",
+        "emptyDescription": "Link an execution wallet to begin tracking authorization changes.",
+        "ctaLabel": "Sync wallets (coming soon)",
+        "backLabel": "Back to dashboard"
+      },
+      "audit": {
+        "title": "Audit trail exports",
+        "description": "Download immutable logs covering submissions, payouts and role changes.",
+        "emptyTitle": "No exports generated",
+        "emptyDescription": "Run a submission or sync billing data to produce your first export.",
+        "ctaLabel": "Generate export (coming soon)",
+        "backLabel": "Back to dashboard"
+      }
     }
+  },
+  "profile": {
+    "title": "Profile & workspace settings",
+    "description": "Manage account preferences, notification channels and billing visibility.",
+    "tabs": [
+      {
+        "id": "overview",
+        "label": "Overview",
+        "heading": "Account overview",
+        "body": "Update your display name, preferred language and linked wallet addresses."
+      },
+      {
+        "id": "submissions",
+        "label": "Submissions",
+        "heading": "Submission activity",
+        "body": "Resume drafts started in the submission wizard and review recently completed runs."
+      },
+      {
+        "id": "billing",
+        "label": "Billing",
+        "heading": "Billing & credits",
+        "body": "Inspect credit balances, auto top-up rules and download invoices for compliance."
+      }
+    ]
   },
   "components": {
     "status": {
@@ -479,6 +556,115 @@
     "stepper": {
       "step": "Step",
       "of": "of"
+    }
+  },
+  "workflowPage": {
+    "hero": {
+      "badge": "Submission workflow",
+      "title": "Understand every checkpoint before you submit",
+      "description": "Walk through the five mandatory phases, required artifacts and review gates so your benchmark run is approved on the first attempt.",
+      "actions": [
+        {
+          "label": "Start submission",
+          "href": "/submit",
+          "variant": "primary"
+        },
+        {
+          "label": "Browse benchmarks",
+          "href": "/benchmarks",
+          "variant": "secondary"
+        }
+      ]
+    },
+    "overview": {
+      "title": "Why the workflow matters",
+      "items": [
+        {
+          "title": "Align stakeholders",
+          "description": "Clarify ownership between builders, operators and treasury reviewers before committing to a run."
+        },
+        {
+          "title": "Protect execution budgets",
+          "description": "Surface fallback policies, compute channels and required credits ahead of the payment step."
+        },
+        {
+          "title": "Speed up approvals",
+          "description": "Bundle the exact artifacts evaluators expect so the audit trail is ready for publishing."
+        }
+      ]
+    },
+    "steps": {
+      "title": "Step-by-step walkthrough",
+      "description": "Five checkpoints to complete a verifiable evaluation with confidence.",
+      "list": [
+        {
+          "title": "Package the agent",
+          "description": "Use the client CLI to bundle code, prompts and environment variables. Capture a dry-run log for reviewers.",
+          "hint": "Tip: Include a deterministic seed for reproducible scoring."
+        },
+        {
+          "title": "Select a benchmark",
+          "description": "Choose a track by difficulty or execution channel. Confirm data residency and automation constraints.",
+          "hint": "Benchmarks marked Hybrid automatically fail over to iExec if self-miner slots are full."
+        },
+        {
+          "title": "Estimate budgets",
+          "description": "Provide your preferred RLC allocation, compute caps and retry thresholds for abnormal runs.",
+          "hint": "The estimator highlights if the treasury balance is below the configured minimum."
+        },
+        {
+          "title": "Authorize & execute",
+          "description": "Sign the session payload, upload artifacts and monitor run telemetry from the dashboard overview.",
+          "hint": "Execution alerts are mirrored to your connected notification channel."
+        },
+        {
+          "title": "Review & publish",
+          "description": "Validate scorecards, ResultAnchor proofs and cost breakdowns before publishing to the leaderboard.",
+          "hint": "Skipping publication keeps the run private but still archives the audit trail."
+        }
+      ],
+      "checklist": {
+        "title": "Before you start",
+        "items": [
+          "Agent manifest with benchmark compatibility metadata",
+          "Fallback policy outlining manual intervention paths",
+          "Signed session key or multisig approval",
+          "Allocated RLC credits covering estimated spend",
+          "Primary contact for operator escalations"
+        ],
+        "support": {
+          "title": "Need a walkthrough?",
+          "description": "Book a 30 minute onboarding to rehearse the flow with the core team.",
+          "action": {
+            "label": "Book a demo",
+            "href": "/submit"
+          }
+        }
+      }
+    },
+    "resources": {
+      "title": "Helpful resources",
+      "caption": "Share these with your team so everyone is ready for go-live.",
+      "items": [
+        {
+          "title": "Benchmark catalog overview",
+          "description": "Compare execution channels, rewards and verification requirements side-by-side.",
+          "href": "/benchmarks"
+        },
+        {
+          "title": "Live leaderboard",
+          "description": "Inspect recent successful runs to understand expected proofs and scoring.",
+          "href": "/leaderboard"
+        },
+        {
+          "title": "Operational dashboard tour",
+          "description": "Learn how alerts, treasury balances and run telemetry appear during execution.",
+          "href": "/dashboard"
+        }
+      ]
+    },
+    "cta": {
+      "viewResource": "Open resource"
     }
   }
 }

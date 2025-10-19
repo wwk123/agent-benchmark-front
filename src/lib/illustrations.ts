@@ -16,7 +16,8 @@ export const ILLUSTRATIONS = {
     dark: "/illustrations/login-backdrop.dark.svg",
   },
   sparkles: {
-    lottie: "/illustrations/sparkles.lottie.json",
+    light: "/illustrations/sparkles.light.svg",
+    dark: "/illustrations/sparkles.dark.svg",
   },
 } as const;
 
@@ -26,9 +27,6 @@ export function getIllustration(key: IllustrationKey, theme: "light" | "dark" = 
   const asset = ILLUSTRATIONS[key];
   if ("light" in asset && "dark" in asset) {
     return asset[theme];
-  }
-  if ("lottie" in asset) {
-    return asset.lottie;
   }
   return "";
 }

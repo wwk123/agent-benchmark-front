@@ -4,11 +4,12 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSignMessage } from "wagmi";
+import { useDisconnect, useSignMessage } from "wagmi";
 import { useWalletStore } from "@/stores/wallet-store";
 import { useSubmissionStore } from "@/stores/submission-store";
 import type { LoginNonceResponse, LoginResponse } from "@/types/models";
 import { apiFetch } from "@/lib/api-client";
+import { defaultLocale, locales } from "@/i18n/settings";
 
 /**
  * Wallet login with EIP-191 signature
@@ -79,6 +80,7 @@ export function useLogout() {
   const queryClient = useQueryClient();
   const { disconnect: disconnectWallet } = useWalletStore();
   const { reset: resetSubmission } = useSubmissionStore();
+  const { disconnect } = useDisconnect();
 
   return useMutation({
     mutationFn: async () => {
@@ -97,6 +99,7 @@ export function useLogout() {
       }
 
       // Reset Zustand stores
+      disconnect();
       disconnectWallet();
       resetSubmission();
 
@@ -105,7 +108,13 @@ export function useLogout() {
 
       // Redirect to homepage
       if (typeof window !== "undefined") {
-        window.location.href = "/";
+        const currentPath = window.location.pathname;
+        const segments = currentPath.split("/").filter(Boolean);
+        const candidateLocale = segments[0];
+        const targetLocale = candidateLocale && locales.includes(candidateLocale as (typeof locales)[number])
+          ? candidateLocale
+          : defaultLocale;
+        window.location.href = `/${targetLocale}`;
       }
     },
   });

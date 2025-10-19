@@ -72,7 +72,7 @@ export function Step2ConfigureAgent() {
         </TabsList>
 
         <TabsContent value="docker">
-          <div className="card hover-tilt p-6 space-y-4">
+          <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
             <div>
               <label htmlFor="docker-image" className="block text-sm font-medium mb-2">Docker Image *</label>
               <input
@@ -81,7 +81,7 @@ export function Step2ConfigureAgent() {
                 placeholder="myagent/solver"
                 value={dockerConfig.image}
                 onChange={(e) => setDockerConfig(prev => ({ ...prev, image: e.target.value }))}
-                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm"
+                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted"
               />
             </div>
             <div>
@@ -91,14 +91,14 @@ export function Step2ConfigureAgent() {
                 type="text"
                 value={dockerConfig.tag}
                 onChange={(e) => setDockerConfig(prev => ({ ...prev, tag: e.target.value }))}
-                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm"
+                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted"
               />
             </div>
           </div>
         </TabsContent>
 
         <TabsContent value="http">
-          <div className="card hover-tilt p-6 space-y-4">
+          <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
             <div>
               <label htmlFor="http-endpoint" className="block text-sm font-medium mb-2">API Endpoint *</label>
               <input
@@ -107,7 +107,7 @@ export function Step2ConfigureAgent() {
                 placeholder="https://api.example.com/agent"
                 value={httpConfig.endpoint}
                 onChange={(e) => setHttpConfig(prev => ({ ...prev, endpoint: e.target.value }))}
-                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm"
+                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted"
               />
             </div>
             <div>
@@ -117,14 +117,14 @@ export function Step2ConfigureAgent() {
                 type="password"
                 value={httpConfig.apiKey}
                 onChange={(e) => setHttpConfig(prev => ({ ...prev, apiKey: e.target.value }))}
-                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm"
+                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted"
               />
             </div>
           </div>
         </TabsContent>
 
         <TabsContent value="github">
-          <div className="card hover-tilt p-6 space-y-4">
+          <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
             <div>
               <label htmlFor="github-repo" className="block text-sm font-medium mb-2">Repository *</label>
               <input
@@ -133,7 +133,7 @@ export function Step2ConfigureAgent() {
                 placeholder="owner/repo"
                 value={githubConfig.repo}
                 onChange={(e) => setGithubConfig(prev => ({ ...prev, repo: e.target.value }))}
-                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm"
+                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted"
               />
             </div>
             <div>
@@ -143,7 +143,7 @@ export function Step2ConfigureAgent() {
                 type="text"
                 value={githubConfig.branch}
                 onChange={(e) => setGithubConfig(prev => ({ ...prev, branch: e.target.value }))}
-                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm"
+                className="w-full h-10 rounded-lg border border-border bg-surface px-4 text-sm text-text-primary placeholder:text-text-muted"
               />
             </div>
           </div>

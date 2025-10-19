@@ -1,0 +1,40 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sparkles-light-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(48 46) rotate(90) scale(40)">
+      <stop offset="0" stop-color="#1FB6FF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#1FB6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sparkles-light-primary" x1="18" y1="20" x2="74" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1FB6FF"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="sparkles-light-secondary" x1="12" y1="14" x2="30" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9B500"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+    <linearGradient id="sparkles-light-tertiary" x1="70" y1="16" x2="86" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <circle cx="48" cy="46" r="36" fill="url(#sparkles-light-glow)"/>
+  <path
+    d="M48 12L54.4 35.6L78 42L54.4 48.4L48 72L41.6 48.4L18 42L41.6 35.6L48 12Z"
+    fill="url(#sparkles-light-primary)"
+    stroke="rgba(255,255,255,0.6)"
+    stroke-width="1.2"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M24 16L27.2 27.6L38.8 30.8L27.2 34L24 45.6L20.8 34L9.2 30.8L20.8 27.6L24 16Z"
+    fill="url(#sparkles-light-secondary)"
+    opacity="0.9"
+  />
+  <path
+    d="M72 18L74.2 25.8L82 28L74.2 30.2L72 38L69.8 30.2L62 28L69.8 25.8L72 18Z"
+    fill="url(#sparkles-light-tertiary)"
+    opacity="0.85"
+  />
+  <circle cx="60" cy="64" r="6" fill="#F9B500" opacity="0.35"/>
+  <circle cx="34" cy="64" r="4" fill="#0EA5E9" opacity="0.4"/>
+</svg>

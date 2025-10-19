@@ -1,7 +1,6 @@
 "use client";
 
 import { use } from "react";
-import Link from "next/link";
 import { ArrowLeft, Clock, Award, DollarSign } from "lucide-react";
 import { useSubmission, useCancelSubmission } from "@/hooks/use-submissions";
 import { PageHeader } from "@/components/layout/page-header";
@@ -11,6 +10,7 @@ import { InfoCard } from "@/components/ui/info-card";
 import { CardSkeleton } from "@/components/ui/loading-skeleton";
 import { EmptyState } from "@/components/ui/empty-state";
 import { SubmissionTimeline } from "@/components/features/submission-timeline";
+import { Link } from "@/navigation";
 
 type SubmissionDetailPageProps = {
   params: Promise<{ id: string }>;
