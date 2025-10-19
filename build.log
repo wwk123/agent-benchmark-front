@@ -1,0 +1,41 @@
+10:19:59.874 
+./node_modules/.pnpm/@walletconnect+logger@2.1.2/node_modules/@walletconnect/logger/dist/index.es.js
+10:19:59.874 
+./node_modules/.pnpm/@walletconnect+universal-provider@2.21.1_bufferutil@4.0.9_typescript@5.9.3_utf-8-validate@5.0.10_zod@3.25.76/node_modules/@walletconnect/universal-provider/dist/index.es.js
+10:19:59.874 
+./node_modules/.pnpm/@walletconnect+ethereum-provider@2.21.1_@types+react@18.3.26_bufferutil@4.0.9_react@18._ba9891405eb208827b97b4772fc2849f/node_modules/@walletconnect/ethereum-provider/dist/index.es.js
+10:19:59.874 
+./node_modules/.pnpm/@wagmi+connectors@6.0.1_@tanstack+react-query@5.90.5_react@18.3.1__@types+react@18.3.26_66efd9e525e3f349fd53b2f53aa9db63/node_modules/@wagmi/connectors/dist/esm/walletConnect.js
+10:19:59.875 
+./node_modules/.pnpm/@wagmi+connectors@6.0.1_@tanstack+react-query@5.90.5_react@18.3.1__@types+react@18.3.26_66efd9e525e3f349fd53b2f53aa9db63/node_modules/@wagmi/connectors/dist/esm/exports/index.js
+10:19:59.875 
+./node_modules/.pnpm/wagmi@2.18.1_@tanstack+query-core@5.90.5_@tanstack+react-query@5.90.5_react@18.3.1__@ty_54f73f1b7f5f17069795693cabe8fdb7/node_modules/wagmi/dist/esm/exports/connectors.js
+10:19:59.875 
+./node_modules/.pnpm/@rainbow-me+rainbowkit@2.2.9_@tanstack+react-query@5.90.5_react@18.3.1__@types+react@18_b269a3d5dcf601cd66a42b1c1a212eed/node_modules/@rainbow-me/rainbowkit/dist/index.js
+10:19:59.875 
+./src/providers/app-providers.tsx
+10:19:59.875 
+10:19:59.876 
+   Linting and checking validity of types ...
+10:20:14.863 
+Failed to compile.
+10:20:14.863 
+10:20:14.863 
+./playwright.config.ts:1:39
+10:20:14.864 
+Type error: Cannot find module '@playwright/test' or its corresponding type declarations.
+10:20:14.864 
+10:20:14.864 
+> 1 | import { defineConfig, devices } from '@playwright/test';
+10:20:14.864 
+    |                                       ^
+10:20:14.864 
+  2 |
+10:20:14.864 
+  3 | export default defineConfig({
+10:20:14.864 
+  4 |   testDir: './e2e',
+10:20:15.019 
+ ELIFECYCLE  Command failed with exit code 1.
+10:20:15.038 
+Error: Command "pnpm run build" exited with 1

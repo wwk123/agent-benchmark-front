@@ -45,6 +45,8 @@ export default async function LeaderboardPage() {
       self: string;
     };
   };
+  const heroIllustration =
+    getIllustration("benchmarkHero", "light") ?? "/illustrations/benchmark-hero.light.svg";
 
   return (
     <>
@@ -67,7 +69,7 @@ export default async function LeaderboardPage() {
                 <h2 className="text-3xl font-semibold text-surface-contrast">{hero.title}</h2>
               </div>
               <Image
-                src={getIllustration("benchmarkHero", "light")}
+                src={heroIllustration}
                 alt=""
                 width={80}
                 height={80}

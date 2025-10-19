@@ -22,10 +22,13 @@ export const ILLUSTRATIONS = {
 
 export type IllustrationKey = keyof typeof ILLUSTRATIONS;
 
-export function getIllustration(key: IllustrationKey, theme: "light" | "dark" = "light") {
+export function getIllustration(key: IllustrationKey, theme: "light" | "dark" = "light"): string {
   const asset = ILLUSTRATIONS[key];
   if ("light" in asset && "dark" in asset) {
     return asset[theme];
   }
-  return "lottie" in asset ? asset.lottie : undefined;
+  if ("lottie" in asset) {
+    return asset.lottie;
+  }
+  return "";
 }

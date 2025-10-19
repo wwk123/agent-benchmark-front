@@ -92,6 +92,10 @@ export const Chinese: Story = {
 };
 
 export const Grid: Story = {
+  args: {
+    title: "Total Submissions",
+    value: "1,234",
+  },
   render: () => (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
       <InfoCard

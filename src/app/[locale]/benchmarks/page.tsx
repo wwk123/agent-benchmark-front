@@ -54,10 +54,7 @@ export default async function BenchmarksPage() {
       <Section
         id="catalog"
         title={filters.label}
-        description={t(
-          "catalogDescription",
-          "Use filters to explore tracks, preview rubric highlights and lock the benchmark for your next run.",
-        )}
+        description={t("catalogDescription")}
         padding="md"
       >
         <BenchmarksClient

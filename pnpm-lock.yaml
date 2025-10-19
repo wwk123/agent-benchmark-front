@@ -57,6 +57,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^4.1.1
         version: 4.1.1(storybook@8.6.14(bufferutil@4.0.9)(utf-8-validate@5.0.10))
+      '@playwright/test':
+        specifier: ^1.49.1
+        version: 1.56.1
       '@storybook/addon-a11y':
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14(bufferutil@4.0.9)(utf-8-validate@5.0.10))
@@ -69,6 +72,9 @@ importers:
       '@storybook/nextjs':
         specifier: ^8.6.14
         version: 8.6.14(esbuild@0.25.11)(next@14.2.7(@babel/core@7.28.4)(@playwright/test@1.56.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.6.14(bufferutil@4.0.9)(utf-8-validate@5.0.10))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.102.1(esbuild@0.25.11))
+      '@storybook/react':
+        specifier: ^8.6.14
+        version: 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(bufferutil@4.0.9)(utf-8-validate@5.0.10)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.6.14(bufferutil@4.0.9)(utf-8-validate@5.0.10))(typescript@5.9.3)
       '@storybook/test':
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14(bufferutil@4.0.9)(utf-8-validate@5.0.10))
@@ -8561,7 +8567,6 @@ snapshots:
   '@playwright/test@1.56.1':
     dependencies:
       playwright: 1.56.1
-    optional: true
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.17(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-hot-middleware@2.26.1)(webpack@5.102.1(esbuild@0.25.11))':
     dependencies:
@@ -13260,15 +13265,13 @@ snapshots:
     dependencies:
       find-up: 6.3.0
 
-  playwright-core@1.56.1:
-    optional: true
+  playwright-core@1.56.1: {}
 
   playwright@1.56.1:
     dependencies:
       playwright-core: 1.56.1
     optionalDependencies:
       fsevents: 2.3.2
-    optional: true
 
   pngjs@3.4.0: {}
 

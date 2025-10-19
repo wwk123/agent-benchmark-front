@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import type { Route } from "next";
+import { useRouter } from "@/navigation";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { useSignMessage } from "wagmi";
 import { useSubmissionStore } from "@/stores/submission-store";
@@ -45,7 +46,8 @@ export function Step5Payment() {
 
       setTimeout(() => {
         reset();
-        router.push(`/submissions/${result.submissionId}`);
+        const submissionRoute = `/submissions/${result.submissionId}` as Route;
+        router.push(submissionRoute);
       }, 1500);
 
     } catch (error) {

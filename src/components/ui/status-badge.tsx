@@ -1,6 +1,13 @@
 import { cn } from "@/lib/utils";
 
-export type Status = "pending" | "running" | "completed" | "failed" | "cancelled";
+export type Status =
+  | "pending"
+  | "queued"
+  | "running"
+  | "scoring"
+  | "completed"
+  | "failed"
+  | "cancelled";
 
 export type StatusBadgeProps = {
   status: Status;
@@ -21,10 +28,20 @@ const STATUS_CONFIG: Record<
     color: "bg-amber-100 text-amber-800 border-amber-200",
     dotColor: "bg-amber-500",
   },
+  queued: {
+    label: "Queued",
+    color: "bg-amber-100 text-amber-800 border-amber-200",
+    dotColor: "bg-amber-400",
+  },
   running: {
     label: "Running",
     color: "bg-sky-100 text-sky-800 border-sky-200",
     dotColor: "bg-sky-500 animate-pulse",
+  },
+  scoring: {
+    label: "Scoring",
+    color: "bg-indigo-100 text-indigo-800 border-indigo-200",
+    dotColor: "bg-indigo-500 animate-pulse",
   },
   completed: {
     label: "Completed",

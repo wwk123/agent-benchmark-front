@@ -37,13 +37,15 @@ export default function BenchmarkDetailPage({ params }: BenchmarkDetailPageProps
     );
   }
 
+  const breadcrumbs = [
+    { label: "Benchmarks", href: "/benchmarks" },
+    { label: benchmark.title },
+  ];
+
   return (
     <div className="layout-container space-y-6 py-8">
       <PageHeader
-        breadcrumbs={[
-          { label: "Benchmarks", href: "/benchmarks" },
-          { label: benchmark.title },
-        ]}
+        breadcrumbs={breadcrumbs}
         title={benchmark.title}
         description={benchmark.description}
       />

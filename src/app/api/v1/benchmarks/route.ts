@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { MOCK_BENCHMARKS } from "@/lib/mock-data/benchmarks";
 
+export const dynamic = "force-dynamic";
+
 /**
  * GET /api/v1/benchmarks
  *
@@ -50,7 +52,7 @@ export async function GET(request: Request) {
 
     // Apply category filter
     if (category !== "all") {
-      filtered = filtered.filter((benchmark) => benchmark.category === category);
+      filtered = filtered.filter((benchmark) => benchmark.tags.includes(category));
     }
 
     // Calculate pagination

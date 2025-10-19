@@ -217,24 +217,38 @@ export const MOCK_BENCHMARK_DETAILS: Record<string, BenchmarkDetail> = {
         },
       ],
     },
-    exampleQuestions: [
+    examples: [
       {
-        question: "What is the capital of France?",
-        expectedAnswer: "Paris",
-        difficulty: "easy",
+        title: "Capital knowledge check",
+        description: "Answer a direct factual question. Difficulty: easy.",
+        expectedOutput: "Paris",
       },
       {
-        question: "Explain the theory of relativity in simple terms.",
-        expectedAnswer: "The theory of relativity, developed by Albert Einstein, consists of two parts: special relativity (dealing with objects moving at constant speeds) and general relativity (dealing with gravity and acceleration).",
-        difficulty: "medium",
+        title: "Relativity explanation",
+        description: "Explain the theory of relativity in simple terms.",
+        expectedOutput: "The theory of relativity由两部分组成：狭义相对论关注匀速运动，广义相对论描述引力与加速度。",
       },
     ],
-    submissionGuidelines: `## Submission Guidelines
-
-1. **Input Format**: JSON with question and optional context
-2. **Output Format**: JSON with answer and confidence score
-3. **Time Limit**: 30 seconds per question
-4. **Resource Limits**: 2GB memory, 2 CPU cores
-`,
+    resources: [
+      {
+        title: "Submission guidelines",
+        url: "/docs/benchmarks/general-knowledge#submission-guidelines",
+        type: "documentation",
+      },
+      {
+        title: "Sample dataset",
+        url: "/docs/benchmarks/general-knowledge#dataset",
+        type: "reference",
+      },
+    ],
+    versions: [
+      {
+        version: "1.0.0",
+        releaseDate: "2024-10-15T12:30:00Z",
+        changelog: "Initial mock detail data seeded for the knowledge Q&A benchmark.",
+      },
+    ],
+    currentVersion: "1.0.0",
   },
 };
+

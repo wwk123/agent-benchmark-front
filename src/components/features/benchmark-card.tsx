@@ -3,12 +3,13 @@
  * Based on approved Stage 2 plan
  */
 
-import Link from "next/link";
+import type { Route } from "next";
 import type { ReactNode } from "react";
 import { Clock, FileText, Tag } from "lucide-react";
 import type { Benchmark } from "@/types/models";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/navigation";
 
 export type BenchmarkCardProps = {
   benchmark: Benchmark;
@@ -33,6 +34,7 @@ const DIFFICULTY_CONFIG = {
 
 export function BenchmarkCard({ benchmark, className, illustration }: BenchmarkCardProps) {
   const difficultyConfig = DIFFICULTY_CONFIG[benchmark.difficulty];
+  const detailRoute = `/benchmarks/${benchmark.id}` as Route;
 
   return (
     <article
@@ -49,7 +51,7 @@ export function BenchmarkCard({ benchmark, className, illustration }: BenchmarkC
       {/* Header with Difficulty Badge */}
       <div className="flex items-start justify-between gap-3">
         <h3 className="flex-1 text-xl font-semibold text-brand-primary group-hover:text-brand-accent transition-colors">
-          <Link href={`/benchmarks/${benchmark.id}`}>
+          <Link href={detailRoute}>
             {benchmark.title}
           </Link>
         </h3>
@@ -128,12 +130,12 @@ export function BenchmarkCard({ benchmark, className, illustration }: BenchmarkC
       {/* Actions */}
       <div className="flex gap-3 pt-2">
         <Button variant="secondary" size="sm" className="flex-1" asChild>
-          <Link href={`/benchmarks/${benchmark.id}`}>
+          <Link href={detailRoute}>
             View Details
           </Link>
         </Button>
         <Button size="sm" className="flex-1" asChild>
-          <Link href={`/submit?benchmark=${benchmark.id}`}>
+          <Link href={{ pathname: "/submit", query: { benchmark: benchmark.id } }}>
             Submit Agent
           </Link>
         </Button>

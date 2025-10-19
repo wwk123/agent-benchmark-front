@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import type { Route } from "next";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { useAccount } from "wagmi";
@@ -11,12 +12,22 @@ import { Button } from "@/components/ui/button";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { getIllustration } from "@/lib/illustrations";
 
+export const dynamic = "force-dynamic";
+
 type LoginState = "idle" | "signing" | "success" | "error";
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
+  const redirect = useMemo<Route>(() => {
+    const candidate = searchParams.get("redirect");
+    if (candidate && candidate.startsWith("/") && !candidate.startsWith("//")) {
+      return candidate as Route;
+    }
+    return "/" as Route;
+  }, [searchParams]);
+  const loginIllustration =
+    getIllustration("loginBackdrop", "light") ?? "/illustrations/login-backdrop.light.svg";
 
   const [state, setState] = useState<LoginState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -59,7 +70,7 @@ export default function LoginPage() {
       <GradientCard className="w-full max-w-md space-y-6 p-8">
         <div className="flex flex-col items-center gap-4 text-center">
           <Image
-            src={getIllustration("loginBackdrop", "light")}
+            src={loginIllustration}
             alt=""
             width={80}
             height={80}
@@ -115,3 +126,20 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-surface">
+          <Loader2 className="size-8 animate-spin text-brand-highlight" />
+        </div>
+      }
+    >
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+
+

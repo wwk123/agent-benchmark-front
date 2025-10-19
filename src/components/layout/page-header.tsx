@@ -1,11 +1,13 @@
-import type { ReactNode } from "react";
-import Link from "next/link";
+import type { ComponentProps, ReactNode } from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "@/navigation";
+
+type LinkHref = ComponentProps<typeof Link>["href"];
 
 export type Breadcrumb = {
   label: string;
-  href?: string;
+  href?: LinkHref;
 };
 
 export type PageHeaderProps = {

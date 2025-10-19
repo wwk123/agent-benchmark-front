@@ -181,6 +181,16 @@ export const Chinese: Story = {
 };
 
 export const InSubmissionForm: Story = {
+  args: {
+    orientation: "horizontal",
+    steps: [
+      { label: "Select Benchmark", status: "completed" },
+      { label: "Configure Agent", status: "completed" },
+      { label: "Select Channel", status: "current" },
+      { label: "Confirm Cost", status: "pending" },
+      { label: "Payment", status: "pending" },
+    ],
+  },
   render: () => (
     <div className="space-y-8">
       <Stepper
@@ -212,3 +222,4 @@ export const InSubmissionForm: Story = {
     </div>
   ),
 };
+

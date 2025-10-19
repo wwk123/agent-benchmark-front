@@ -75,12 +75,13 @@ export function useSubmission(id: string) {
       return await apiFetch<SubmissionDetail>(`/api/v1/submissions/${id}`);
     },
     enabled: !!id,
-    refetchInterval: (data) => {
-      if (!data) return false;
+    refetchInterval: (query) => {
+      const submission = query.state.data;
+      if (!submission) return false;
 
       // Poll every 5 seconds for active statuses
       const activeStatuses = ["running", "queued", "scoring", "pending"];
-      if (activeStatuses.includes(data.status)) {
+      if (activeStatuses.includes(submission.status)) {
         return 5000; // 5 seconds
       }
 

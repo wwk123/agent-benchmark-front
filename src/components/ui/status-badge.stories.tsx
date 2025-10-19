@@ -51,6 +51,9 @@ export const WithoutDot: Story = {
 };
 
 export const AllStatuses: Story = {
+  args: {
+    status: "pending",
+  },
   render: () => (
     <div className="flex flex-col gap-3">
       <StatusBadge status="pending" />
@@ -63,6 +66,9 @@ export const AllStatuses: Story = {
 };
 
 export const InTableContext: Story = {
+  args: {
+    status: "running",
+  },
   render: () => (
     <div className="w-full max-w-2xl rounded-lg border border-border">
       <table className="w-full">

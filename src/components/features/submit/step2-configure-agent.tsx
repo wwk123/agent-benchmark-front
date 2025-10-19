@@ -64,7 +64,7 @@ export function Step2ConfigureAgent() {
 
   return (
     <div className="space-y-10">
-      <Tabs defaultValue={configType} onValueChange={(v) => setConfigType(v as AgentConfigType)}>
+      <Tabs defaultValue={configType} onChange={(value) => setConfigType(value as AgentConfigType)}>
         <TabsList>
           <TabsTrigger value="docker">Docker</TabsTrigger>
           <TabsTrigger value="http">HTTP</TabsTrigger>

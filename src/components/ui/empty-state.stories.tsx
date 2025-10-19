@@ -76,6 +76,11 @@ export const Chinese: Story = {
 };
 
 export const InPageContext: Story = {
+  args: {
+    title: "No submissions yet",
+    description: "You haven't submitted any agents for evaluation. Start your first submission to see it listed here.",
+    variant: "inbox",
+  },
   render: () => (
     <div className="min-h-[400px] space-y-4">
       <div className="flex items-center justify-between">
