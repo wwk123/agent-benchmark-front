@@ -205,7 +205,7 @@ export const InSubmissionForm: Story = {
       />
 
       <div className="rounded-lg border border-border p-6">
-        <h3 className="mb-4 text-lg font-semibold">Select Execution Channel</h3>
+        <h3 className="font-heading mb-4 text-lg font-semibold">Select Execution Channel</h3>
         <p className="text-sm text-text-secondary">
           Choose how you want to execute your agent evaluation.
         </p>

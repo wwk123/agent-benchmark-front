@@ -18,7 +18,8 @@
   "cta": {
     "start": "发起提交流程",
     "viewLeaderboard": "查看榜单",
-    "contact": "预约演示"
+    "contact": "预约演示",
+    "connectWallet": "连接钱包"
   },
   "branding": {
     "shortName": "AB",
@@ -26,11 +27,16 @@
   },
   "home": {
     "hero": {
-      "tagline": "为 Web3 智能体打造的评测体系",
-      "title": "量化并加速智能体的真实执行表现",
-      "subtitle": "一个平台连通建设者、运营方与矿工，统一基准、可验证凭证与灵活执行通道。",
+      "tagline": "Decentralized Agent Benchmarking",
+      "title": "ETH × AI 可验证评测平台",
+      "subtitle": "把评测变成「可验证的公共事实」",
       "primary": "提交任务",
       "secondary": "查看榜单",
+      "sellPoints": [
+        "可审计:结果上链锚定,任何人可据哈希复核",
+        "可复现:只接受镜像,固定配额与策略,全量复现",
+        "可分发:报告页+榜单位+媒体包,天然可传播"
+      ],
       "metrics": [
         {
           "label": "可用题库",
@@ -47,45 +53,48 @@
       ]
     },
     "features": {
-      "title": "平台优势",
+      "title": "我们带来的核心价值",
       "items": [
         {
-          "title": "混合执行编排",
-          "description": "同时支持平台执行与 iExec 去中心化算力，自动 fallback，保证结果按时交付。"
+          "title": "可信 (Trust)",
+          "description": "评测不是截图;证据包上IPFS/Arweave,摘要哈希与核心指标上链(ResultAnchor)。",
+          "action": "去看上链锚点"
         },
         {
-          "title": "Rubric 评分模型",
-          "description": "以可视化权重调节 Rubric，检测异常值，并将最终结果锚定链上，确保可追溯评分。"
+          "title": "复现 (Reproducibility)",
+          "description": "只接受镜像化Agent;题库与Rubric全量版本化,不同版本不混榜。",
+          "action": "查看Rubric示例"
         },
         {
-          "title": "全链路可观测",
-          "description": "实时监控进度、成本与链上确认，结合 Prometheus 指标与告警快速定位问题。"
+          "title": "分发 (Distribution)",
+          "description": "标准报告、结果卡、可嵌入徽章;一键生成社媒文案。",
+          "action": "查看报告示例"
         }
       ]
     },
     "workflow": {
-      "title": "提交流程",
-      "caption": "五步完成一轮标准评测",
+      "title": "如何运作",
+      "caption": "5步理解去中心化评测流程",
       "steps": [
         {
-          "title": "准备资产",
-          "description": "按照客户端指引构建、预检并整理待上传的交付物。"
+          "title": "提交镜像",
+          "description": "Docker/OCI;记录镜像指纹"
         },
         {
-          "title": "选择题库",
-          "description": "按难度、费用与执行通道筛选，同时查看 Rubric 明细与历史版本。"
+          "title": "去中心化执行",
+          "description": "全量复现;受控沙箱与资源配额"
         },
         {
-          "title": "评估成本",
-          "description": "自动计算 RLC / USD 预算，并提示风险项或 fallback 要求。"
+          "title": "LLM裁判",
+          "description": "按Rubric全量评判;裁判冗余(ρ_j)"
         },
         {
-          "title": "支付执行",
-          "description": "支持钱包支付或余额抵扣，实时跟踪执行状态及 iExec 回执。"
+          "title": "生成报告",
+          "description": "总分、分项分、理由摘要、错误长尾"
         },
         {
-          "title": "查看结果",
-          "description": "获取分数、凭证与下载链接，并可选择公开或私密归档。"
+          "title": "链上锚定",
+          "description": "ResultAnchor事件+报告CID摘要"
         }
       ]
     },
@@ -100,6 +109,54 @@
       "description": "浏览各题库的领先智能体，比较执行通道并获取可验证的链上凭证。",
       "cta": "打开榜单",
       "note": "榜单模块将在后续版本接入实时数据与过滤器。"
+    },
+    "proofs": {
+      "title": "Result Anchor 与审计凭证",
+      "description": "每次提交通关都会上链摘要，并将完整证据包写入 IPFS，便于外部独立复现。",
+      "anchor": {
+        "title": "Result Anchor 分类账",
+        "description": "在 Base Sepolia 上核对榜单记录对应的 Result Anchor 合约。",
+        "links": [
+          {
+            "label": "查看 Result Anchor 合约",
+            "href": "https://basescan.org/address/0x008cResultAnchor"
+          },
+          {
+            "label": "Result Anchor 快速指南",
+            "href": "https://docs.agent-benchmark.io/zh/result-anchor"
+          }
+        ]
+      },
+      "artifacts": {
+        "title": "下载完整审计包",
+        "description": "通过 IPFS 获取成绩单、执行日志、提示词与 TEE 佐证，完成自证或复盘。",
+        "hints": [
+          "可使用公共网关，或将 CID 钉在自建节点以便长期保存。",
+          "归档内容包含评分拆解、执行日志、TEE 证明与最终 JSON 产物。",
+          "对比 SHA-256 摘要即可确认榜单记录与归档数据一致。"
+        ]
+      },
+      "miner": {
+        "title": "矿工客户端下载",
+        "description": "获取官方参考矿工，先在本地演练再对外贡献算力。",
+        "actions": [
+          {
+            "label": "下载 CLI（macOS / Linux）",
+            "href": "https://github.com/agent-benchmark/miner-cli/releases/latest/download/miner-cli-macos.zip",
+            "variant": "secondary"
+          },
+          {
+            "label": "下载 CLI（Windows）",
+            "href": "https://github.com/agent-benchmark/miner-cli/releases/latest/download/miner-cli-windows.zip",
+            "variant": "tertiary"
+          },
+          {
+            "label": "阅读矿工接入指南",
+            "href": "https://docs.agent-benchmark.io/zh/miner"
+          }
+        ],
+        "note": "接入指南内包含钱包绑定与质押配置说明。"
+      }
     }
   },
   "benchmarks": {
@@ -128,102 +185,324 @@
           "label": "全部"
         },
         {
-          "id": "reasoning",
-          "label": "推理分析"
+          "id": "web3-search",
+          "label": "信息检索"
         },
         {
-          "id": "automation",
-          "label": "自动化协作"
+          "id": "defi-exec",
+          "label": "DeFi执行"
         },
         {
-          "id": "defi",
-          "label": "DeFi 风控"
+          "id": "sec-assist",
+          "label": "安全助手"
         },
         {
-          "id": "compliance",
-          "label": "合规审核"
+          "id": "audit-helper",
+          "label": "审计辅助"
+        },
+        {
+          "id": "compliance-agent",
+          "label": "合规代理"
+        },
+        {
+          "id": "asset-discovery",
+          "label": "资产发现"
         }
       ]
     },
+    "searchPlaceholder": "搜索题库/版本/Rubric 关键词",
+    "table": {
+      "columns": {
+        "name": "名称",
+        "benchmarkId": "benchmark_id@version",
+        "category": "类别",
+        "description": "简介",
+        "rubricTags": "Rubric 标签",
+        "executionStrategy": "执行策略",
+        "questionCount": "题量",
+        "updatedAt": "更新时间",
+        "actions": "操作"
+      },
+      "actions": {
+        "viewLeaderboard": "去榜单看结果",
+        "viewRubric": "查看 Rubric"
+      }
+    },
     "items": [
       {
-        "id": "treasury-safeguard",
-        "title": "金库护航",
-        "category": "defi",
-        "difficulty": "高级",
-        "channel": "混合执行（iExec + 自有矿工）",
-        "duration": "45 分钟",
-        "rewardRange": "3 - 5 RLC",
+        "id": "bench-web3-atlas",
+        "name": "Atlas 搜索情报",
+        "title": "Atlas 搜索情报",
+        "benchmarkId": "web3-search@1.2.0",
+        "category": "web3-search",
+        "difficulty": "medium",
+        "description": "覆盖治理、合约、资金动态的多源链上情报检索题库。",
+        "rubricTags": [
+          "事实匹配",
+          "覆盖率",
+          "引用质量",
+          "响应时延"
+        ],
+        "executionStrategy": "混合索引 + 精选链上数据快照",
+        "questionCount": 96,
+        "updatedAt": "2025-10-15",
+        "tags": [
+          "Web3",
+          "信息检索",
+          "链上数据"
+        ]
+      },
+      {
+        "id": "bench-web3-orion",
+        "name": "Orion 观察者",
+        "title": "Orion 观察者",
+        "benchmarkId": "web3-search@1.1.0",
+        "category": "web3-search",
+        "difficulty": "medium",
+        "description": "覆盖地址观察名单、清算预警与跨链资金流的监控题库。",
+        "rubricTags": [
+          "延迟",
+          "精确度",
+          "告警路由",
+          "解释力"
+        ],
+        "executionStrategy": "流式索引 + 事件订阅沙箱",
+        "questionCount": 72,
+        "updatedAt": "2025-09-30",
+        "tags": [
+          "Web3",
+          "地址监控",
+          "告警"
+        ]
+      },
+      {
+        "id": "bench-defi-routecraft",
+        "name": "RouteCraft 执行手册",
+        "title": "RouteCraft 执行手册",
+        "benchmarkId": "defi-exec@0.9.5",
+        "category": "defi-exec",
+        "difficulty": "hard",
+        "description": "产出可执行的多跳 Swap 策略，并附带 gas、流动性与合规提示。",
+        "rubricTags": [
+          "风险揭示",
+          "路径优度",
+          "滑点控制",
+          "解释能力"
+        ],
+        "executionStrategy": "模拟路由 + 风险提示",
+        "questionCount": 88,
         "updatedAt": "2025-10-12",
-        "description": "模拟 DAO 资金流冲击、托管轮换与跨链结算，验证金库策略的稳健性。",
-        "metrics": [
-          "多链清算",
-          "ResultAnchor 证明",
-          "合规检查表"
+        "tags": [
+          "DeFi",
+          "执行",
+          "路由"
         ]
       },
       {
-        "id": "automation-mailroom",
-        "title": "自动化收件室",
-        "category": "automation",
-        "difficulty": "中级",
-        "channel": "自有矿工",
-        "duration": "30 分钟",
-        "rewardRange": "2 RLC",
-        "updatedAt": "2025-10-09",
-        "description": "验证邮件、CRM、账单系统之间的任务编排，关注延迟与重试预算。",
-        "metrics": [
-          "SLA 达标率",
-          "错误恢复",
-          "通知覆盖"
+        "id": "bench-defi-slippage",
+        "name": "SlippageGuard 场景实验室",
+        "title": "SlippageGuard 场景实验室",
+        "benchmarkId": "defi-exec@0.9.1",
+        "category": "defi-exec",
+        "difficulty": "medium",
+        "description": "针对 AMM 仓位进行压力测试，并输出带引用的缓解方案。",
+        "rubricTags": [
+          "告警及时性",
+          "场景覆盖",
+          "可执行性",
+          "数据引用"
+        ],
+        "executionStrategy": "回测引擎 + DEX 预言机",
+        "questionCount": 64,
+        "updatedAt": "2025-09-22",
+        "tags": [
+          "DeFi",
+          "风险",
+          "监控"
         ]
       },
       {
-        "id": "compliance-kyc",
-        "title": "合规 KYC 工作台",
-        "category": "compliance",
-        "difficulty": "高级",
-        "channel": "iExec",
-        "duration": "35 分钟",
-        "rewardRange": "2.5 RLC",
-        "updatedAt": "2025-10-05",
-        "description": "处理合成申请人，结合制裁名单、异常检测与审计日志要求。",
-        "metrics": [
-          "名单覆盖率",
-          "误报率",
-          "审计日志完整度"
+        "id": "bench-sec-sentinel",
+        "name": "Sentinel 事件分诊",
+        "title": "Sentinel 事件分诊",
+        "benchmarkId": "sec-assist@0.8.1",
+        "category": "sec-assist",
+        "difficulty": "hard",
+        "description": "提供攻击路径定位、影响分级与修复步骤的事后响应题库。",
+        "rubricTags": [
+          "检测率",
+          "置信度",
+          "修复建议",
+          "证据留存"
+        ],
+        "executionStrategy": "漏洞资料库 + CVE 知识库",
+        "questionCount": 78,
+        "updatedAt": "2025-10-11",
+        "tags": [
+          "安全",
+          "事件响应",
+          "取证"
         ]
       },
       {
-        "id": "reasoning-market",
-        "title": "市场情报推理",
-        "category": "reasoning",
-        "difficulty": "中级",
-        "channel": "混合执行",
-        "duration": "40 分钟",
-        "rewardRange": "3 RLC",
-        "updatedAt": "2025-10-02",
-        "description": "融合链上链下信号，输出具备信心分的市场备忘录。",
-        "metrics": [
-          "数据来源可追溯",
-          "假设覆盖度",
-          "信心校准"
+        "id": "bench-sec-vulnwatch",
+        "name": "VulnWatch 红队实验室",
+        "title": "VulnWatch 红队实验室",
+        "benchmarkId": "sec-assist@0.7.6",
+        "category": "sec-assist",
+        "difficulty": "hard",
+        "description": "评估从入侵指示到缓解草案的最新漏洞应对能力。",
+        "rubricTags": [
+          "利用映射",
+          "修复质量",
+          "上下文链接",
+          "影响面"
+        ],
+        "executionStrategy": "零日语料库 + Chain-of-Thought 推理",
+        "questionCount": 66,
+        "updatedAt": "2025-09-14",
+        "tags": [
+          "安全",
+          "漏洞",
+          "威胁情报"
         ]
       },
       {
-        "id": "defi-oracle",
-        "title": "DeFi 预言机守护",
-        "category": "defi",
-        "difficulty": "专家",
-        "channel": "混合执行",
-        "duration": "50 分钟",
-        "rewardRange": "4 - 6 RLC",
-        "updatedAt": "2025-09-28",
-        "description": "评测实时预言机监控能力，以及异常响应与自动恢复流程。",
-        "metrics": [
-          "延迟预算",
-          "Fallback 启动",
-          "成本效率"
+        "id": "bench-audit-buddy",
+        "name": "AuditBuddy 静态审查",
+        "title": "AuditBuddy 静态审查",
+        "benchmarkId": "audit-helper@0.7.4",
+        "category": "audit-helper",
+        "difficulty": "hard",
+        "description": "覆盖不变量、权限设计与升级路径的静态审计题库。",
+        "rubricTags": [
+          "定位精准",
+          "严重级别",
+          "修复建议",
+          "规范引用"
+        ],
+        "executionStrategy": "带注释代码片段 + diff 审查",
+        "questionCount": 92,
+        "updatedAt": "2025-10-13",
+        "tags": [
+          "审计",
+          "静态分析",
+          "智能合约"
+        ]
+      },
+      {
+        "id": "bench-audit-diffguard",
+        "name": "DiffGuard 升级审查",
+        "title": "DiffGuard 升级审查",
+        "benchmarkId": "audit-helper@0.6.8",
+        "category": "audit-helper",
+        "difficulty": "medium",
+        "description": "专注升级 diff 审查、不变量回归与发布说明撰写。",
+        "rubricTags": [
+          "差异准确度",
+          "升级影响",
+          "检查单",
+          "报告表现"
+        ],
+        "executionStrategy": "基于 Git 的差异扫描 + 启发式分析",
+        "questionCount": 54,
+        "updatedAt": "2025-09-05",
+        "tags": [
+          "审计",
+          "回归",
+          "差异分析"
+        ]
+      },
+      {
+        "id": "bench-compliance-pro",
+        "name": "ComplyPro 制裁实验室",
+        "title": "ComplyPro 制裁实验室",
+        "benchmarkId": "compliance-agent@0.5.2",
+        "category": "compliance-agent",
+        "difficulty": "medium",
+        "description": "覆盖制裁筛查、Travel Rule 转发与升级流程的合规题库。",
+        "rubricTags": [
+          "法规映射",
+          "边界提示",
+          "文档引用",
+          "可执行性"
+        ],
+        "executionStrategy": "法规知识库 + 决策树引擎",
+        "questionCount": 68,
+        "updatedAt": "2025-10-08",
+        "tags": [
+          "合规",
+          "KYC",
+          "反洗钱"
+        ]
+      },
+      {
+        "id": "bench-compliance-policybot",
+        "name": "PolicyBot 治理指南",
+        "title": "PolicyBot 治理指南",
+        "benchmarkId": "compliance-agent@0.5.0",
+        "category": "compliance-agent",
+        "difficulty": "medium",
+        "description": "指导政策撰写、审批链路与留存报告模板的合规助手题库。",
+        "rubricTags": [
+          "辖区识别",
+          "记录留存",
+          "升级路径",
+          "沟通语气"
+        ],
+        "executionStrategy": "流程模板 + 政策片段",
+        "questionCount": 52,
+        "updatedAt": "2025-09-12",
+        "tags": [
+          "合规",
+          "政策",
+          "治理"
+        ]
+      },
+      {
+        "id": "bench-asset-grapheye",
+        "name": "GraphEye 主体图谱",
+        "title": "GraphEye 主体图谱",
+        "benchmarkId": "asset-discovery@0.6.0",
+        "category": "asset-discovery",
+        "difficulty": "medium",
+        "description": "从多链数据中构建主体画像、资金流向与交易叙事。",
+        "rubricTags": [
+          "聚类准确率",
+          "叙事能力",
+          "证据引用",
+          "刷新速度"
+        ],
+        "executionStrategy": "图嵌入 + 地址聚类",
+        "questionCount": 84,
+        "updatedAt": "2025-10-11",
+        "tags": [
+          "资产追踪",
+          "聚类",
+          "链上情报"
+        ]
+      },
+      {
+        "id": "bench-asset-tracelink",
+        "name": "TraceLink 流动监控",
+        "title": "TraceLink 流动监控",
+        "benchmarkId": "asset-discovery@0.5.7",
+        "category": "asset-discovery",
+        "difficulty": "medium",
+        "description": "追踪跨链跳转、MEV 交互并标注交易对手，保证数据新鲜度。",
+        "rubricTags": [
+          "路径发现",
+          "告警",
+          "案例笔记",
+          "数据新鲜度"
+        ],
+        "executionStrategy": "流式图查询 + 启发式分析",
+        "questionCount": 58,
+        "updatedAt": "2025-09-18",
+        "tags": [
+          "资产追踪",
+          "关系图分析",
+          "预警"
         ]
       }
     ],
@@ -243,45 +522,530 @@
         }
       ]
     },
+    "filters": {
+      "benchmark": {
+        "label": "题库",
+        "placeholder": "选择题库",
+        "allLabel": "全部题库"
+      },
+      "version": {
+        "label": "版本",
+        "placeholder": "选择版本",
+        "latestLabel": "最新版本"
+      },
+      "channel": {
+        "label": "执行通道",
+        "options": {
+          "all": "全部通道",
+          "self": "自有矿工",
+          "iexec": "iExec 网络"
+        }
+      },
+      "time": {
+        "label": "时间窗口",
+        "options": {
+          "24h": "最近 24 小时",
+          "7d": "最近 7 天",
+          "30d": "最近 30 天",
+          "all": "全部时间"
+        }
+      },
+      "hint": "筛选条件实时生效，可按题库版本 + 执行通道比对审计结果。",
+      "resetLabel": "恢复默认",
+      "fallbackBenchmarks": [
+        {
+          "id": "treasury-safeguard",
+          "label": "Treasury Safeguard"
+        },
+        {
+          "id": "compliance-kyc",
+          "label": "Compliance KYC Desk"
+        },
+        {
+          "id": "market-intel",
+          "label": "Reasoning Market Intelligence"
+        }
+      ]
+    },
+    "categoryTabs": {
+      "label": "按领域查看榜单",
+      "categories": [
+        {
+          "id": "all",
+          "label": "全部",
+          "description": "查看所有领域的顶尖Agent"
+        },
+        {
+          "id": "web3-search",
+          "label": "信息检索",
+          "description": "Web3链上事件与生态动态检索能力"
+        },
+        {
+          "id": "defi-exec",
+          "label": "DeFi执行",
+          "description": "DeFi路由规划与风控策略生成"
+        },
+        {
+          "id": "sec-assist",
+          "label": "安全助手",
+          "description": "漏洞识别与安全响应建议"
+        },
+        {
+          "id": "audit-helper",
+          "label": "审计辅助",
+          "description": "智能合约静态审查与风险分析"
+        },
+        {
+          "id": "compliance-agent",
+          "label": "合规代理",
+          "description": "KYC/合规问答与流程引导"
+        },
+        {
+          "id": "asset-discovery",
+          "label": "资产发现",
+          "description": "地址聚类与持仓画像分析"
+        }
+      ],
+      "leaderboards": {
+        "web3-search": [
+          {
+            "rank": 1,
+            "agent": "Web3Navigator",
+            "benchmark": "web3-search@1.0.2",
+            "score": "94.2",
+            "completion": "22 次",
+            "lastRun": "2025-10-19 14:30 UTC",
+            "channel": "混合",
+            "proof": {
+              "anchorLabel": "Result Anchor 交易",
+              "anchorUrl": "https://basescan.org/tx/0xweb3nav001",
+              "artifactLabel": "IPFS 归档",
+              "artifactUrl": "https://ipfs.io/ipfs/QmWeb3NavProof",
+              "dealId": "0xa1b2",
+              "taskId": "0x101"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "ChainExplorer Pro",
+            "benchmark": "web3-search@1.0.2",
+            "score": "91.8",
+            "completion": "18 次",
+            "lastRun": "2025-10-19 10:15 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "EventTracker AI",
+            "benchmark": "web3-search@1.0.2",
+            "score": "89.5",
+            "completion": "15 次",
+            "lastRun": "2025-10-18 22:40 UTC",
+            "channel": "混合"
+          },
+          {
+            "rank": 4,
+            "agent": "OnChainInsight",
+            "benchmark": "web3-search@1.0.2",
+            "score": "87.3",
+            "completion": "12 次",
+            "lastRun": "2025-10-18 16:20 UTC",
+            "channel": "自有矿工"
+          },
+          {
+            "rank": 5,
+            "agent": "DataMiner Elite",
+            "benchmark": "web3-search@1.0.2",
+            "score": "85.9",
+            "completion": "10 次",
+            "lastRun": "2025-10-18 08:55 UTC",
+            "channel": "混合"
+          }
+        ],
+        "defi-exec": [
+          {
+            "rank": 1,
+            "agent": "DeFiMaster Pro",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "96.1",
+            "completion": "25 次",
+            "lastRun": "2025-10-19 15:20 UTC",
+            "channel": "混合",
+            "proof": {
+              "anchorLabel": "Result Anchor 交易",
+              "anchorUrl": "https://basescan.org/tx/0xdefimaster01",
+              "artifactLabel": "IPFS 归档",
+              "artifactUrl": "https://ipfs.io/ipfs/QmDeFiMasterProof",
+              "dealId": "0xc3d4",
+              "taskId": "0x201"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "RouteOptimizer",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "93.7",
+            "completion": "20 次",
+            "lastRun": "2025-10-19 11:45 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "SwapGenius",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "91.2",
+            "completion": "17 次",
+            "lastRun": "2025-10-19 07:30 UTC",
+            "channel": "混合"
+          },
+          {
+            "rank": 4,
+            "agent": "SlippageGuard",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "88.9",
+            "completion": "14 次",
+            "lastRun": "2025-10-18 19:15 UTC",
+            "channel": "自有矿工"
+          },
+          {
+            "rank": 5,
+            "agent": "YieldStrategyAI",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "86.4",
+            "completion": "11 次",
+            "lastRun": "2025-10-18 13:05 UTC",
+            "channel": "混合"
+          }
+        ],
+        "sec-assist": [
+          {
+            "rank": 1,
+            "agent": "SecuritySentinel",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "95.3",
+            "completion": "28 次",
+            "lastRun": "2025-10-19 16:10 UTC",
+            "channel": "混合",
+            "proof": {
+              "anchorLabel": "Result Anchor 交易",
+              "anchorUrl": "https://basescan.org/tx/0xsecsentinel01",
+              "artifactLabel": "IPFS 归档",
+              "artifactUrl": "https://ipfs.io/ipfs/QmSecSentinelProof",
+              "dealId": "0xe5f6",
+              "taskId": "0x301"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "VulnScanner Elite",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "92.8",
+            "completion": "23 次",
+            "lastRun": "2025-10-19 12:25 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "ThreatDetector AI",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "90.1",
+            "completion": "19 次",
+            "lastRun": "2025-10-19 08:40 UTC",
+            "channel": "混合"
+          },
+          {
+            "rank": 4,
+            "agent": "AttackPreventorX",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "87.6",
+            "completion": "16 次",
+            "lastRun": "2025-10-18 21:30 UTC",
+            "channel": "自有矿工"
+          },
+          {
+            "rank": 5,
+            "agent": "CVETrackerPro",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "85.2",
+            "completion": "13 次",
+            "lastRun": "2025-10-18 14:55 UTC",
+            "channel": "混合"
+          }
+        ],
+        "audit-helper": [
+          {
+            "rank": 1,
+            "agent": "AuditMaster Pro",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "97.5",
+            "completion": "30 次",
+            "lastRun": "2025-10-19 17:00 UTC",
+            "channel": "混合",
+            "proof": {
+              "anchorLabel": "Result Anchor 交易",
+              "anchorUrl": "https://basescan.org/tx/0xauditmaster01",
+              "artifactLabel": "IPFS 归档",
+              "artifactUrl": "https://ipfs.io/ipfs/QmAuditMasterProof",
+              "dealId": "0xg7h8",
+              "taskId": "0x401"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "CodeReviewer AI",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "94.9",
+            "completion": "26 次",
+            "lastRun": "2025-10-19 13:35 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "ContractAnalyzer",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "92.3",
+            "completion": "21 次",
+            "lastRun": "2025-10-19 09:50 UTC",
+            "channel": "混合"
+          },
+          {
+            "rank": 4,
+            "agent": "RiskAssessor Elite",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "89.7",
+            "completion": "18 次",
+            "lastRun": "2025-10-18 23:15 UTC",
+            "channel": "自有矿工"
+          },
+          {
+            "rank": 5,
+            "agent": "SmartContractGuard",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "87.1",
+            "completion": "14 次",
+            "lastRun": "2025-10-18 15:40 UTC",
+            "channel": "混合"
+          }
+        ],
+        "compliance-agent": [
+          {
+            "rank": 1,
+            "agent": "ComplianceForge",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "93.4",
+            "completion": "24 次",
+            "lastRun": "2025-10-19 14:50 UTC",
+            "channel": "混合",
+            "proof": {
+              "anchorLabel": "Result Anchor 交易",
+              "anchorUrl": "https://basescan.org/tx/0xcompforge01",
+              "artifactLabel": "IPFS 归档",
+              "artifactUrl": "https://ipfs.io/ipfs/QmCompForgeProof",
+              "dealId": "0xi9j0",
+              "taskId": "0x501"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "KYC Advisor Pro",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "91.1",
+            "completion": "20 次",
+            "lastRun": "2025-10-19 11:20 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "RegulationGuide AI",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "88.6",
+            "completion": "16 次",
+            "lastRun": "2025-10-19 06:45 UTC",
+            "channel": "混合"
+          },
+          {
+            "rank": 4,
+            "agent": "SanctionChecker",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "86.2",
+            "completion": "13 次",
+            "lastRun": "2025-10-18 20:10 UTC",
+            "channel": "自有矿工"
+          },
+          {
+            "rank": 5,
+            "agent": "ComplianceOracle",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "84.5",
+            "completion": "10 次",
+            "lastRun": "2025-10-18 12:30 UTC",
+            "channel": "混合"
+          }
+        ],
+        "asset-discovery": [
+          {
+            "rank": 1,
+            "agent": "AssetTracker Elite",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "95.8",
+            "completion": "27 次",
+            "lastRun": "2025-10-19 15:45 UTC",
+            "channel": "混合",
+            "proof": {
+              "anchorLabel": "Result Anchor 交易",
+              "anchorUrl": "https://basescan.org/tx/0xassettrack01",
+              "artifactLabel": "IPFS 归档",
+              "artifactUrl": "https://ipfs.io/ipfs/QmAssetTrackProof",
+              "dealId": "0xk1l2",
+              "taskId": "0x601"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "WalletProfiler AI",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "93.2",
+            "completion": "22 次",
+            "lastRun": "2025-10-19 12:00 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "AddressClusterer",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "90.7",
+            "completion": "18 次",
+            "lastRun": "2025-10-19 08:15 UTC",
+            "channel": "混合"
+          },
+          {
+            "rank": 4,
+            "agent": "HoldingsAnalyzer",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "88.3",
+            "completion": "15 次",
+            "lastRun": "2025-10-18 22:05 UTC",
+            "channel": "自有矿工"
+          },
+          {
+            "rank": 5,
+            "agent": "ChainLinkTracer",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "86.0",
+            "completion": "11 次",
+            "lastRun": "2025-10-18 13:50 UTC",
+            "channel": "混合"
+          }
+        ]
+      }
+    },
     "table": {
       "columns": {
         "rank": "排名",
-        "agent": "智能体",
+        "agent": "Agent",
         "benchmark": "题库",
         "score": "综合得分",
-        "completion": "完成度",
+        "completion": "执行次数",
         "lastRun": "最近执行",
-        "channel": "执行通道"
+        "channel": "通道",
+        "proof": "Result Anchor"
       },
-      "rows": [
+      "fallbackRows": [
         {
           "rank": 1,
           "agent": "Atlas Vault",
-          "benchmark": "金库护航",
+          "benchmark": "Treasury Safeguard",
           "score": "92.4",
-          "completion": "100%",
-          "lastRun": "2 小时前",
-          "channel": "混合"
+          "completion": "18 次",
+          "lastRun": "2025-10-18 12:10 UTC",
+          "channel": "混合",
+          "proof": {
+            "anchorLabel": "Result Anchor 交易",
+            "anchorUrl": "https://basescan.org/tx/0x9ea7anchor",
+            "artifactLabel": "IPFS 归档",
+            "artifactUrl": "https://ipfs.io/ipfs/QmBenchmarkAtlas",
+            "dealId": "0x8a7c",
+            "taskId": "0x01"
+          }
         },
         {
           "rank": 2,
           "agent": "ComplianceForge",
-          "benchmark": "合规 KYC 工作台",
+          "benchmark": "Compliance KYC Desk",
           "score": "89.7",
-          "completion": "98%",
-          "lastRun": "4 小时前",
-          "channel": "iExec"
+          "completion": "15 次",
+          "lastRun": "2025-10-17 21:36 UTC",
+          "channel": "iExec",
+          "proof": {
+            "anchorLabel": "Result Anchor 交易",
+            "anchorUrl": "https://basescan.org/tx/0x7dc1anchor",
+            "artifactLabel": "IPFS 归档",
+            "artifactUrl": "https://ipfs.io/ipfs/QmComplianceProof",
+            "dealId": "0x6b24",
+            "taskId": "0x17"
+          }
         },
         {
           "rank": 3,
           "agent": "SignalPilot",
-          "benchmark": "市场情报推理",
+          "benchmark": "Reasoning Market Intelligence",
           "score": "87.3",
-          "completion": "96%",
-          "lastRun": "6 小时前",
+          "completion": "12 次",
+          "lastRun": "2025-10-17 18:42 UTC",
           "channel": "混合"
         }
+      ],
+      "proofFallback": "尚未发布证明",
+      "empty": {
+        "title": "当前筛选暂无提交",
+        "description": "尝试切换版本或执行通道。新提交会在上链后秒级展示。",
+        "actionLabel": "清除筛选"
+      },
+      "runUnit": "次"
+    },
+    "stats": {
+      "title": "榜单概览",
+      "descriptors": [
+        {
+          "id": "participants",
+          "label": "参与地址",
+          "placeholder": "—"
+        },
+        {
+          "id": "submissions",
+          "label": "已审计执行",
+          "placeholder": "—"
+        },
+        {
+          "id": "topScore",
+          "label": "最高得分",
+          "placeholder": "—"
+        },
+        {
+          "id": "averageScore",
+          "label": "平均得分",
+          "placeholder": "—"
+        }
       ]
+    },
+    "summary": {
+      "title": "Result Anchor 与 Explorer",
+      "anchor": {
+        "title": "链上分类账",
+        "description": "提交会写入 benchmarkId@version、得分与 CID 哈希，落地 Base Sepolia。"
+      },
+      "artifacts": {
+        "title": "工件归档",
+        "description": "IPFS 包含提示词、执行日志与 Rubric 评分，可一键复算。"
+      },
+      "explorer": {
+        "title": "Explorer 交叉校验",
+        "description": "通过 dealId / taskId 跟踪 iExec 执行，或核对自有矿工的证明。"
+      }
+    },
+    "proofLabels": {
+      "anchor": "Result Anchor 交易",
+      "artifact": "IPFS 归档"
     },
     "legend": {
       "score": "综合得分由 Rubric 权重、执行稳定性与审计合规性共同计算。",
@@ -379,17 +1143,20 @@
         {
           "label": "进行中的提交",
           "value": "3",
-          "description": "2 个运行中 · 1 个待审核"
+          "description": "2 个运行中 · 1 个待审核",
+          "id": "activeSubmissions"
         },
         {
           "label": "余额",
           "value": "276.4 RLC",
-          "description": "低于 150 RLC 自动触发补充"
+          "description": "低于 150 RLC 自动触发补充",
+          "id": "creditBalance"
         },
         {
           "label": "近 30 天成功率",
           "value": "94%",
-          "description": "覆盖所有题库"
+          "description": "覆盖所有题库",
+          "id": "successRate"
         }
       ]
     },
@@ -450,15 +1217,18 @@
       "entries": [
         {
           "label": "可用余额",
-          "value": "276.4 RLC"
+          "value": "276.4 RLC",
+          "id": "availableCredits"
         },
         {
           "label": "自动充值阈值",
-          "value": "150 RLC"
+          "value": "150 RLC",
+          "id": "autoTopupThreshold"
         },
         {
           "label": "待处理账单",
-          "value": "2 条待确认"
+          "value": "2 条待确认",
+          "id": "outstandingInvoices"
         }
       ],
       "note": "所有数据每 5 分钟由计费服务刷新一次。"

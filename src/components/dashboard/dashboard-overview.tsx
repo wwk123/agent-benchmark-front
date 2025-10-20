@@ -62,14 +62,14 @@ export function DashboardOverview({ metrics, recentSubmissions, actions, illustr
         <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
           <div className="card space-y-4 p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-brand-primary">{recentSubmissions.title}</h3>
+              <h3 className="font-heading text-lg font-semibold text-brand-primary">{recentSubmissions.title}</h3>
               <Button asChild size="sm" variant="secondary">
                 <Link href={recentSubmissions.cta.href}>{recentSubmissions.cta.label}</Link>
               </Button>
             </div>
             <ul className="space-y-4">
               {recentSubmissions.items.map((item) => (
-                <li key={item.id} className="rounded-xl border border-border/60 bg-surface-contrast px-4 py-3">
+                <li key={item.id} className="rounded-xl border border-border/60 bg-surface-elevated px-4 py-3">
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
                       <div className="text-sm font-semibold text-brand-primary">{item.name}</div>
@@ -85,7 +85,7 @@ export function DashboardOverview({ metrics, recentSubmissions, actions, illustr
           </div>
 
           <div className="card space-y-4 p-6">
-            <h3 className="text-lg font-semibold text-brand-primary">{actions.title}</h3>
+            <h3 className="font-heading text-lg font-semibold text-brand-primary">{actions.title}</h3>
             <ul className="space-y-3 text-sm text-text-secondary">
               {actions.items.map((action) => (
                 <li key={action.href} className="rounded-xl border border-dashed border-border/60 bg-surface-muted/40 p-4">

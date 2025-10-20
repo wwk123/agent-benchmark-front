@@ -18,7 +18,8 @@
   "cta": {
     "start": "Start a submission",
     "viewLeaderboard": "View leaderboard",
-    "contact": "Book a demo"
+    "contact": "Book a demo",
+    "connectWallet": "Connect Wallet"
   },
   "branding": {
     "shortName": "AB",
@@ -26,66 +27,60 @@
   },
   "home": {
     "hero": {
-      "tagline": "A benchmarking system built for Web3 agents",
-      "title": "Measure and accelerate real execution performance",
-      "subtitle": "A single platform where builders, operators and miners collaborate with unified benchmarks, verifiable proofs and flexible execution channels.",
+      "tagline": "Decentralized Agent Benchmarking",
+      "title": "ETH × AI Verifiable Benchmarking Platform",
+      "subtitle": "Turn benchmarks into verifiable public facts",
       "primary": "Submit benchmark",
       "secondary": "Explore leaderboard",
-      "metrics": [
-        {
-          "label": "Benchmarks available",
-          "value": "40+"
-        },
-        {
-          "label": "Execution channels",
-          "value": "iExec · Native"
-        },
-        {
-          "label": "Evaluations completed",
-          "value": "620+"
-        }
+      "sellPoints": [
+        "Auditable: Results anchored on-chain, anyone can verify via hash",
+        "Reproducible: Only accepts images, fixed quotas & strategies, full reproducibility",
+        "Distributable: Report pages + leaderboard + media kits, naturally shareable"
       ]
     },
     "features": {
-      "title": "What you get",
+      "title": "Core value we deliver",
       "items": [
         {
-          "title": "Hybrid execution orchestration",
-          "description": "Utilise in-house miners or iExec decentralized compute with automatic fallback to guarantee on-time delivery."
+          "title": "Trust",
+          "description": "Benchmarks aren't screenshots; evidence packages on IPFS/Arweave, summary hash & core metrics on-chain (ResultAnchor).",
+          "action": "View on-chain anchor"
         },
         {
-          "title": "Modelled Rubric scoring",
-          "description": "Define Rubric weights visually, detect outliers and anchor final outcomes on-chain for traceable scoring."
+          "title": "Reproducibility",
+          "description": "Only accepts dockerized Agents; benchmark & Rubric fully versioned, different versions don't mix on leaderboard.",
+          "action": "See Rubric example"
         },
         {
-          "title": "Full-stack observability",
-          "description": "Monitor progress, costs and on-chain confirmations in real time with Prometheus metrics and actionable alerts."
+          "title": "Distribution",
+          "description": "Standard reports, result cards, embeddable badges; one-click social media copy generation.",
+          "action": "View report example"
         }
       ]
     },
     "workflow": {
-      "title": "Submission flow",
-      "caption": "Five steps to complete a verified evaluation",
+      "title": "How it works",
+      "caption": "Understand the decentralized benchmarking process in 5 steps",
       "steps": [
         {
-          "title": "Package the agent",
-          "description": "Follow the client tutorial to build, self-test and prepare upload artifacts."
+          "title": "Submit image",
+          "description": "Docker/OCI; record image fingerprint"
         },
         {
-          "title": "Select a benchmark",
-          "description": "Filter by difficulty, fees and channels while reviewing Rubric details and history."
+          "title": "Decentralized execution",
+          "description": "Full reproduction; controlled sandbox & resource quotas"
         },
         {
-          "title": "Estimate cost",
-          "description": "Automatically calculate RLC / USD budgets and highlight risk or fallback requirements."
+          "title": "LLM judging",
+          "description": "Full evaluation by Rubric; judge redundancy (ρ_j)"
         },
         {
-          "title": "Pay & execute",
-          "description": "Use wallet payments or balance deduction, track execution with live updates and iExec receipts."
+          "title": "Generate report",
+          "description": "Total score, category scores, reasoning summary, error tail"
         },
         {
-          "title": "Review results",
-          "description": "Receive scores, proofs and download links, then choose to publish or archive privately."
+          "title": "On-chain anchor",
+          "description": "ResultAnchor event + report CID summary"
         }
       ]
     },
@@ -100,6 +95,54 @@
       "description": "Explore top-performing agents across benchmarks, compare execution channels and access verifiable on-chain proofs.",
       "cta": "Open leaderboard",
       "note": "The leaderboard section will connect to live data and filters in upcoming iterations."
+    },
+    "proofs": {
+      "title": "Result Anchors & audit proofs",
+      "description": "Every submission anchors a summary on-chain and stores full evidence on IPFS for independent replays.",
+      "anchor": {
+        "title": "Result Anchor ledger",
+        "description": "Verify leaderboard entries against the Result Anchor contract on Base Sepolia.",
+        "links": [
+          {
+            "label": "View Result Anchor contract",
+            "href": "https://basescan.org/address/0x008cResultAnchor"
+          },
+          {
+            "label": "Result Anchor quick guide",
+            "href": "https://docs.agent-benchmark.io/result-anchor"
+          }
+        ]
+      },
+      "artifacts": {
+        "title": "Download full artifacts",
+        "description": "Retrieve scorecards, logs and prompts packaged as IPFS archives for each submission.",
+        "hints": [
+          "Use any public IPFS gateway or pin the CID to your own node for long-term storage.",
+          "Each archive contains rubric grades, execution logs, TEE attestations and final JSON payloads.",
+          "Validating the SHA-256 digest ensures the leaderboard record matches the archived data."
+        ]
+      },
+      "miner": {
+        "title": "Miner client downloads",
+        "description": "Spin up the reference miner to contribute capacity or run local dry-runs before publishing.",
+        "actions": [
+          {
+            "label": "Download CLI (macOS / Linux)",
+            "href": "https://github.com/agent-benchmark/miner-cli/releases/latest/download/miner-cli-macos.zip",
+            "variant": "secondary"
+          },
+          {
+            "label": "Download CLI (Windows)",
+            "href": "https://github.com/agent-benchmark/miner-cli/releases/latest/download/miner-cli-windows.zip",
+            "variant": "tertiary"
+          },
+          {
+            "label": "Read miner onboarding",
+            "href": "https://docs.agent-benchmark.io/miner"
+          }
+        ],
+        "note": "Wallet binding and staking instructions are included in the onboarding guide."
+      }
     }
   },
   "benchmarks": {
@@ -128,102 +171,324 @@
           "label": "All"
         },
         {
-          "id": "reasoning",
-          "label": "Reasoning"
+          "id": "web3-search",
+          "label": "Information Retrieval"
         },
         {
-          "id": "automation",
-          "label": "Automation"
+          "id": "defi-exec",
+          "label": "DeFi Execution"
         },
         {
-          "id": "defi",
-          "label": "DeFi"
+          "id": "sec-assist",
+          "label": "Security Assistant"
         },
         {
-          "id": "compliance",
-          "label": "Compliance"
+          "id": "audit-helper",
+          "label": "Audit Helper"
+        },
+        {
+          "id": "compliance-agent",
+          "label": "Compliance Agent"
+        },
+        {
+          "id": "asset-discovery",
+          "label": "Asset Discovery"
         }
       ]
     },
+    "searchPlaceholder": "Search benchmark/version/Rubric keywords",
+    "table": {
+      "columns": {
+        "name": "Name",
+        "benchmarkId": "benchmark_id@version",
+        "category": "Category",
+        "description": "Description",
+        "rubricTags": "Rubric Tags",
+        "executionStrategy": "Execution Strategy",
+        "questionCount": "Questions",
+        "updatedAt": "Updated",
+        "actions": "Actions"
+      },
+      "actions": {
+        "viewLeaderboard": "View Results",
+        "viewRubric": "View Rubric"
+      }
+    },
     "items": [
       {
-        "id": "treasury-safeguard",
-        "title": "Treasury Safeguard",
-        "category": "defi",
-        "difficulty": "Advanced",
-        "channel": "Hybrid (iExec + self-miner)",
-        "duration": "45 min",
-        "rewardRange": "3 - 5 RLC",
-        "updatedAt": "12 Oct 2025",
-        "description": "Stress test DAO treasury policies with simulated cash-flow shocks, custody rotations and cross-chain settlements.",
-        "metrics": [
-          "Multi-chain settlement",
-          "ResultAnchor proof",
-          "Compliance checklist"
+        "id": "bench-web3-atlas",
+        "name": "Atlas Search Intelligence",
+        "title": "Atlas Search Intelligence",
+        "benchmarkId": "web3-search@1.2.0",
+        "category": "web3-search",
+        "difficulty": "medium",
+        "description": "Multi-source on-chain intelligence retrieval spanning governance, contracts and treasury updates.",
+        "rubricTags": [
+          "Factuality",
+          "Coverage",
+          "Citation quality",
+          "Latency"
+        ],
+        "executionStrategy": "Hybrid index + curated on-chain dataset",
+        "questionCount": 96,
+        "updatedAt": "2025-10-15",
+        "tags": [
+          "Web3",
+          "Information Retrieval",
+          "On-chain data"
         ]
       },
       {
-        "id": "automation-mailroom",
-        "title": "Automation Mailroom",
-        "category": "automation",
-        "difficulty": "Intermediate",
-        "channel": "Self-miner",
-        "duration": "30 min",
-        "rewardRange": "2 RLC",
-        "updatedAt": "09 Oct 2025",
-        "description": "Validate task orchestration across email, CRM and billing systems with latency and retry budgets.",
-        "metrics": [
-          "SLA adherence",
-          "Error recovery",
-          "Notification coverage"
+        "id": "bench-web3-orion",
+        "name": "Orion Watchlist Monitor",
+        "title": "Orion Watchlist Monitor",
+        "benchmarkId": "web3-search@1.1.0",
+        "category": "web3-search",
+        "difficulty": "medium",
+        "description": "Address watchlist monitoring, liquidation alerts and bridging flow summaries.",
+        "rubricTags": [
+          "Latency",
+          "Precision",
+          "Alert routing",
+          "Explainability"
+        ],
+        "executionStrategy": "Streaming index + event subscription sandbox",
+        "questionCount": 72,
+        "updatedAt": "2025-09-30",
+        "tags": [
+          "Web3",
+          "Watchlist",
+          "Alerts"
         ]
       },
       {
-        "id": "compliance-kyc",
-        "title": "Compliance KYC Desk",
-        "category": "compliance",
-        "difficulty": "Advanced",
-        "channel": "iExec",
-        "duration": "35 min",
-        "rewardRange": "2.5 RLC",
-        "updatedAt": "05 Oct 2025",
-        "description": "Screen synthetic applicants with sanctions lists, anomaly detection and mandatory audit trails.",
-        "metrics": [
-          "Watchlist coverage",
-          "False positive ratio",
-          "Audit log completeness"
+        "id": "bench-defi-routecraft",
+        "name": "RouteCraft Execution Playbook",
+        "title": "RouteCraft Execution Playbook",
+        "benchmarkId": "defi-exec@0.9.5",
+        "category": "defi-exec",
+        "difficulty": "hard",
+        "description": "Generates executable multi-hop swap strategies with gas, liquidity and compliance annotations.",
+        "rubricTags": [
+          "Risk disclosure",
+          "Route optimality",
+          "Slippage",
+          "Explainability"
+        ],
+        "executionStrategy": "Simulated routing with risk annotations",
+        "questionCount": 88,
+        "updatedAt": "2025-10-12",
+        "tags": [
+          "DeFi",
+          "Execution",
+          "Routing"
         ]
       },
       {
-        "id": "reasoning-market",
-        "title": "Reasoning Market Intelligence",
-        "category": "reasoning",
-        "difficulty": "Intermediate",
-        "channel": "Hybrid",
-        "duration": "40 min",
-        "rewardRange": "3 RLC",
-        "updatedAt": "02 Oct 2025",
-        "description": "Synthesize on-chain and off-chain signals to produce actionable market memos with confidence scoring.",
-        "metrics": [
-          "Data provenance",
-          "Hypothesis coverage",
-          "Confidence calibration"
+        "id": "bench-defi-slippage",
+        "name": "SlippageGuard Scenario Lab",
+        "title": "SlippageGuard Scenario Lab",
+        "benchmarkId": "defi-exec@0.9.1",
+        "category": "defi-exec",
+        "difficulty": "medium",
+        "description": "Stress-tests AMM positions and surfaces mitigation playbooks with verifiable data citations.",
+        "rubricTags": [
+          "Alert timeliness",
+          "Scenario coverage",
+          "Actionability",
+          "Data citation"
+        ],
+        "executionStrategy": "Backtest engine + DEX oracle bundle",
+        "questionCount": 64,
+        "updatedAt": "2025-09-22",
+        "tags": [
+          "DeFi",
+          "Risk",
+          "Monitoring"
         ]
       },
       {
-        "id": "defi-oracle",
-        "title": "DeFi Oracle Guard",
-        "category": "defi",
-        "difficulty": "Expert",
-        "channel": "Hybrid",
-        "duration": "50 min",
-        "rewardRange": "4 - 6 RLC",
-        "updatedAt": "28 Sep 2025",
-        "description": "Benchmark real-time oracle monitoring with anomaly response playbooks and recovery automation.",
-        "metrics": [
-          "Latency budget",
-          "Fallback activation",
-          "Cost efficiency"
+        "id": "bench-sec-sentinel",
+        "name": "Sentinel Incident Triage",
+        "title": "Sentinel Incident Triage",
+        "benchmarkId": "sec-assist@0.8.1",
+        "category": "sec-assist",
+        "difficulty": "hard",
+        "description": "Guides post-mortem triage with exploit mapping, impact grading and patch steps.",
+        "rubricTags": [
+          "Detection",
+          "Confidence",
+          "Remediation",
+          "Evidence"
+        ],
+        "executionStrategy": "Exploit dataset + CVE knowledge base",
+        "questionCount": 78,
+        "updatedAt": "2025-10-11",
+        "tags": [
+          "Security",
+          "Incident response",
+          "Forensics"
+        ]
+      },
+      {
+        "id": "bench-sec-vulnwatch",
+        "name": "VulnWatch Red Team Lab",
+        "title": "VulnWatch Red Team Lab",
+        "benchmarkId": "sec-assist@0.7.6",
+        "category": "sec-assist",
+        "difficulty": "hard",
+        "description": "Benchmarks emerging exploit triage, from IoCs to mitigation drafts.",
+        "rubricTags": [
+          "Exploit mapping",
+          "Patch quality",
+          "Context links",
+          "Impact"
+        ],
+        "executionStrategy": "Zero-day corpus + chain-of-thought reasoning",
+        "questionCount": 66,
+        "updatedAt": "2025-09-14",
+        "tags": [
+          "Security",
+          "Vulnerability",
+          "Threat intel"
+        ]
+      },
+      {
+        "id": "bench-audit-buddy",
+        "name": "AuditBuddy Static Review",
+        "title": "AuditBuddy Static Review",
+        "benchmarkId": "audit-helper@0.7.4",
+        "category": "audit-helper",
+        "difficulty": "hard",
+        "description": "Evaluates static review depth across invariants, permissioning and upgrade paths.",
+        "rubricTags": [
+          "Localization",
+          "Severity",
+          "Fix suggestions",
+          "Standards"
+        ],
+        "executionStrategy": "Annotated code snippets + diff review",
+        "questionCount": 92,
+        "updatedAt": "2025-10-13",
+        "tags": [
+          "Audit",
+          "Static analysis",
+          "Smart contract"
+        ]
+      },
+      {
+        "id": "bench-audit-diffguard",
+        "name": "DiffGuard Upgrade Review",
+        "title": "DiffGuard Upgrade Review",
+        "benchmarkId": "audit-helper@0.6.8",
+        "category": "audit-helper",
+        "difficulty": "medium",
+        "description": "Focuses on upgrade diff review, invariants regression and release note drafting.",
+        "rubricTags": [
+          "Diff accuracy",
+          "Upgrade impact",
+          "Checklist",
+          "Reporting"
+        ],
+        "executionStrategy": "Git-based diff scanning with heuristics",
+        "questionCount": 54,
+        "updatedAt": "2025-09-05",
+        "tags": [
+          "Audit",
+          "Regression",
+          "Diff"
+        ]
+      },
+      {
+        "id": "bench-compliance-pro",
+        "name": "ComplyPro Sanction Lab",
+        "title": "ComplyPro Sanction Lab",
+        "benchmarkId": "compliance-agent@0.5.2",
+        "category": "compliance-agent",
+        "difficulty": "medium",
+        "description": "Walks through sanctions screening, Travel Rule routing and escalation steps.",
+        "rubricTags": [
+          "Regulation mapping",
+          "Boundary guidance",
+          "Documentation",
+          "Actionability"
+        ],
+        "executionStrategy": "Policy knowledge base + decision tree",
+        "questionCount": 68,
+        "updatedAt": "2025-10-08",
+        "tags": [
+          "Compliance",
+          "KYC",
+          "AML"
+        ]
+      },
+      {
+        "id": "bench-compliance-policybot",
+        "name": "PolicyBot Governance Guide",
+        "title": "PolicyBot Governance Guide",
+        "benchmarkId": "compliance-agent@0.5.0",
+        "category": "compliance-agent",
+        "difficulty": "medium",
+        "description": "Guides policy drafting, approval trails and retained report templates.",
+        "rubricTags": [
+          "Jurisdiction awareness",
+          "Record keeping",
+          "Escalation",
+          "Tone"
+        ],
+        "executionStrategy": "Workflow templates + policy snippets",
+        "questionCount": 52,
+        "updatedAt": "2025-09-12",
+        "tags": [
+          "Compliance",
+          "Policy",
+          "Governance"
+        ]
+      },
+      {
+        "id": "bench-asset-grapheye",
+        "name": "GraphEye Entity Atlas",
+        "title": "GraphEye Entity Atlas",
+        "benchmarkId": "asset-discovery@0.6.0",
+        "category": "asset-discovery",
+        "difficulty": "medium",
+        "description": "Surfaces entity overlays, fund flows and counterparty narratives from multi-chain data.",
+        "rubricTags": [
+          "Cluster accuracy",
+          "Narrative",
+          "Evidence",
+          "Refresh speed"
+        ],
+        "executionStrategy": "Graph embeddings + address clustering",
+        "questionCount": 84,
+        "updatedAt": "2025-10-11",
+        "tags": [
+          "Asset tracing",
+          "Clustering",
+          "On-chain intelligence"
+        ]
+      },
+      {
+        "id": "bench-asset-tracelink",
+        "name": "TraceLink Flow Monitor",
+        "title": "TraceLink Flow Monitor",
+        "benchmarkId": "asset-discovery@0.5.7",
+        "category": "asset-discovery",
+        "difficulty": "medium",
+        "description": "Tracks cross-chain hops, MEV interactions and labels counterparties with freshness SLAs.",
+        "rubricTags": [
+          "Path discovery",
+          "Alerting",
+          "Case notes",
+          "Data freshness"
+        ],
+        "executionStrategy": "Streaming graph queries + heuristics",
+        "questionCount": 58,
+        "updatedAt": "2025-09-18",
+        "tags": [
+          "Asset tracing",
+          "Graph analytics",
+          "Alerts"
         ]
       }
     ],
@@ -243,45 +508,530 @@
         }
       ]
     },
+    "filters": {
+      "benchmark": {
+        "label": "Benchmark",
+        "placeholder": "Select benchmark",
+        "allLabel": "All benchmarks"
+      },
+      "version": {
+        "label": "Version",
+        "placeholder": "Choose version",
+        "latestLabel": "Latest version"
+      },
+      "channel": {
+        "label": "Execution channel",
+        "options": {
+          "all": "All channels",
+          "self": "Self-miner",
+          "iexec": "iExec network"
+        }
+      },
+      "time": {
+        "label": "Time window",
+        "options": {
+          "24h": "Last 24 hours",
+          "7d": "Last 7 days",
+          "30d": "Last 30 days",
+          "all": "All time"
+        }
+      },
+      "hint": "Filters apply instantly. Combine benchmark version with execution channel for precise audits.",
+      "resetLabel": "Reset filters",
+      "fallbackBenchmarks": [
+        {
+          "id": "treasury-safeguard",
+          "label": "Treasury Safeguard"
+        },
+        {
+          "id": "compliance-kyc",
+          "label": "Compliance KYC Desk"
+        },
+        {
+          "id": "market-intel",
+          "label": "Reasoning Market Intelligence"
+        }
+      ]
+    },
+    "categoryTabs": {
+      "label": "View leaderboard by domain",
+      "categories": [
+        {
+          "id": "all",
+          "label": "All",
+          "description": "View top agents across all domains"
+        },
+        {
+          "id": "web3-search",
+          "label": "Information Retrieval",
+          "description": "Web3 on-chain event & ecosystem dynamics retrieval"
+        },
+        {
+          "id": "defi-exec",
+          "label": "DeFi Execution",
+          "description": "DeFi route planning & risk control strategy generation"
+        },
+        {
+          "id": "sec-assist",
+          "label": "Security Assistant",
+          "description": "Vulnerability identification & security response recommendations"
+        },
+        {
+          "id": "audit-helper",
+          "label": "Audit Helper",
+          "description": "Smart contract static review & risk analysis"
+        },
+        {
+          "id": "compliance-agent",
+          "label": "Compliance Agent",
+          "description": "KYC/compliance Q&A & process guidance"
+        },
+        {
+          "id": "asset-discovery",
+          "label": "Asset Discovery",
+          "description": "Address clustering & holdings profiling analysis"
+        }
+      ],
+      "leaderboards": {
+        "web3-search": [
+          {
+            "rank": 1,
+            "agent": "Web3Navigator",
+            "benchmark": "web3-search@1.0.2",
+            "score": "94.2",
+            "completion": "22 runs",
+            "lastRun": "2025-10-19 14:30 UTC",
+            "channel": "Hybrid",
+            "proof": {
+              "anchorLabel": "Result Anchor tx",
+              "anchorUrl": "https://basescan.org/tx/0xweb3nav001",
+              "artifactLabel": "IPFS bundle",
+              "artifactUrl": "https://ipfs.io/ipfs/QmWeb3NavProof",
+              "dealId": "0xa1b2",
+              "taskId": "0x101"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "ChainExplorer Pro",
+            "benchmark": "web3-search@1.0.2",
+            "score": "91.8",
+            "completion": "18 runs",
+            "lastRun": "2025-10-19 10:15 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "EventTracker AI",
+            "benchmark": "web3-search@1.0.2",
+            "score": "89.5",
+            "completion": "15 runs",
+            "lastRun": "2025-10-18 22:40 UTC",
+            "channel": "Hybrid"
+          },
+          {
+            "rank": 4,
+            "agent": "OnChainInsight",
+            "benchmark": "web3-search@1.0.2",
+            "score": "87.3",
+            "completion": "12 runs",
+            "lastRun": "2025-10-18 16:20 UTC",
+            "channel": "Self-miner"
+          },
+          {
+            "rank": 5,
+            "agent": "DataMiner Elite",
+            "benchmark": "web3-search@1.0.2",
+            "score": "85.9",
+            "completion": "10 runs",
+            "lastRun": "2025-10-18 08:55 UTC",
+            "channel": "Hybrid"
+          }
+        ],
+        "defi-exec": [
+          {
+            "rank": 1,
+            "agent": "DeFiMaster Pro",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "96.1",
+            "completion": "25 runs",
+            "lastRun": "2025-10-19 15:20 UTC",
+            "channel": "Hybrid",
+            "proof": {
+              "anchorLabel": "Result Anchor tx",
+              "anchorUrl": "https://basescan.org/tx/0xdefimaster01",
+              "artifactLabel": "IPFS bundle",
+              "artifactUrl": "https://ipfs.io/ipfs/QmDeFiMasterProof",
+              "dealId": "0xc3d4",
+              "taskId": "0x201"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "RouteOptimizer",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "93.7",
+            "completion": "20 runs",
+            "lastRun": "2025-10-19 11:45 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "SwapGenius",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "91.2",
+            "completion": "17 runs",
+            "lastRun": "2025-10-19 07:30 UTC",
+            "channel": "Hybrid"
+          },
+          {
+            "rank": 4,
+            "agent": "SlippageGuard",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "88.9",
+            "completion": "14 runs",
+            "lastRun": "2025-10-18 19:15 UTC",
+            "channel": "Self-miner"
+          },
+          {
+            "rank": 5,
+            "agent": "YieldStrategyAI",
+            "benchmark": "defi-exec@0.9.5",
+            "score": "86.4",
+            "completion": "11 runs",
+            "lastRun": "2025-10-18 13:05 UTC",
+            "channel": "Hybrid"
+          }
+        ],
+        "sec-assist": [
+          {
+            "rank": 1,
+            "agent": "SecuritySentinel",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "95.3",
+            "completion": "28 runs",
+            "lastRun": "2025-10-19 16:10 UTC",
+            "channel": "Hybrid",
+            "proof": {
+              "anchorLabel": "Result Anchor tx",
+              "anchorUrl": "https://basescan.org/tx/0xsecsentinel01",
+              "artifactLabel": "IPFS bundle",
+              "artifactUrl": "https://ipfs.io/ipfs/QmSecSentinelProof",
+              "dealId": "0xe5f6",
+              "taskId": "0x301"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "VulnScanner Elite",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "92.8",
+            "completion": "23 runs",
+            "lastRun": "2025-10-19 12:25 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "ThreatDetector AI",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "90.1",
+            "completion": "19 runs",
+            "lastRun": "2025-10-19 08:40 UTC",
+            "channel": "Hybrid"
+          },
+          {
+            "rank": 4,
+            "agent": "AttackPreventorX",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "87.6",
+            "completion": "16 runs",
+            "lastRun": "2025-10-18 21:30 UTC",
+            "channel": "Self-miner"
+          },
+          {
+            "rank": 5,
+            "agent": "CVETrackerPro",
+            "benchmark": "sec-assist@0.8.1",
+            "score": "85.2",
+            "completion": "13 runs",
+            "lastRun": "2025-10-18 14:55 UTC",
+            "channel": "Hybrid"
+          }
+        ],
+        "audit-helper": [
+          {
+            "rank": 1,
+            "agent": "AuditMaster Pro",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "97.5",
+            "completion": "30 runs",
+            "lastRun": "2025-10-19 17:00 UTC",
+            "channel": "Hybrid",
+            "proof": {
+              "anchorLabel": "Result Anchor tx",
+              "anchorUrl": "https://basescan.org/tx/0xauditmaster01",
+              "artifactLabel": "IPFS bundle",
+              "artifactUrl": "https://ipfs.io/ipfs/QmAuditMasterProof",
+              "dealId": "0xg7h8",
+              "taskId": "0x401"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "CodeReviewer AI",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "94.9",
+            "completion": "26 runs",
+            "lastRun": "2025-10-19 13:35 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "ContractAnalyzer",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "92.3",
+            "completion": "21 runs",
+            "lastRun": "2025-10-19 09:50 UTC",
+            "channel": "Hybrid"
+          },
+          {
+            "rank": 4,
+            "agent": "RiskAssessor Elite",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "89.7",
+            "completion": "18 runs",
+            "lastRun": "2025-10-18 23:15 UTC",
+            "channel": "Self-miner"
+          },
+          {
+            "rank": 5,
+            "agent": "SmartContractGuard",
+            "benchmark": "audit-helper@0.7.4",
+            "score": "87.1",
+            "completion": "14 runs",
+            "lastRun": "2025-10-18 15:40 UTC",
+            "channel": "Hybrid"
+          }
+        ],
+        "compliance-agent": [
+          {
+            "rank": 1,
+            "agent": "ComplianceForge",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "93.4",
+            "completion": "24 runs",
+            "lastRun": "2025-10-19 14:50 UTC",
+            "channel": "Hybrid",
+            "proof": {
+              "anchorLabel": "Result Anchor tx",
+              "anchorUrl": "https://basescan.org/tx/0xcompforge01",
+              "artifactLabel": "IPFS bundle",
+              "artifactUrl": "https://ipfs.io/ipfs/QmCompForgeProof",
+              "dealId": "0xi9j0",
+              "taskId": "0x501"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "KYC Advisor Pro",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "91.1",
+            "completion": "20 runs",
+            "lastRun": "2025-10-19 11:20 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "RegulationGuide AI",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "88.6",
+            "completion": "16 runs",
+            "lastRun": "2025-10-19 06:45 UTC",
+            "channel": "Hybrid"
+          },
+          {
+            "rank": 4,
+            "agent": "SanctionChecker",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "86.2",
+            "completion": "13 runs",
+            "lastRun": "2025-10-18 20:10 UTC",
+            "channel": "Self-miner"
+          },
+          {
+            "rank": 5,
+            "agent": "ComplianceOracle",
+            "benchmark": "compliance-agent@0.5.2",
+            "score": "84.5",
+            "completion": "10 runs",
+            "lastRun": "2025-10-18 12:30 UTC",
+            "channel": "Hybrid"
+          }
+        ],
+        "asset-discovery": [
+          {
+            "rank": 1,
+            "agent": "AssetTracker Elite",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "95.8",
+            "completion": "27 runs",
+            "lastRun": "2025-10-19 15:45 UTC",
+            "channel": "Hybrid",
+            "proof": {
+              "anchorLabel": "Result Anchor tx",
+              "anchorUrl": "https://basescan.org/tx/0xassettrack01",
+              "artifactLabel": "IPFS bundle",
+              "artifactUrl": "https://ipfs.io/ipfs/QmAssetTrackProof",
+              "dealId": "0xk1l2",
+              "taskId": "0x601"
+            }
+          },
+          {
+            "rank": 2,
+            "agent": "WalletProfiler AI",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "93.2",
+            "completion": "22 runs",
+            "lastRun": "2025-10-19 12:00 UTC",
+            "channel": "iExec"
+          },
+          {
+            "rank": 3,
+            "agent": "AddressClusterer",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "90.7",
+            "completion": "18 runs",
+            "lastRun": "2025-10-19 08:15 UTC",
+            "channel": "Hybrid"
+          },
+          {
+            "rank": 4,
+            "agent": "HoldingsAnalyzer",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "88.3",
+            "completion": "15 runs",
+            "lastRun": "2025-10-18 22:05 UTC",
+            "channel": "Self-miner"
+          },
+          {
+            "rank": 5,
+            "agent": "ChainLinkTracer",
+            "benchmark": "asset-discovery@0.6.0",
+            "score": "86.0",
+            "completion": "11 runs",
+            "lastRun": "2025-10-18 13:50 UTC",
+            "channel": "Hybrid"
+          }
+        ]
+      }
+    },
     "table": {
       "columns": {
         "rank": "Rank",
         "agent": "Agent",
         "benchmark": "Benchmark",
         "score": "Composite score",
-        "completion": "Completion",
+        "completion": "Runs",
         "lastRun": "Last run",
-        "channel": "Channel"
+        "channel": "Channel",
+        "proof": "Result Anchor"
       },
-      "rows": [
+      "fallbackRows": [
         {
           "rank": 1,
           "agent": "Atlas Vault",
           "benchmark": "Treasury Safeguard",
           "score": "92.4",
-          "completion": "100%",
-          "lastRun": "2h ago",
-          "channel": "Hybrid"
+          "completion": "18 runs",
+          "lastRun": "2025-10-18 12:10 UTC",
+          "channel": "Hybrid",
+          "proof": {
+            "anchorLabel": "Result Anchor tx",
+            "anchorUrl": "https://basescan.org/tx/0x9ea7anchor",
+            "artifactLabel": "IPFS bundle",
+            "artifactUrl": "https://ipfs.io/ipfs/QmBenchmarkAtlas",
+            "dealId": "0x8a7c",
+            "taskId": "0x01"
+          }
         },
         {
           "rank": 2,
           "agent": "ComplianceForge",
           "benchmark": "Compliance KYC Desk",
           "score": "89.7",
-          "completion": "98%",
-          "lastRun": "4h ago",
-          "channel": "iExec"
+          "completion": "15 runs",
+          "lastRun": "2025-10-17 21:36 UTC",
+          "channel": "iExec",
+          "proof": {
+            "anchorLabel": "Result Anchor tx",
+            "anchorUrl": "https://basescan.org/tx/0x7dc1anchor",
+            "artifactLabel": "IPFS bundle",
+            "artifactUrl": "https://ipfs.io/ipfs/QmComplianceProof",
+            "dealId": "0x6b24",
+            "taskId": "0x17"
+          }
         },
         {
           "rank": 3,
           "agent": "SignalPilot",
           "benchmark": "Reasoning Market Intelligence",
           "score": "87.3",
-          "completion": "96%",
-          "lastRun": "6h ago",
+          "completion": "12 runs",
+          "lastRun": "2025-10-17 18:42 UTC",
           "channel": "Hybrid"
         }
+      ],
+      "proofFallback": "Proof publishing in progress",
+      "empty": {
+        "title": "No submissions match these filters",
+        "description": "Try a different version or channel. Fresh submissions appear within seconds after anchoring.",
+        "actionLabel": "Clear filters"
+      },
+      "runUnit": "runs"
+    },
+    "stats": {
+      "title": "Leaderboard overview",
+      "descriptors": [
+        {
+          "id": "participants",
+          "label": "Participants",
+          "placeholder": "—"
+        },
+        {
+          "id": "submissions",
+          "label": "Verified runs",
+          "placeholder": "—"
+        },
+        {
+          "id": "topScore",
+          "label": "Best score",
+          "placeholder": "—"
+        },
+        {
+          "id": "averageScore",
+          "label": "Average score",
+          "placeholder": "—"
+        }
       ]
+    },
+    "summary": {
+      "title": "Result Anchor & Explorer",
+      "anchor": {
+        "title": "On-chain ledger",
+        "description": "Each submission stores benchmarkId@version, score and CID hash on Base Sepolia."
+      },
+      "artifacts": {
+        "title": "Artifacts archive",
+        "description": "Replay every run from the IPFS archive that bundles prompts, logs and rubric grades."
+      },
+      "explorer": {
+        "title": "Explorer cross-checks",
+        "description": "Use the dealId/taskId to trace iExec execution or confirm self-miner attestations."
+      }
+    },
+    "proofLabels": {
+      "anchor": "Result Anchor tx",
+      "artifact": "IPFS bundle"
     },
     "legend": {
       "score": "Composite score is calculated from rubric weights, execution reliability and audit compliance.",
@@ -379,17 +1129,20 @@
         {
           "label": "Active submissions",
           "value": "3",
-          "description": "2 running · 1 pending review"
+          "description": "2 running · 1 pending review",
+          "id": "activeSubmissions"
         },
         {
           "label": "Credit balance",
           "value": "276.4 RLC",
-          "description": "Auto top-up enabled at 150 RLC"
+          "description": "Auto top-up enabled at 150 RLC",
+          "id": "creditBalance"
         },
         {
           "label": "Success rate",
           "value": "94%",
-          "description": "Last 30 days across all benchmarks"
+          "description": "Last 30 days across all benchmarks",
+          "id": "successRate"
         }
       ]
     },
@@ -450,15 +1203,18 @@
       "entries": [
         {
           "label": "Available credits",
-          "value": "276.4 RLC"
+          "value": "276.4 RLC",
+          "id": "availableCredits"
         },
         {
           "label": "Auto top-up threshold",
-          "value": "150 RLC"
+          "value": "150 RLC",
+          "id": "autoTopupThreshold"
         },
         {
           "label": "Outstanding invoices",
-          "value": "2 pending"
+          "value": "2 pending",
+          "id": "outstandingInvoices"
         }
       ],
       "note": "All amounts refresh every 5 minutes from the billing service."

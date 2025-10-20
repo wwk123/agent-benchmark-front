@@ -6,28 +6,30 @@ import { useMemo } from "react";
  */
 export const themeTokens = {
   colors: {
-    brandPrimary: "#0B1E3C",
-    brandPrimaryMuted: "#152649",
-    brandAccent: "#1FB6FF",
-    brandAccentStrong: "#0EA5E9",
-    brandHighlight: "#F9B500",
+    brandPrimary: "#7C3AED",
+    brandPrimaryMuted: "#6D28D9",
+    brandAccent: "#22D3EE",
+    brandAccentStrong: "#67E8F9",
+    brandHighlight: "#22E58E",
+    brandFlare: "#E879F9",
     surface: {
-      base: "#F8FAFC",
-      muted: "#F1F5F9",
-      contrast: "#FFFFFF",
-      inverted: "#0F172A",
+      base: "#0B1030",
+      muted: "#1B124C",
+      elevated: "#221A55",
+      contrast: "#F4F7FF",
+      inverted: "#F8FAFC",
     },
     text: {
-      primary: "#0F172A",
-      secondary: "#334155",
-      muted: "#64748B",
-      inverted: "#E2E8F0",
+      primary: "#E5E7EB",
+      secondary: "#C7CED6",
+      muted: "#9CA8B9",
+      inverted: "#0B1030",
     },
     status: {
-      success: "#10B981",
+      success: "#16A34A",
       warning: "#F59E0B",
       danger: "#EF4444",
-      info: "#0EA5E9",
+      info: "#22D3EE",
     },
   },
   layout: {
@@ -43,8 +45,8 @@ export const themeTokens = {
     pill: "9999px",
   },
   shadows: {
-    card: "0 12px 24px rgba(15, 23, 42, 0.08)",
-    cardStrong: "0 18px 32px rgba(15, 23, 42, 0.12)",
+    card: "0 18px 36px rgba(8, 7, 35, 0.45)",
+    cardStrong: "0 24px 48px rgba(8, 7, 35, 0.65)",
   },
   transition: {
     quick: "all 150ms ease-out",

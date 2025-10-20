@@ -26,7 +26,7 @@ export function LanguageSwitcher() {
     <label className="inline-flex items-center gap-2 text-sm text-text-muted">
       <span className="sr-only">{t("language")}</span>
       <select
-        className="rounded-full border border-border bg-surface-contrast px-4 py-2 text-sm font-medium text-text-primary outline-none transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-brand-accent"
+        className="rounded-full border border-border bg-surface-elevated px-4 py-2 text-sm font-medium text-text-primary outline-none transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-brand-accent"
         onChange={handleChange}
         value={activeLocale}
         disabled={isPending}

@@ -19,8 +19,8 @@ type Story = StoryObj;
 
 export const HoverTiltCard: Story = {
   render: () => (
-    <div className="hover-tilt rounded-2xl border border-border bg-surface-contrast p-6 shadow-card">
-      <h3 className="text-lg font-semibold text-brand-primary">Hover Tilt</h3>
+    <div className="hover-tilt rounded-2xl border border-border bg-surface-elevated p-6 shadow-card">
+      <h3 className="font-heading text-lg font-semibold text-brand-primary">Hover Tilt</h3>
       <p className="mt-2 text-sm text-text-secondary">
         Move your cursor around to preview the perspective hover effect used on benchmark or submission cards.
       </p>

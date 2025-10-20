@@ -91,7 +91,7 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
         <div className="grid gap-6 md:grid-cols-3">
           {overview.items.map((item) => (
             <article key={item.title} className="card h-full space-y-3 p-6">
-              <h3 className="text-xl font-semibold text-brand-primary">{item.title}</h3>
+              <h3 className="font-heading text-xl font-semibold text-brand-primary">{item.title}</h3>
               <p className="text-sm text-text-secondary">{item.description}</p>
             </article>
           ))}
@@ -107,7 +107,7 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
           {resources.items.map((item) => (
             <article key={item.title} className="card flex h-full flex-col justify-between space-y-4 p-6">
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-brand-primary">{item.title}</h3>
+                <h3 className="font-heading text-lg font-semibold text-brand-primary">{item.title}</h3>
                 <p className="text-sm text-text-secondary">{item.description}</p>
               </div>
               <Button asChild variant="secondary">

@@ -10,15 +10,14 @@ type BenchmarkCategory = {
 
 type BenchmarkItem = {
   id: string;
-  title: string;
+  name: string;
+  benchmarkId: string;
   category: string;
-  difficulty: string;
-  channel: string;
-  duration: string;
-  rewardRange: string;
-  updatedAt: string;
   description: string;
-  metrics: string[];
+  rubricTags: string[];
+  executionStrategy: string;
+  questionCount: number;
+  updatedAt: string;
 };
 
 export default async function BenchmarksPage() {
@@ -38,6 +37,25 @@ export default async function BenchmarksPage() {
 
   const items = t.raw("items") as BenchmarkItem[];
   const empty = t("empty");
+  const searchPlaceholder = t("searchPlaceholder");
+
+  const table = t.raw("table") as {
+    columns: {
+      name: string;
+      benchmarkId: string;
+      category: string;
+      description: string;
+      rubricTags: string;
+      executionStrategy: string;
+      questionCount: string;
+      updatedAt: string;
+      actions: string;
+    };
+    actions: {
+      viewLeaderboard: string;
+      viewRubric: string;
+    };
+  };
 
   return (
     <>
@@ -61,6 +79,8 @@ export default async function BenchmarksPage() {
           defaultCategories={filters.categories}
           fallbackItems={items}
           emptyMessage={empty}
+          searchPlaceholder={searchPlaceholder}
+          tableCopy={table}
         />
       </Section>
     </>

@@ -67,7 +67,7 @@ export function Step3SelectChannel() {
                 <Icon className="size-6" />
               </div>
 
-              <h3 className="mb-2 text-lg font-semibold text-text-primary">
+              <h3 className="font-heading mb-2 text-lg font-semibold text-text-primary">
                 {channel.title}
               </h3>
 

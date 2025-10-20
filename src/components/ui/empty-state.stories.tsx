@@ -84,7 +84,7 @@ export const InPageContext: Story = {
   render: () => (
     <div className="min-h-[400px] space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">My Submissions</h2>
+        <h2 className="font-heading text-2xl font-bold">My Submissions</h2>
         <button className="rounded-lg bg-brand-primary px-4 py-2 text-sm font-medium text-white">
           New Submission
         </button>

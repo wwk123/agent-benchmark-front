@@ -13,34 +13,47 @@ type Category = {
 
 type ViewItem = {
   id: string;
-  title: string;
+  name: string;
+  benchmarkId: string;
   category: string;
-  difficulty: string;
-  channel: string;
-  duration: string;
-  rewardRange: string;
-  updatedAt: string;
   description: string;
-  metrics: string[];
+  rubricTags: string[];
+  executionStrategy: string;
+  questionCount: number;
+  updatedAt: string;
 };
 
 type BenchmarksClientProps = {
   defaultCategories: Category[];
   fallbackItems: ViewItem[];
   emptyMessage: string;
+  searchPlaceholder: string;
+  tableCopy: {
+    columns: {
+      name: string;
+      benchmarkId: string;
+      category: string;
+      description: string;
+      rubricTags: string;
+      executionStrategy: string;
+      questionCount: string;
+      updatedAt: string;
+      actions: string;
+    };
+    actions: {
+      viewLeaderboard: string;
+      viewRubric: string;
+    };
+  };
   filters?: BenchmarkFilters;
-};
-
-const DIFFICULTY_LABEL: Record<string, string> = {
-  easy: "Beginner",
-  medium: "Intermediate",
-  hard: "Advanced",
 };
 
 export function BenchmarksClient({
   defaultCategories,
   fallbackItems,
   emptyMessage,
+  searchPlaceholder,
+  tableCopy,
   filters,
 }: BenchmarksClientProps) {
   const { data, isLoading, isFetching } = useBenchmarks(filters);
@@ -50,15 +63,12 @@ export function BenchmarksClient({
 
     if (data?.benchmarks) {
       data.benchmarks.forEach((benchmark) => {
-        const primaryTag = benchmark.tags?.[0];
-        if (primaryTag) {
-          const id = primaryTag.toLowerCase();
-          if (!map.has(id)) {
-            map.set(id, {
-              id,
-              label: convertLabel(primaryTag),
-            });
-          }
+        const categoryId = benchmark.category || benchmark.tags?.[0]?.toLowerCase() || "general";
+        if (!map.has(categoryId)) {
+          map.set(categoryId, {
+            id: categoryId,
+            label: convertLabel(categoryId),
+          });
         }
       });
     }
@@ -71,30 +81,17 @@ export function BenchmarksClient({
       return fallbackItems;
     }
 
-    return data.benchmarks.map((benchmark) => {
-      const primaryTag = benchmark.tags?.[0]?.toLowerCase() ?? "general";
-      const difficulty = DIFFICULTY_LABEL[benchmark.difficulty] ?? benchmark.difficulty;
-      const channel =
-        benchmark.executionChannels.length > 0
-          ? benchmark.executionChannels
-              .map((chan) => (chan === "self-miner" ? "Self-miner" : chan === "iexec" ? "iExec" : "Hybrid"))
-              .join(" / ")
-          : "Hybrid";
-      const rewardRange = formatRewardRange(benchmark.estimatedCost.selfMiner, benchmark.estimatedCost.iexec);
-
-      return {
-        id: benchmark.id,
-        title: benchmark.title,
-        category: primaryTag,
-        difficulty,
-        channel,
-        duration: `≈ ${benchmark.questionCount} tasks`,
-        rewardRange,
-        updatedAt: formatDate(benchmark.updatedAt),
-        description: benchmark.description,
-        metrics: benchmark.tags.length > 0 ? benchmark.tags : ["ResultAnchor ready"],
-      };
-    });
+    return data.benchmarks.map((benchmark) => ({
+      id: benchmark.id,
+      name: benchmark.title,
+      benchmarkId: benchmark.benchmarkId || `${benchmark.id}@latest`,
+      category: benchmark.category || benchmark.tags?.[0]?.toLowerCase() || "general",
+      description: benchmark.description,
+      rubricTags: benchmark.rubricTags || benchmark.tags || [],
+      executionStrategy: benchmark.executionStrategy || "Hybrid execution",
+      questionCount: benchmark.questionCount,
+      updatedAt: formatDate(benchmark.updatedAt),
+    }));
   }, [data?.benchmarks, fallbackItems]);
 
   const showSkeleton = (isLoading || isFetching) && !data?.benchmarks?.length;
@@ -108,25 +105,12 @@ export function BenchmarksClient({
           categories={normalizedCategories}
           items={normalizedItems}
           emptyMessage={emptyMessage}
+          searchPlaceholder={searchPlaceholder}
+          tableCopy={tableCopy}
         />
       )}
     </div>
   );
-}
-
-function formatRewardRange(selfMinerCost: number, iexecCost: number) {
-  if (selfMinerCost && iexecCost) {
-    const min = Math.min(selfMinerCost, iexecCost).toFixed(1);
-    const max = Math.max(selfMinerCost, iexecCost).toFixed(1);
-    return `${min} - ${max} RLC`;
-  }
-  if (selfMinerCost) {
-    return `${selfMinerCost.toFixed(1)} RLC`;
-  }
-  if (iexecCost) {
-    return `${iexecCost.toFixed(1)} RLC`;
-  }
-  return "—";
 }
 
 function formatDate(dateString: string) {

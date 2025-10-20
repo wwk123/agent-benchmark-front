@@ -15,16 +15,18 @@ export function useLeaderboard(filters: LeaderboardFilters = {}) {
   return useQuery({
     queryKey: ["leaderboard", filters],
     queryFn: async () => {
-      const endpoint = filters.benchmarkId
+      const { benchmarkId, version, executionChannel, timeRange, page, limit } = filters;
+      const endpoint = benchmarkId
         ? `/api/v1/benchmarks/${filters.benchmarkId}/leaderboard`
         : "/api/v1/leaderboard";
 
       return await apiFetch<LeaderboardResponse>(endpoint, {
         params: {
-          executionChannel: filters.executionChannel,
-          timeRange: filters.timeRange,
-          page: filters.page,
-          limit: filters.limit,
+          version,
+          executionChannel,
+          timeRange,
+          page,
+          limit,
         },
       });
     },
@@ -37,15 +39,21 @@ export function useLeaderboard(filters: LeaderboardFilters = {}) {
  * Fetch leaderboard statistics
  * 5-minute stale time for stats
  */
-export function useLeaderboardStats(benchmarkId?: string) {
+export function useLeaderboardStats(filters: { benchmarkId?: string; version?: string } = {}) {
+  const { benchmarkId, version } = filters;
+
   return useQuery({
-    queryKey: ["leaderboard-stats", benchmarkId],
+    queryKey: ["leaderboard-stats", benchmarkId, version],
     queryFn: async () => {
       const endpoint = benchmarkId
         ? `/api/v1/benchmarks/${benchmarkId}/leaderboard/stats`
         : "/api/v1/leaderboard/stats";
 
-      return await apiFetch<LeaderboardStats>(endpoint);
+      return await apiFetch<LeaderboardStats>(endpoint, {
+        params: {
+          version,
+        },
+      });
     },
     staleTime: 5 * 60 * 1000,
   });

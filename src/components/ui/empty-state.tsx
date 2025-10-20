@@ -93,7 +93,7 @@ export function EmptyState({
       )}
 
       {/* Title */}
-      <h3 className="mb-2 text-lg font-semibold text-text-primary">{title}</h3>
+      <h3 className="font-heading mb-2 text-lg font-semibold text-text-primary">{title}</h3>
 
       {/* Description */}
       {description && (

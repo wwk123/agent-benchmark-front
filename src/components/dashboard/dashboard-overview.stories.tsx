@@ -38,7 +38,7 @@ export const WithIllustration: Story = {
   args: {
     illustration: (
       <div className="flex flex-col gap-3">
-        <h3 className="text-lg font-semibold">Execution at a glance</h3>
+        <h3 className="font-heading text-lg font-semibold">Execution at a glance</h3>
         <p className="text-sm text-surface-contrast/80">
           Monitor funding, execution reliability and open tasks with a single tap. Switch to dark mode for nightly operations.
         </p>
@@ -51,7 +51,7 @@ export const Dark: Story = {
   args: {
     illustration: (
       <div className="flex flex-col gap-3">
-        <h3 className="text-lg font-semibold">Night shift view</h3>
+        <h3 className="font-heading text-lg font-semibold">Night shift view</h3>
         <p className="text-sm text-surface-contrast/80">
           Nightly operations mode highlights alerts while keeping the workspace calm and focused.
         </p>

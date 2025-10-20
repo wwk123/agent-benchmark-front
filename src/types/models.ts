@@ -12,6 +12,7 @@ export type Benchmark = {
   id: string;
   title: string;
   description: string;
+  category: string;
   difficulty: Difficulty;
   questionCount: number;
   executionChannels: ExecutionChannel[];
@@ -23,6 +24,9 @@ export type Benchmark = {
   resultAnchorAddress: string | null;
   createdAt: string;
   updatedAt: string;
+  benchmarkId: string;          // e.g., "web3-search@1.0.2"
+  rubricTags: string[];         // e.g., ["事实性", "覆盖度", "引用准确", "清晰度"]
+  executionStrategy: string;    // e.g., "禁网+白名单(离线包)"
 };
 
 export type BenchmarkDetail = Benchmark & {
@@ -57,6 +61,7 @@ export type BenchmarkDetail = Benchmark & {
 export type BenchmarkFilters = {
   difficulty?: Difficulty;
   tags?: string[];
+  category?: string;
   search?: string;
   sortBy?: "newest" | "popular" | "difficulty";
   page?: number;
@@ -77,6 +82,7 @@ export type LeaderboardEntry = {
   rank: number;
   address: string;
   agentName: string;
+  benchmarkTitle?: string;
   score: number;
   executionCount: number;
   executionChannel: "self-miner" | "iexec";
@@ -85,12 +91,18 @@ export type LeaderboardEntry = {
     scoreChange: number;
   };
   onChainProof?: string;
+  resultAnchorTx?: string;
+  artifactCid?: string;
+  dealId?: string;
+  taskId?: string;
+  submittedAt?: string;
 };
 
 export type LeaderboardTimeRange = "24h" | "7d" | "30d" | "all";
 
 export type LeaderboardFilters = {
   benchmarkId?: string;
+  version?: string;
   executionChannel?: "self-miner" | "iexec" | "all";
   timeRange?: LeaderboardTimeRange;
   page?: number;
@@ -138,11 +150,21 @@ export type GitHubAgentConfig = {
 export type AgentConfig = DockerAgentConfig | HttpAgentConfig | GitHubAgentConfig;
 
 export type CostEstimate = {
+  benchmarkId?: string;
+  benchmarkVersion?: string;
   computation: number;
   storage: number;
   network: number;
   total: number;
   channel: "self-miner" | "iexec";
+  totalUsd?: number;
+  exchangeRate?: {
+    rlcUsd: number;
+    updatedAt?: string;
+  };
+  leaderboardOptIn?: boolean;
+  leaderboardAdjustment?: number;
+  notes?: string[];
 };
 
 export type SubmissionStatus =
@@ -158,6 +180,7 @@ export type Submission = {
   id: string;
   userId: string;
   benchmarkId: string;
+  benchmarkVersion?: string;
   benchmarkTitle: string;
   agentConfig: AgentConfig;
   executionChannel: "self-miner" | "iexec";
@@ -172,6 +195,7 @@ export type Submission = {
   executionTime?: number; // seconds
   errorMessage?: string;
   onChainProof?: string;
+  leaderboardOptIn?: boolean;
   createdAt: string;
   startedAt?: string;
   completedAt?: string;

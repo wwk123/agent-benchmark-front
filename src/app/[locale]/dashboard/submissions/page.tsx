@@ -1,33 +1,28 @@
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import { Section } from "@/components/layout/section";
-import { EmptyState } from "@/components/ui/empty-state";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/navigation";
+import { DashboardSubmissionsClient } from "./submissions-client";
 
 export default async function DashboardSubmissionsPage() {
-  const t = await getTranslations("dashboard.pages.submissions");
+  const global = await getTranslations("dashboard");
+  const copy = global.raw("pages.submissions") as {
+    title: string;
+    description: string;
+    emptyTitle: string;
+    emptyDescription: string;
+    ctaLabel?: string;
+    backLabel?: string;
+  };
+  const submissionsCopy = global.raw("recentSubmissions") as {
+    cta: { label: string; href: string };
+  };
 
   return (
     <>
-      <PageHero title={t("title")} description={t("description")} />
-
-      <Section padding="lg">
-        <EmptyState
-          title={t("emptyTitle")}
-          description={t("emptyDescription")}
-          illustrationKey="sparkles"
-        />
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild>
-            <Link href="/submit">{t("ctaLabel")}</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/dashboard">{t("backLabel")}</Link>
-          </Button>
-        </div>
-      </Section>
+      <PageHero title={copy.title} description={copy.description} />
+      <DashboardSubmissionsClient
+        empty={copy}
+        cta={submissionsCopy.cta}
+      />
     </>
   );
 }

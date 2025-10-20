@@ -39,7 +39,11 @@ export function LandingSectionLayout({
             </span>
           )}
           <div className="space-y-4">
-            {typeof title === "string" ? <h1 className="text-4xl font-semibold lg:text-5xl">{title}</h1> : title}
+            {typeof title === "string" ? (
+              <h1 className="font-heading text-4xl font-semibold lg:text-5xl">{title}</h1>
+            ) : (
+              title
+            )}
             {description &&
               (typeof description === "string" ? (
                 <p className="max-w-2xl text-base text-surface-contrast/80 lg:text-lg">{description}</p>

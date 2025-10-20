@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import { DashboardOverview } from "@/components/dashboard/dashboard-overview";
-import { Section } from "@/components/layout/section";
+import { DashboardClient } from "./dashboard-client";
 
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
@@ -14,7 +13,7 @@ export default async function DashboardPage() {
   };
 
   const overview = t.raw("overview") as {
-    metrics: Array<{ label: string; value: string; description: string }>;
+    metrics: Array<{ id: string; label: string; value: string; description: string }>;
   };
 
   const recentSubmissions = t.raw("recentSubmissions") as {
@@ -32,8 +31,26 @@ export default async function DashboardPage() {
   const treasury = t.raw("treasury") as {
     title: string;
     description: string;
-    entries: Array<{ label: string; value: string }>;
+    entries: Array<{ id: string; label: string; value?: string }>;
     note?: string;
+  };
+
+  const pages = t.raw("pages") as {
+    submissions: {
+      title: string;
+      description: string;
+      emptyTitle: string;
+      emptyDescription: string;
+      ctaLabel?: string;
+      actionHref?: string;
+    };
+  };
+
+  const submissionsEmptyCopy = {
+    title: pages.submissions.emptyTitle,
+    description: pages.submissions.emptyDescription,
+    actionLabel: pages.submissions.ctaLabel,
+    actionHref: pages.submissions.actionHref ?? recentSubmissions.cta.href,
   };
 
   return (
@@ -48,27 +65,13 @@ export default async function DashboardPage() {
         }))}
       />
 
-      <DashboardOverview metrics={overview.metrics} recentSubmissions={recentSubmissions} actions={actions} />
-
-      <Section id="treasury" padding="lg" className="bg-surface">
-        <div className="card space-y-6 p-6">
-          <div>
-            <h2 className="text-2xl font-semibold text-brand-primary">{treasury.title}</h2>
-            <p className="mt-2 text-sm text-text-secondary">{treasury.description}</p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {treasury.entries.map((entry) => (
-              <div key={entry.label} className="rounded-xl border border-border/60 bg-surface-contrast p-4 shadow-sm">
-                <p className="text-sm font-medium text-text-secondary">{entry.label}</p>
-                <p className="text-xl font-semibold text-brand-primary">{entry.value}</p>
-              </div>
-            ))}
-          </div>
-          {treasury.note && (
-            <p className="text-xs text-text-muted">{treasury.note}</p>
-          )}
-        </div>
-      </Section>
+      <DashboardClient
+        overviewCopy={overview}
+        submissionsCopy={recentSubmissions}
+        actionsCopy={actions}
+        treasuryCopy={treasury}
+        submissionsEmptyCopy={submissionsEmptyCopy}
+      />
     </>
   );
 }

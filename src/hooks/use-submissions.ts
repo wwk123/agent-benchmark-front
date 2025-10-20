@@ -19,8 +19,10 @@ import { apiFetch } from "@/lib/api-client";
  */
 export function useCostEstimate(params: {
   benchmarkId: string;
+  benchmarkVersion?: string;
   agentConfig: AgentConfig;
   executionChannel: ExecutionChannel;
+  leaderboardOptIn?: boolean;
 }) {
   return useQuery({
     queryKey: ["cost-estimate", params],
@@ -31,7 +33,7 @@ export function useCostEstimate(params: {
       });
     },
     staleTime: 5 * 60 * 1000,
-    enabled: !!(params.benchmarkId && params.agentConfig && params.executionChannel),
+    enabled: Boolean(params.benchmarkId && params.agentConfig && params.executionChannel),
   });
 }
 
@@ -45,8 +47,10 @@ export function useCreateSubmission() {
   return useMutation({
     mutationFn: async (params: {
       benchmarkId: string;
+      benchmarkVersion?: string;
       agentConfig: AgentConfig;
       executionChannel: "self-miner" | "iexec";
+      leaderboardOptIn?: boolean;
       signature: string;
     }) => {
       return await apiFetch<{ submissionId: string; status: string }>(

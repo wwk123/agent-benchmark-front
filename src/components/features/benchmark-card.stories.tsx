@@ -6,6 +6,7 @@ const sampleBenchmark: BenchmarkCardProps["benchmark"] = {
   id: "treasury-safeguard",
   title: "Treasury Safeguard",
   description: "Stress test DAO treasury policies with simulated cash-flow shocks and cross-chain settlements.",
+  category: "treasury",
   difficulty: "hard",
   questionCount: 24,
   executionChannels: ["self-miner", "iexec"],
@@ -17,6 +18,9 @@ const sampleBenchmark: BenchmarkCardProps["benchmark"] = {
   resultAnchorAddress: "0x1234",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
+  benchmarkId: "treasury-safeguard@latest",
+  rubricTags: ["风险覆盖", "韧性评估"],
+  executionStrategy: "Hybrid execution",
 };
 
 const meta: Meta<typeof BenchmarkCard> = {

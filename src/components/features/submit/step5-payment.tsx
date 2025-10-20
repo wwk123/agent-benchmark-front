@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { Route } from "next";
 import { useRouter } from "@/navigation";
-import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { Loader2, CheckCircle, AlertCircle, Shield } from "lucide-react";
 import { useSignMessage } from "wagmi";
 import { useSubmissionStore } from "@/stores/submission-store";
 import { useCreateSubmission } from "@/hooks/use-submissions";
@@ -17,18 +17,34 @@ export function Step5Payment() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { signMessageAsync } = useSignMessage();
-  const { selectedBenchmarkId, agentConfig, executionChannel, costEstimate, setSubmissionId, reset } = useSubmissionStore();
+  const {
+    selectedBenchmarkId,
+    benchmarkVersion,
+    agentConfig,
+    executionChannel,
+    costEstimate,
+    leaderboardOptIn,
+    setSubmissionId,
+    reset,
+  } = useSubmissionStore();
   const createSubmission = useCreateSubmission();
+  const normalizedChannel = executionChannel === "auto" ? "self-miner" : executionChannel;
+  const versionLabel = benchmarkVersion ?? "latest";
+
+  const formattedUsd = useMemo(() => {
+    if (!costEstimate?.totalUsd) return null;
+    return new Intl.NumberFormat(undefined, { style: "currency", currency: "USD" }).format(costEstimate.totalUsd);
+  }, [costEstimate?.totalUsd]);
 
   const handleSubmit = async () => {
-    if (!selectedBenchmarkId || !agentConfig || !costEstimate) return;
+    if (!selectedBenchmarkId || !agentConfig || !costEstimate || !benchmarkVersion) return;
 
     try {
       setState("signing");
       setErrorMessage("");
 
       const timestamp = Date.now();
-      const message = `Submit to benchmark ${selectedBenchmarkId}\nCost: ${costEstimate.total} RLC\nChannel: ${executionChannel}\nTimestamp: ${timestamp}`;
+      const message = `Submit to benchmark ${selectedBenchmarkId}@${versionLabel}\nCost: ${costEstimate.total} RLC\nChannel: ${normalizedChannel}\nLeaderboard: ${leaderboardOptIn ? "opt-in" : "opt-out"}\nTimestamp: ${timestamp}`;
 
       const signature = await signMessageAsync({ message });
 
@@ -36,8 +52,10 @@ export function Step5Payment() {
 
       const result = await createSubmission.mutateAsync({
         benchmarkId: selectedBenchmarkId,
+        benchmarkVersion,
         agentConfig,
-        executionChannel: executionChannel === "auto" ? "self-miner" : executionChannel,
+        executionChannel: normalizedChannel,
+        leaderboardOptIn,
         signature,
       });
 
@@ -59,17 +77,40 @@ export function Step5Payment() {
   return (
     <div className="space-y-6">
       <div className="card p-6 space-y-4 transition-transform hover:-translate-y-1 focus-within:-translate-y-1">
-        <h3 className="text-lg font-semibold">Payment Summary</h3>
+        <h3 className="font-heading text-lg font-semibold">Payment Summary</h3>
 
         <div className="space-y-2 rounded-lg bg-surface-muted p-4">
           <div className="flex justify-between">
             <span className="text-sm text-text-secondary">Total Cost</span>
             <span className="text-2xl font-bold text-brand-primary">{costEstimate?.total} RLC</span>
           </div>
+          {formattedUsd && (
+            <div className="flex justify-between text-sm text-text-secondary">
+              <span>USD Equivalent</span>
+              <span className="font-medium text-text-primary">{formattedUsd}</span>
+            </div>
+          )}
           <div className="flex justify-between text-sm">
             <span className="text-text-secondary">Execution Channel</span>
-            <span className="font-medium capitalize">{executionChannel}</span>
+            <span className="font-medium capitalize">{normalizedChannel}</span>
           </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-text-secondary">Benchmark Version</span>
+            <span className="font-medium">v{versionLabel}</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-text-secondary">Leaderboard</span>
+            <span className="font-medium">{leaderboardOptIn ? "Auto publish" : "Private until manual publish"}</span>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-surface px-4 py-3 text-sm text-text-secondary">
+          <Shield className="mt-0.5 size-4 text-brand-primary" />
+          <span>
+            {leaderboardOptIn
+              ? "Result Anchor and IPFS proofs will be generated automatically after the run completes."
+              : "Proof bundles are still produced, but the leaderboard entry remains hidden until you publish it manually."}
+          </span>
         </div>
 
         {state === "idle" && (

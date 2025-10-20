@@ -1,33 +1,24 @@
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
-import { Section } from "@/components/layout/section";
-import { EmptyState } from "@/components/ui/empty-state";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/navigation";
+import { AuditClient } from "./audit-client";
 
 export default async function DashboardAuditPage() {
-  const t = await getTranslations("dashboard.pages.audit");
+  const global = await getTranslations("dashboard");
+  const copy = global.raw("pages.audit") as {
+    title: string;
+    description: string;
+    emptyTitle: string;
+    emptyDescription: string;
+    ctaLabel?: string;
+  };
 
   return (
     <>
-      <PageHero title={t("title")} description={t("description")} />
-
-      <Section padding="lg">
-        <EmptyState
-          title={t("emptyTitle")}
-          description={t("emptyDescription")}
-          illustrationKey="sparkles"
-        />
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button variant="secondary" disabled>
-            {t("ctaLabel")}
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/dashboard">{t("backLabel")}</Link>
-          </Button>
-        </div>
-      </Section>
+      <PageHero title={copy.title} description={copy.description} />
+      <AuditClient
+        empty={{ title: copy.emptyTitle, description: copy.emptyDescription }}
+        ctaLabel={copy.ctaLabel}
+      />
     </>
   );
 }

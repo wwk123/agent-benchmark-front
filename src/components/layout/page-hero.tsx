@@ -29,7 +29,7 @@ export function PageHero({
   return (
     <LandingSectionLayout
       badge={badge}
-      title={<span className="text-surface-contrast lg:text-lg">{title} </span>}
+      title={<span className="font-heading text-surface-contrast lg:text-lg">{title} </span>}
       description={
         description ? (
           <span className="max-w-3xl text-base text-surface-contrast/80 lg:text-lg">{description}</span>

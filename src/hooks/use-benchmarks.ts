@@ -28,14 +28,14 @@ export function useBenchmarks(filters: BenchmarkFilters = {}) {
  * Fetch a single benchmark's detailed information
  * 10-minute stale time for benchmark details
  */
-export function useBenchmarkDetail(id: string) {
+export function useBenchmarkDetail(id: string, options?: { enabled?: boolean }) {
   return useQuery({
     queryKey: ["benchmark", id],
     queryFn: async () => {
       return await apiFetch<BenchmarkDetail>(`/api/v1/benchmarks/${id}`);
     },
     staleTime: 10 * 60 * 1000, // 10 minutes
-    enabled: !!id,
+    enabled: options?.enabled ?? !!id,
   });
 }
 

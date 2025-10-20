@@ -2,6 +2,15 @@
 
 import clsx from "clsx";
 
+type LeaderboardProof = {
+  anchorLabel?: string;
+  anchorUrl?: string;
+  artifactLabel?: string;
+  artifactUrl?: string;
+  dealId?: string;
+  taskId?: string;
+};
+
 type LeaderboardRow = {
   rank: number;
   agent: string;
@@ -10,6 +19,7 @@ type LeaderboardRow = {
   completion: string;
   lastRun: string;
   channel: string;
+  proof?: LeaderboardProof;
 };
 
 type LeaderboardTableProps = {
@@ -21,20 +31,26 @@ type LeaderboardTableProps = {
     completion: string;
     lastRun: string;
     channel: string;
+    proof?: string;
   };
   rows: LeaderboardRow[];
+  proofFallback?: string;
 };
 
 const channelBadgeClassMap: Record<string, string> = {
   Hybrid: "bg-brand-accent/15 text-brand-primary",
   混合: "bg-brand-accent/15 text-brand-primary",
   "iExec": "bg-brand-highlight/15 text-brand-highlight",
+  "iExec Network": "bg-brand-highlight/15 text-brand-highlight",
+  "iExec network": "bg-brand-highlight/15 text-brand-highlight",
+  "Self-Miner": "bg-text-muted/10 text-text-muted",
+  "Self-miner": "bg-text-muted/10 text-text-muted",
   self: "bg-text-muted/10 text-text-muted",
 };
 
-export function LeaderboardTable({ columns, rows }: LeaderboardTableProps) {
+export function LeaderboardTable({ columns, rows, proofFallback }: LeaderboardTableProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-surface-contrast shadow-card">
+  <div className="overflow-hidden rounded-2xl border border-border bg-surface-elevated shadow-card">
       <table className="min-w-full divide-y divide-border/70">
         <thead className="bg-surface-muted/80">
           <tr className="text-left text-xs font-semibold uppercase tracking-wide text-text-secondary">
@@ -45,6 +61,7 @@ export function LeaderboardTable({ columns, rows }: LeaderboardTableProps) {
             <th className="px-6 py-3">{columns.completion}</th>
             <th className="px-6 py-3">{columns.lastRun}</th>
             <th className="px-6 py-3">{columns.channel}</th>
+            {columns.proof && <th className="px-6 py-3">{columns.proof}</th>}
           </tr>
         </thead>
         <tbody className="divide-y divide-border/60 text-sm text-text-secondary">
@@ -68,6 +85,42 @@ export function LeaderboardTable({ columns, rows }: LeaderboardTableProps) {
                   {row.channel}
                 </span>
               </td>
+              {columns.proof && (
+                <td className="px-6 py-4">
+                  {row.proof ? (
+                    <div className="space-y-2 text-xs leading-relaxed text-text-secondary">
+                      {row.proof.anchorUrl && (
+                        <a
+                          className="inline-flex items-center gap-1 text-brand-primary hover:text-brand-highlight"
+                          href={row.proof.anchorUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {row.proof.anchorLabel ?? row.proof.anchorUrl}
+                        </a>
+                      )}
+                      {row.proof.artifactUrl && (
+                        <a
+                          className="inline-flex items-center gap-1 text-brand-primary hover:text-brand-highlight"
+                          href={row.proof.artifactUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {row.proof.artifactLabel ?? row.proof.artifactUrl}
+                        </a>
+                      )}
+                      {(row.proof.dealId || row.proof.taskId) && (
+                        <div className="space-y-1 text-text-muted">
+                          {row.proof.dealId && <div>dealId: {row.proof.dealId}</div>}
+                          {row.proof.taskId && <div>taskId: {row.proof.taskId}</div>}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="text-text-muted">{proofFallback ?? "—"}</span>
+                  )}
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

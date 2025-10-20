@@ -85,7 +85,7 @@ export function PageHeader({
       {/* Title and Actions Row */}
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight text-text-primary lg:text-4xl">
+          <h1 className="font-heading text-3xl font-bold tracking-tight text-text-primary lg:text-4xl">
             {title}
           </h1>
           {description && (

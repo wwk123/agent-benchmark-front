@@ -39,7 +39,7 @@ export function SubmissionTimeline({ events, className }: SubmissionTimelineProp
 
             <div className="flex-1 pb-8">
               <div className="flex items-center justify-between">
-                <h4 className="font-semibold capitalize text-text-primary">{event.type}</h4>
+                <h4 className="font-heading font-semibold capitalize text-text-primary">{event.type}</h4>
                 <span className="text-xs text-text-muted">
                   {new Date(event.timestamp).toLocaleString()}
                 </span>

@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
  * Query parameters:
  * - search: string (optional) - Search in title and description
  * - difficulty: "easy" | "medium" | "hard" | "all" (optional)
- * - category: "reasoning" | "coding" | "multi-modal" | "math" | "all" (optional)
+ * - category: benchmark category id or "all" (optional)
  * - page: number (optional, default: 1)
  * - pageSize: number (optional, default: 20)
  *
@@ -52,7 +52,9 @@ export async function GET(request: Request) {
 
     // Apply category filter
     if (category !== "all") {
-      filtered = filtered.filter((benchmark) => benchmark.tags.includes(category));
+      filtered = filtered.filter(
+        (benchmark) => benchmark.category === category || benchmark.tags.includes(category),
+      );
     }
 
     // Calculate pagination

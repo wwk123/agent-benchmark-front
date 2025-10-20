@@ -23,9 +23,9 @@ const variantClassMap: Record<ButtonVariant, string> = {
   primary:
     "bg-brand-primary text-surface-contrast shadow-card hover:bg-brand-primary-muted focus-visible:ring-2 focus-visible:ring-brand-accent",
   secondary:
-    "border border-border bg-surface-contrast text-brand-primary hover:border-border-strong focus-visible:ring-2 focus-visible:ring-brand-accent",
+    "border border-border bg-surface-elevated text-brand-primary hover:border-border-strong focus-visible:ring-2 focus-visible:ring-brand-accent",
   tertiary:
-    "bg-surface-muted text-brand-primary hover:bg-surface-contrast focus-visible:ring-2 focus-visible:ring-brand-accent",
+    "bg-surface-muted text-brand-primary hover:bg-surface-elevated focus-visible:ring-2 focus-visible:ring-brand-accent",
   ghost:
     "text-brand-primary hover:bg-surface-muted focus-visible:ring-2 focus-visible:ring-brand-accent",
   danger:

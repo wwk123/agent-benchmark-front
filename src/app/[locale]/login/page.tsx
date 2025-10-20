@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { getIllustration } from "@/lib/illustrations";
 import { useSearchParams } from "next/navigation";
-import { usePathname, useRouter } from "@/navigation";
-import { defaultLocale, locales, type Locale } from "@/i18n/settings";
+import { useRouter } from "@/navigation";
+import { locales, type Locale } from "@/i18n/settings";
 
 export const dynamic = "force-dynamic";
 
@@ -20,34 +20,28 @@ type LoginState = "idle" | "signing" | "success" | "error";
 
 function LoginContent() {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentLocale = useMemo<Locale>(() => {
-    const segments = pathname.split("/").filter(Boolean);
-    const maybeLocale = segments[0];
-    if (maybeLocale && locales.includes(maybeLocale as Locale)) {
-      return maybeLocale as Locale;
-    }
-    return defaultLocale;
-  }, [pathname]);
-
   const rawRedirect = searchParams?.get("redirect");
 
   const redirect = useMemo<Route>(() => {
     const candidate = rawRedirect;
     if (candidate && candidate.startsWith("/") && !candidate.startsWith("//")) {
       if (candidate === "/") {
-        return (`/${currentLocale}`) as Route;
+        return "/" as Route;
       }
       const candidateSegments = candidate.split("/").filter(Boolean);
       const candidateLocale = candidateSegments[0];
+      // If the redirect URL already contains a locale, remove it
+      // because next-intl's router.push() will automatically add the current locale
       if (candidateLocale && locales.includes(candidateLocale as Locale)) {
-        return candidate as Route;
+        // Remove the locale prefix: /zh-CN/dashboard -> /dashboard
+        const pathWithoutLocale = "/" + candidateSegments.slice(1).join("/");
+        return (pathWithoutLocale || "/") as Route;
       }
-      return (`/${currentLocale}${candidate}`) as Route;
+      return candidate as Route;
     }
-    return (`/${currentLocale}`) as Route;
-  }, [currentLocale, rawRedirect]);
+    return "/" as Route;
+  }, [rawRedirect]);
   const loginIllustration =
     getIllustration("loginBackdrop", "light") ?? "/illustrations/login-backdrop.light.svg";
 
@@ -100,7 +94,7 @@ function LoginContent() {
             priority
           />
           <div className="space-y-2">
-            <h1 className="text-2xl font-semibold text-surface-contrast/80">Welcome Back</h1>
+            <h1 className="font-heading text-2xl font-semibold text-surface-contrast/80">Welcome Back</h1>
             <p className="text-sm text-surface-contrast/80">
               Connect your wallet to continue to Agent Benchmark
             </p>

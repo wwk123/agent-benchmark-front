@@ -5,7 +5,7 @@
 
 import type { Route } from "next";
 import type { ReactNode } from "react";
-import { Clock, FileText, Tag } from "lucide-react";
+import { Clock, FileText, Shield } from "lucide-react";
 import type { Benchmark } from "@/types/models";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -20,15 +20,15 @@ export type BenchmarkCardProps = {
 const DIFFICULTY_CONFIG = {
   easy: {
     label: "Easy",
-    color: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
   },
   medium: {
     label: "Medium",
-    color: "bg-amber-100 text-amber-800 border-amber-200",
+    color: "bg-amber-500/20 text-amber-300 border-amber-500/40",
   },
   hard: {
     label: "Hard",
-    color: "bg-rose-100 text-rose-800 border-rose-200",
+    color: "bg-rose-500/20 text-rose-300 border-rose-500/40",
   },
 } as const;
 
@@ -50,11 +50,16 @@ export function BenchmarkCard({ benchmark, className, illustration }: BenchmarkC
       )}
       {/* Header with Difficulty Badge */}
       <div className="flex items-start justify-between gap-3">
-        <h3 className="flex-1 text-xl font-semibold text-brand-primary group-hover:text-brand-accent transition-colors">
-          <Link href={detailRoute}>
-            {benchmark.title}
-          </Link>
-        </h3>
+        <div className="flex-1 space-y-1">
+          <h3 className="font-heading text-xl font-semibold text-brand-primary group-hover:text-brand-accent transition-colors">
+            <Link href={detailRoute}>
+              {benchmark.title}
+            </Link>
+          </h3>
+          <p className="text-xs text-text-muted font-mono">
+            {benchmark.benchmarkId}
+          </p>
+        </div>
         <span
           className={cn(
             "shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium",
@@ -84,25 +89,25 @@ export function BenchmarkCard({ benchmark, className, illustration }: BenchmarkC
         </div>
       </div>
 
-      {/* Tags */}
-      {benchmark.tags && benchmark.tags.length > 0 && (
+      {/* Rubric Tags */}
+      {benchmark.rubricTags && benchmark.rubricTags.length > 0 && (
         <div className="flex flex-wrap gap-2">
-          {benchmark.tags.slice(0, 3).map((tag) => (
+          {benchmark.rubricTags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center gap-1 rounded-md bg-surface-muted px-2 py-1 text-xs text-text-secondary"
+              className="inline-flex items-center gap-1 rounded-md bg-brand-primary/10 border border-brand-primary/30 px-2 py-1 text-xs text-brand-primary font-medium"
             >
-              <Tag className="size-3" aria-hidden="true" />
               {tag}
             </span>
           ))}
-          {benchmark.tags.length > 3 && (
-            <span className="inline-flex items-center px-2 py-1 text-xs text-text-muted">
-              +{benchmark.tags.length - 3} more
-            </span>
-          )}
         </div>
       )}
+
+      {/* Execution Strategy */}
+      <div className="flex items-start gap-2 text-xs text-text-secondary">
+        <Shield className="size-4 shrink-0 mt-0.5" aria-hidden="true" />
+        <span>{benchmark.executionStrategy}</span>
+      </div>
 
       {/* Cost Breakdown */}
       <div className="space-y-2 rounded-lg bg-surface-muted p-3">

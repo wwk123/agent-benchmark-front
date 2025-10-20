@@ -31,7 +31,7 @@ export function SubmissionSteps({ steps, checklist, illustration }: SubmissionSt
         {steps.map((step) => (
           <li key={step.title} className="card space-y-4 p-6">
             <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-brand-primary">{step.title}</h3>
+              <h3 className="font-heading text-lg font-semibold text-brand-primary">{step.title}</h3>
               <p className="text-sm text-text-secondary">{step.description}</p>
             </div>
             {step.hint && (
@@ -50,7 +50,7 @@ export function SubmissionSteps({ steps, checklist, illustration }: SubmissionSt
           </div>
         )}
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold text-brand-primary">{checklist.title}</h3>
+          <h3 className="font-heading text-lg font-semibold text-brand-primary">{checklist.title}</h3>
           <ul className="space-y-2 text-sm text-text-secondary">
             {checklist.items.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -63,7 +63,7 @@ export function SubmissionSteps({ steps, checklist, illustration }: SubmissionSt
 
         <div className="space-y-3 rounded-xl border border-dashed border-brand-accent/60 bg-brand-accent/5 p-4">
           <div>
-            <h4 className="text-sm font-semibold text-brand-primary">{checklist.support.title}</h4>
+            <h4 className="font-heading text-sm font-semibold text-brand-primary">{checklist.support.title}</h4>
             <p className="text-sm text-text-secondary">{checklist.support.description}</p>
           </div>
           <Button asChild variant="secondary">

@@ -81,12 +81,12 @@ export default function BenchmarkDetailPage({ params }: BenchmarkDetailPageProps
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-brand-primary">Score Breakdown</h3>
+              <h3 className="font-heading text-lg font-semibold text-brand-primary">Score Breakdown</h3>
               {benchmark.scoringRules.breakdown.map((item) => (
                 <div key={item.category} className="card p-4">
                   <div className="flex justify-between">
                     <div>
-                      <h4 className="font-semibold text-text-primary">{item.category}</h4>
+                      <h4 className="font-heading font-semibold text-text-primary">{item.category}</h4>
                       <p className="text-sm text-text-secondary">{item.description}</p>
                     </div>
                     <span className="text-lg font-bold text-brand-primary">{item.weight}%</span>
@@ -101,7 +101,7 @@ export default function BenchmarkDetailPage({ params }: BenchmarkDetailPageProps
           <div className="space-y-4">
             {benchmark.examples.map((example) => (
               <div key={example.title} className="card space-y-3 p-6">
-                <h4 className="text-lg font-semibold text-brand-primary">{example.title}</h4>
+                <h4 className="font-heading text-lg font-semibold text-brand-primary">{example.title}</h4>
                 <p className="text-sm text-text-secondary">{example.description}</p>
                 {example.expectedOutput && (
                   <div className="rounded-lg bg-surface-muted p-4">
@@ -118,7 +118,7 @@ export default function BenchmarkDetailPage({ params }: BenchmarkDetailPageProps
             {benchmark.resources.map((resource) => (
               <div key={resource.url} className="card flex items-center justify-between p-4">
                 <div>
-                  <h4 className="font-semibold text-text-primary">{resource.title}</h4>
+                  <h4 className="font-heading font-semibold text-text-primary">{resource.title}</h4>
                   <p className="text-xs text-text-muted capitalize">{resource.type}</p>
                 </div>
                 <Button variant="ghost" size="sm" asChild>
@@ -136,7 +136,7 @@ export default function BenchmarkDetailPage({ params }: BenchmarkDetailPageProps
             {benchmark.versions.map((version) => (
               <div key={version.version} className="card space-y-3 p-6">
                 <div className="flex justify-between">
-                  <h4 className="text-lg font-semibold text-brand-primary">v{version.version}</h4>
+                  <h4 className="font-heading text-lg font-semibold text-brand-primary">v{version.version}</h4>
                   <span className="text-sm text-text-muted">
                     {new Date(version.releaseDate).toLocaleDateString()}
                   </span>

@@ -104,7 +104,7 @@ export default function SubmissionDetailPage({ params }: SubmissionDetailPagePro
 
       {submission.scoreBreakdown && submission.scoreBreakdown.length > 0 && (
         <div className="card p-6 space-y-4">
-          <h3 className="text-lg font-semibold">Score Breakdown</h3>
+          <h3 className="font-heading text-lg font-semibold">Score Breakdown</h3>
           <div className="space-y-3">
             {submission.scoreBreakdown.map((item) => (
               <div key={item.category}>
@@ -125,7 +125,7 @@ export default function SubmissionDetailPage({ params }: SubmissionDetailPagePro
       )}
 
       <div className="card p-6 space-y-4">
-        <h3 className="text-lg font-semibold">Execution Timeline</h3>
+        <h3 className="font-heading text-lg font-semibold">Execution Timeline</h3>
         <SubmissionTimeline events={submission.events} />
       </div>
     </div>
